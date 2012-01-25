@@ -15,8 +15,16 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
-  s.add_dependency "rails", "~> 3.1.3"
-  # s.add_dependency "jquery-rails"
+  s.add_dependency "rails", "~> 3.1.0"
+  s.add_dependency "inherited_resources"
+  s.add_dependency "has_scope"
+  s.add_dependency "responders"
+  s.add_dependency "simple_form"
+  s.add_dependency "show_for"
+  s.add_dependency "will_paginate"
+  s.add_dependency "acts_as_list"
+  s.add_dependency "haml-rails"
+  
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails", "~> 2.8.1"

@@ -1,0 +1,4 @@
+= simple_form_for [ :admin, resource ] do |f|
+	- attributes.each do |attr|
+		= attr.end_with?('_id') ? f.association(assc(attr)) : f.input(attr)
+	= f.button :submit, "submit"

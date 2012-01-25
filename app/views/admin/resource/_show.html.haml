@@ -1,0 +1,4 @@
+.clearfix
+	= show_for resource do |u|
+		-attributes.each do |attr|
+			= u.attribute attr.to_sym
