@@ -1,0 +1,15 @@
+- stylesheet 'application'
+
+- content_for :content do
+  %section#application
+    %header
+      %h1= yield(:title) if show_title?
+      %nav.horizontal
+        %ul
+          %li
+        
+        
+  = content_for?(:body) ? yield(:body) : yield
+                
+= parent_layout 'boilerplate'
+
