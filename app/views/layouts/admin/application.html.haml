@@ -1,5 +1,10 @@
+- content_for :head do
+  %title= content_for?(:title) ? "CartoCMS: #{yield(:title)}" : "CartoCMS"
+  %meta{ :name => "description", :content => "CartoCMS" }/
+  %meta{ :name => "author", :content => "New Cartographers Creative" }/
+  
 - stylesheet 'application'
-
+  
 - content_for :content do
   %section#application
     %header
@@ -12,4 +17,3 @@
   = content_for?(:body) ? yield(:body) : yield
                 
 = parent_layout 'boilerplate'
-
