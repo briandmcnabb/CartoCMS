@@ -1,0 +1,74 @@
+/* HTML5 ✰ Boilerplate  */
+
+///// Default Variables /////
+$text_color: #222 !default;
+$text_selection_color: #fff !default;
+$text_selection_background: #fe57a1 !default;
+$invalid_input: #f0dddd !default;
+
+
+body { font-size: 1em; line-height: 1.4; }
+
+
+body, button, input, select, textarea { color: $text_color; }
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ */
+
+::-moz-selection { background: $text_selection_background; color: $text_selection_color; text-shadow: none; }
+::selection { background: $text_selection_background; color: $text_selection_color; text-shadow: none; }
+
+
+/* =============================================================================
+   Links
+   ========================================================================== */
+
+a:hover, a:active { outline: 0; } /* Improve readability when focused and hovered in all browsers: h5bp.com/h */
+
+
+/* =============================================================================
+   Typography
+   ========================================================================== */
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+ins { background: #ff9; color: #000; text-decoration: none; }
+mark { font-style: italic; font-weight: bold; }
+
+
+
+
+/* =============================================================================
+   Lists
+   ========================================================================== */
+nav ul, nav ol { margin: 0; padding: 0; } /* Possibly uneeded */
+
+
+
+
+/* =============================================================================
+   Embedded content
+   ========================================================================== */
+img { vertical-align: middle; } /* Possibly uneeded */
+
+
+
+
+/* =============================================================================
+   Forms
+   ========================================================================== */
+
+fieldset { border: 0; margin: 0; padding: 0; }
+label { cursor: pointer; } /* Indicate that 'label' will shift focus to the associated form element */
+textarea { resize: vertical; } /* Allow only vertical resizing */
+
+/* Colors for form validity */
+input:valid, textarea:valid {  }
+input:invalid, textarea:invalid { background-color: invalid_input; }
+
+
+/* =============================================================================
+   Tables
+   ========================================================================== */
+
+td { vertical-align: top; }
+
