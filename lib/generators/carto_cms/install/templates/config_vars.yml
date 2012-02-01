@@ -1,0 +1,8 @@
+apps:
+  # production: heroku-app-name
+development: &defaults
+  # example_variable: example_value
+test:
+  # <<: *defaults
+production:
+  # example_variable: example_value
