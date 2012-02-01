@@ -6,9 +6,7 @@ require "CartoCMS/version"
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "CartoCMS"
-  s.date        = Time.now
   s.version     = CartoCMS::VERSION
-  s.platform    = Gem::Platform::Ruby
   s.authors     = ["Brian McNabb"]
   s.email       = ["brian@new-cartographers.com"]
   s.homepage    = "http://new-cartographers.com"
