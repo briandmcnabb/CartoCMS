@@ -3,6 +3,8 @@ source "http://rubygems.org"
 # Declare your gem's dependencies in CartoCMS.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
+gem 'bootstrap-sass', git: 'git://github.com/thomas-mcdonald/bootstrap-sass.git', branch: '2.0'
+gem 'simple_form', git: 'git://github.com/plataformatec/simple_form.git'
 gemspec
 
 # jquery-rails is used by the dummy application
