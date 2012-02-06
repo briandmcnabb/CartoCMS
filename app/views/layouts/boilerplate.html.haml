@@ -6,19 +6,29 @@
 
 %head
   %meta{ :charset => "utf-8" }/
+  
+  - if ENV['RACKSPACE_CDN_HOST']
+    %link{ rel: 'dns-prefetch', href: "//#{ENV['RACKSPACE_CDN_HOST'].split('//')[1]}" }
+  
   %meta{ 'http-equiv' => "X-UA-Compatible", :content => "IE=edge,chrome=1"}/
-  %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }/  
+  %meta{ :name => "viewport", :content => "width=device-width" }/  
   = render 'layouts/meta_specs' rescue nil
-  = yield :stylesheet
+  %link{ rel: 'author', href: 'humans.txt' }/
+  
+  = content_for?(:stylesheet) ? yield(:stylesheet) : stylesheet_link_tag('application')
   = yield :headscript  
   = csrf_meta_tags
 
 
 %body
+  /[if lt IE 7]
+    %p.chromeframe
+      Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.
+  
   = content_for?(:content) ? yield(:content) : yield
 
 
-  = javascript_include_tag 'application'
+  = content_for?(:javascript) ? yield(:javascript) : javascript_include_tag('application')
   = yield :bodyscript
 
 
@@ -28,11 +38,5 @@
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
       s.parentNode.insertBefore(g,s)}(document,'script'));
-
-
-  /[if lt IE 7 ]
-    = javascript_include_tag '//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js'  
-    :javascript
-      window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
 
 </html>

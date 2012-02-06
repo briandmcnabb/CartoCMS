@@ -20,10 +20,18 @@ module CartoCms
         copy_file 'variables.css.scss', 'app/assets/stylesheets/variables.css.scss'      
       end
       
-      def config_vars
+      def add_config_vars
         copy_file 'config_vars.yml', 'config/config_vars.yml'
         copy_file 'heroku.thor', 'lib/tasks/heroku.thor'      
         append_to_file '.gitignore', 'config_vars.yml'    
+      end
+      
+      def add_humans
+        copy_file 'humans.txt', 'public/humans.txt'
+      end
+      
+      def add_meta_specs
+        copy_file '_meta_specs.html.haml', 'app/views/layouts/_meta_specs.html.haml'
       end
     
     

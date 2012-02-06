@@ -1,15 +1,15 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Variables, Normalize.css & Base Styles
 ////////////////////////////////////////////////////////////////////////////////
-@import 'variables', 'normalize', 'boilerplate_styles', 'base_styles';
-
+//@import 'variables', 'normalize', 'boilerplate_styles', 'base_styles';
+@import 'normalize', 'variables', 'mixins', 'bootstrap';
 
 
 
 ////////////////////////////////////////////////////////////////////////////////
 // Fonts
 ////////////////////////////////////////////////////////////////////////////////
-	/* add fonts here */
+	@include font-face('mensch');
 
 
 
@@ -17,9 +17,25 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Global Styles (Overrides)
 ////////////////////////////////////////////////////////////////////////////////
-	/* add global styles here */
-	
+body { background: $background; padding-top: $navbarHeight + 10; }
+.navbar-fixed-top { top: 10px; }
+.table {
+	th { padding:  0 8px; font-size: 1.2em; font-family: 'mensch'; border-bottom: 6px double $brownDark; }
+	td { padding-top: 12px; padding-bottom: 12px; }
+	td.icon { opacity: 0.9; padding-left: 0; padding-right: 0; }
+}
+.table-striped {
+  tbody {
+		tr:nth-child(even) td, tr:nth-child(even) th {
+		  background-color: #f3f3f3;
+		}
+    tr:nth-child(odd) td, tr:nth-child(odd) th {
+      background-color: transparent;
+    }
+  }
+}
 
+section.index { padding: 30px 0;}
 
 
 ////////////////////////////////////////////////////////////////////////////////

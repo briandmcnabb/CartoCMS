@@ -6,13 +6,6 @@ GIT
       actionpack (~> 3.0)
       activemodel (~> 3.0)
 
-GIT
-  remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
-  revision: 995124911ec54aa1b860b7f0e78b6a6b63f6f560
-  branch: 2.0
-  specs:
-    bootstrap-sass (2.0.0)
-
 PATH
   remote: .
   specs:
@@ -28,6 +21,11 @@ PATH
       show_for
       simple_form
       will_paginate
+
+PATH
+  remote: ../bootstrap-sass
+  specs:
+    bootstrap-sass (2.0.0)
 
 GEM
   remote: http://rubygems.org/

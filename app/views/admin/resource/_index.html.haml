@@ -1,23 +1,24 @@
-%section.clearfix
-  %table.backend
-    - attributes.each do |attr|
-      %col{ id: "#{attr}" }
+%section.index
+  %table.table.table-striped  
     %thead
       %tr
+        - if sortable?
+          %th &nbsp;
         - attributes.each do |attr|
           %th= resource_class.human_attribute_name(attr)
         %th &nbsp;
         %th &nbsp;
         %th &nbsp;
-        = content_tag(:th, ('&nbsp;').html_safe) if sortable?
+
     %tbody#sortable{ data: { sort_url: sort_url }}
       - collection.each do |resource|
-        %tr[resource]{odd_or_even}
+        %tr[resource]
+          - if sortable?
+            %td.icon= content_tag(:span, "[drag]", class: 'icon-align-justify ir')
           - attributes.each do |attr|
             %td= attr.end_with?('_id') ? resource.public_send(attr.gsub('_id', '')).to_s : resource.public_send(attr).to_s.truncate(20)
-          %td.icon_link= link_to 'show', resource_path(resource), class: 'show ir'
-          %td.icon_link= link_to 'edit', edit_resource_path(resource), class: 'edit ir'
-          %td.icon_link= link_to 'destroy', resource_path(resource), method: :delete, confirm: "Are you sure?", class: 'destroy ir'
-          %td.icon_link= content_tag(:span, "[drag]", class: 'handle ir') if sortable?
+          %td.icon= link_to 'show', resource_path(resource), class: 'icon-file ir'
+          %td.icon= link_to 'edit', edit_resource_path(resource), class: 'icon-pencil ir'
+          %td.icon= link_to 'destroy', resource_path(resource), method: :delete, confirm: "Are you sure?", class: 'icon-trash ir'
             
   = will_paginate collection
