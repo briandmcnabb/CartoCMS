@@ -1,4 +1,9 @@
-- title resource.class
+-# Title
+- title controller.action_name+" "+resource_class.model_name.human
 
-- attributes = resource_class.attribute_names - %w(id created_at updated_at)
-= render "form", attributes: attributes
+-# Action Link
+- content_for :action_link do
+  = link_to 'back', :back, id: 'action_link', class: 'btn', data:{ page: "#{params[:action]}"}
+
+-# Render Content
+#content= render "form", attributes: attributes

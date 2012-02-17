@@ -1,24 +1,23 @@
-%section.index
-  %table.table.table-striped  
-    %thead
-      %tr
-        - if sortable?
-          %th &nbsp;
-        - attributes.each do |attr|
-          %th= resource_class.human_attribute_name(attr)
+%table.table.table-striped  
+  %thead
+    %tr
+      - if sortable?
         %th &nbsp;
-        %th &nbsp;
-        %th &nbsp;
+      - attributes.each do |attr|
+        - column = resource_class.human_attribute_name(attr)
+        %th= sortable? ? column : sortable(column.to_s, remote: true)
+      %th &nbsp;
 
-    %tbody#sortable{ data: { sort_url: sort_url }}
-      - collection.each do |resource|
-        %tr[resource]
-          - if sortable?
-            %td.icon= content_tag(:span, "[drag]", class: 'icon-align-justify ir')
-          - attributes.each do |attr|
-            %td= attr.end_with?('_id') ? resource.public_send(attr.gsub('_id', '')).to_s : resource.public_send(attr).to_s.truncate(20)
-          %td.icon= link_to 'show', resource_path(resource), class: 'icon-file ir'
-          %td.icon= link_to 'edit', edit_resource_path(resource), class: 'icon-pencil ir'
-          %td.icon= link_to 'destroy', resource_path(resource), method: :delete, confirm: "Are you sure?", class: 'icon-trash ir'
-            
-  = will_paginate collection
+  %tbody#sortable{ data: { sort_url: sort_url }}
+    - collection.each do |resource|
+      %tr[resource]
+        - if sortable?
+          %td.icon= content_tag(:span, "[drag]", class: 'icon-align-justify ir')
+        - attributes.each do |attr|
+          %td= attr.end_with?('_id') ? resource.public_send(attr.gsub('_id', '')).to_s : resource.public_send(attr).to_s.truncate(20)
+        %td.icon
+          %span= link_to 'show', resource_path(resource), remote: true, class: 'icon-file ir'
+          %span= link_to 'edit', edit_resource_path(resource), remote: true, class: 'icon-pencil ir'
+          %span= link_to 'destroy', resource_path(resource), remote: true, method: :delete, confirm: "Are you sure?", class: 'icon-trash ir'
+          
+= will_paginate collection, remote: true

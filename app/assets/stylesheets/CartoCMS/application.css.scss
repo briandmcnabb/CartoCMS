@@ -6,10 +6,12 @@
 
 
 
+
 ////////////////////////////////////////////////////////////////////////////////
 // Fonts
 ////////////////////////////////////////////////////////////////////////////////
 	@include font-face('mensch');
+	@include font-face('wisdom_script');	
 
 
 
@@ -17,25 +19,46 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Global Styles (Overrides)
 ////////////////////////////////////////////////////////////////////////////////
-body { background: $background; padding-top: $navbarHeight + 10; }
-.navbar-fixed-top { top: 10px; }
-.table {
-	th { padding:  0 8px; font-size: 1.2em; font-family: 'mensch'; border-bottom: 6px double $brownDark; }
-	td { padding-top: 12px; padding-bottom: 12px; }
-	td.icon { opacity: 0.9; padding-left: 0; padding-right: 0; }
-}
-.table-striped {
-  tbody {
-		tr:nth-child(even) td, tr:nth-child(even) th {
-		  background-color: #f3f3f3;
+body { background: $background; padding-top: $navbarFixedOffset; }
+
+section.site-wide {
+	header.site-wide { font-family: 'mensch';
+		h1 { font-size: 30px; line-height: 30px; font-weight: normal; padding-top: 4px;
+			span:first-of-type { color: $cream;  font-family: 'wisdom_script'; }
+			span:last-of-type  { color: #bababa; margin-left: -14px; }			
 		}
-    tr:nth-child(odd) td, tr:nth-child(odd) th {
-      background-color: transparent;
-    }
-  }
+		.nav > li > a { color: $cream; text-shadow: none; font-size: 22px; line-height: 22px; padding: 10px 10px 8px; }
+	}
 }
 
-section.index { padding: 30px 0;}
+.table {
+	th { position: relative; padding:  0 $rowPadding; font-size: 1.2em; line-height: 1; font-family: 'mensch'; text-align: center; border-bottom: 6px double $brownDark; 
+		&:first-of-type { text-align: left; }
+		&:after { display: block; content: ''; position: absolute; right: -1px; bottom: 0; height: 8px; border-right: 2px solid $brownDark; }
+		&:last-of-type:after { display: none; }
+	}
+	td.icon { padding-left: 0; padding-right: 0; opacity: 0.85; 
+		span { float: left; text-align: center;
+			&:nth-of-type(2) { padding-left: 10px; padding-right: 10px; }
+		}
+	}
+}
+
+#content { padding-bottom: 30px; }
+
+header#resource-actions { margin: 50px 0 20px;
+	h1 { float: left; font-size: 44px; line-height: 44px; font-family: 'mensch'; color: $brownDark; }
+	form { float: left; width: 35%; padding: 0px 0 0 10px; 
+		input { width: 100%; background-color: transparent; border: 2px solid $brownDark; @include border-radius(8px); 
+		&:focus { background-color: hsla(0, 100%, 100%, 0.5); }
+		}	
+	}
+	a#action_link { float: right; background-color: $brownDark; border: none; color: $cream; text-shadow:none; font-family: 'mensch'; padding: 8px 15px 7px 13px; font-size: 20px; @include border-radius(8px); 
+		span:last-of-type  { margin-left: -6px; }
+	}
+}// refactor some of the a#new into variables in the twitter-bootstrap
+
+
 
 
 ////////////////////////////////////////////////////////////////////////////////

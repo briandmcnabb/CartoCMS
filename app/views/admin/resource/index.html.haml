@@ -1,1 +1,8 @@
-= render "index", attributes: attributes
+-# Action Link
+- content_for :action_link do
+  = link_to new_resource_path, remote: true, id: 'action_link', class: 'btn', data:{ page: params[:action] } do
+    %span +
+    %span new
+
+-# Render Content
+#content= render "index", attributes: index_attributes

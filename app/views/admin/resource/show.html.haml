@@ -1,1 +1,9 @@
-= render "show", attributes: attributes
+-# Title
+- title controller.action_name+" "+resource_class.model_name.human
+
+-# Action
+- content_for(:action_link) do
+  = link_to 'back', :back, id: 'action_link', class: 'btn', data:{ page: "#{params[:action]}"}
+
+-# Render Content  
+#content= render "show", attributes: attributes
