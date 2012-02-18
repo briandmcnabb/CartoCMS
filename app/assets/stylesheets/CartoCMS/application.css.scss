@@ -32,13 +32,21 @@ section.site-wide {
 }
 
 .table {
-	th { position: relative; padding:  0 $rowPadding; font-size: 1.2em; line-height: 1; font-family: 'mensch'; text-align: center; border-bottom: 6px double $brownDark; 
-		&:first-of-type { text-align: left; }
+  col {
+    &.action_links { width: 99px; }
+    &:first-of-type {}
+  }
+  th, td {
+    &.left, &.string { text-align: left; }
+    &.center, &.icon, &.boolean, &.datetime, &.timestamp, &.time, &.date { text-align: center; }
+    &.right, &.integer, &.float, &.decimal { text-align: right; }
+  }
+	th { position: relative; border-top: none; border-bottom: 6px double $brownDark; padding:  0 $rowPadding; font: bold 1.2em/1 'mensch';
 		&:after { display: block; content: ''; position: absolute; right: -1px; bottom: 0; height: 8px; border-right: 2px solid $brownDark; }
 		&:last-of-type:after { display: none; }
 	}
-	td.icon { padding-left: 0; padding-right: 0; opacity: 0.85; 
-		span { float: left; text-align: center;
+	td.action_links { opacity: 0.85; padding-left: 24px;
+		span { float: left;
 			&:nth-of-type(2) { padding-left: 10px; padding-right: 10px; }
 		}
 	}

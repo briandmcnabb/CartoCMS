@@ -1,26 +1,33 @@
 module Admin::ResourceHelper
 
-  def attributes
-    attributes = resource_class.attribute_names - %w(id position created_at updated_at)
-  end
-  
-  def index_attributes
-    attributes.map { |attribute| attribute unless attribute_type(attribute) == :text }.compact
-  end
-
   def nested?(params)
     params.keys.each { |key| return key.gsub('_id', '').to_sym if key.end_with?('_id') }
   end
 
-
-
-  private
   
-  def attribute_type(attribute_name) #:nodoc:
-    column     = resource_class.columns_hash[attribute_name.to_s]
-    column_type = column.try(:type)
-    column_type.nil? ? :string : column_type
+  def column_names
+    @column_names ||= columns_hash.keys
+  end
+  
+  def attributes
+    @attributes ||= column_names - %w(id position created_at updated_at)
+  end
+  
+  def index_attributes
+    attributes.map { |attribute| attribute unless columns_hash[attribute] == :text }.compact
+  end
+  
+  def column_types(keys=attributes)
+    keys.map { |key| column_type(key) }
   end
 
+  def column_type(key)
+    columns_hash[key]
+  end
 
+  private
+
+  def columns_hash
+    @columns_hash ||= resource_class.columns_hash.inject({}) { |memo, (key, value)| memo[key] = value.type; memo }
+  end
 end
