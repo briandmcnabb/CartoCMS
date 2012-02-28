@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency "simple_form", "~> 2.0.0.rc"
   s.add_dependency "elastic_models"
   s.add_dependency "remote_history", "~> 0.0.0.1.rc"
+  s.add_dependency "enumerize", "~> 0.0.4"
 
 
   s.add_development_dependency "sqlite3"

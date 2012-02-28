@@ -1,8 +1,10 @@
 class Admin::ResourceController < Admin::ApplicationController
   inherit_resources
+
   respond_to :html, :js
   self.responder = Admin::Responder
-  
+
+  #extend SortableColumns::Positionable
   
   def destroy
     destroy! do |format|

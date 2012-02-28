@@ -1,31 +1,27 @@
 %table.table.table-striped  
-
   %colgroup
-    - if sortable?
-      %col
+    %col
     - attributes.each do |attr|
       %col
     %col.action_links
 
   %thead
     %tr
-      - if sortable?
-        %th{ scope: 'col' } &nbsp;
+      %th{ scope: 'col' }
       - attributes.each do |attr|
-        - column = resource_class.human_attribute_name(attr)
-        %th{ scope: 'col', class: column_type(attr) }= sortable? ? column : sortable(column, remote: true)
-      %th{ scope: 'col' } &nbsp;
+        = content_tag :th, th(attr), scope: 'col', class: column_type(attr)
+      %th{ scope: 'col' }
 
-  %tbody#sortable{ data: { sort_url: sort_url }}
+  %tbody{ class: position_class, data: { position_url: position_url }}
     - collection.each do |resource|
       %tr[resource]
-        - if sortable?
-          %td.icon= content_tag(:span, "[drag]", class: 'icon-align-justify ir')
-        - attributes.each do |attr|
-          %td= attr.end_with?('_id') ? resource.public_send(attr.gsub('_id', '')).to_s : resource.public_send(attr).to_s#.truncate(20)
-        %td.action_links
-          %span= link_to 'show',    resource_path(resource),      class: 'icon-file ir',   remote: true
-          %span= link_to 'edit',    edit_resource_path(resource), class: 'icon-pencil ir', remote: true
-          %span= link_to 'destroy', resource_path(resource),      class: 'icon-trash ir',  remote: true, method: :delete, confirm: "Are you sure?" 
+        %td= positioning_handle
+        - attributes.map do |attr|
+          = content_tag :td, td(resource, attr), class: column_type(attr)
+        %td
+          .action_links.clearfix
+            = link_to 'show',    resource_path(resource),      class: 'icon-file   ir', remote: true
+            = link_to 'edit',    edit_resource_path(resource), class: 'icon-pencil ir', remote: true
+            = link_to 'destroy', resource_path(resource),      class: 'icon-trash  ir', remote: true, method: :delete, confirm: "Are you sure?" 
           
 = will_paginate collection, remote: true

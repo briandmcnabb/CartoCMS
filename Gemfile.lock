@@ -6,6 +6,7 @@ PATH
       bootstrap-sass
       coffee-rails (~> 3.1.0)
       elastic_models
+      enumerize (~> 0.0.4)
       haml-rails
       has_scope
       inherited_resources
@@ -21,6 +22,18 @@ PATH
   remote: ../bootstrap-sass
   specs:
     bootstrap-sass (2.0.0)
+
+PATH
+  remote: ../elastic_models
+  specs:
+    elastic_models (0.0.0.2)
+      sortable_columns (~> 0.0.0.3)
+      tire
+
+PATH
+  remote: ../sortable_columns
+  specs:
+    sortable_columns (0.0.0.3)
 
 GEM
   remote: http://rubygems.org/
@@ -54,7 +67,7 @@ GEM
     activesupport (3.1.3)
       multi_json (~> 1.0)
     acts_as_list (0.1.4)
-    arel (2.2.1)
+    arel (2.2.3)
     builder (3.0.0)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -73,9 +86,8 @@ GEM
       execjs
     coffee-script-source (1.2.0)
     diff-lcs (1.1.3)
-    elastic_models (0.0.0.2)
-      sortable_columns
-      tire
+    enumerize (0.0.4)
+      activesupport (>= 3.1.3)
     erubis (2.7.0)
     execjs (1.3.0)
       multi_json (~> 1.0)
@@ -164,10 +176,9 @@ GEM
       multi_json (~> 1.0.4)
       rubyzip
     show_for (0.2.4)
-    simple_form (2.0.0.rc)
+    simple_form (2.0.0)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
-    sortable_columns (0.0.0.3)
     sprockets (2.0.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -195,6 +206,8 @@ DEPENDENCIES
   CartoCMS!
   bootstrap-sass!
   capybara (~> 1.1.2)
+  elastic_models!
   jquery-rails
   rspec-rails (~> 2.8.1)
+  sortable_columns!
   sqlite3
