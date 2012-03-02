@@ -10,6 +10,7 @@ require 'elastic_models'
 require 'bootstrap-sass'
 require 'will_paginate'
 require 'remote_history'
+require 'CartoPages'
 require 'CartoCMS/engine'
 
 module CartoCMS

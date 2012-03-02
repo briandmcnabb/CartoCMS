@@ -1,4 +1,4 @@
-class PagesController < ApplicationController
+class PagesController < ActionController::Base
   layout false
   
   def show

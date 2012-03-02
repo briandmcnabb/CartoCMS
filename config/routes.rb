@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :admins
-
-  match ':page_name' => 'pages#show'
+#  devise_for :admins
+  namespace :admin do
+    resources :pages
+  end
 end
