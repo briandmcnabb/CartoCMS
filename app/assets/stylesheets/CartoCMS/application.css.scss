@@ -10,8 +10,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Fonts
 ////////////////////////////////////////////////////////////////////////////////
-	@include font-face('mensch');
-	@include font-face('wisdom_script');	
+@include font-face('mensch');
+@include font-face('vollkorn');
+@include font-face('wisdom_script');	
 
 
 
@@ -21,6 +22,30 @@
 ////////////////////////////////////////////////////////////////////////////////
 body { background: $background; padding-top: $navbarFixedOffset; }
 
+dl {
+  &.prepend { @extend .clearfix; position: relative; margin: 0; border: $inputBorder; border-radius: $inputBorderRadius;
+    $dtPTop:    $inputLineHeight - $labelLineHeight + $inputPadding-Y - 1;
+    $dtPBottom: $inputPadding-Y + 1;
+    $dtPadding: $dtPTop 20px $dtPBottom;
+    $ddPadding: $inputPadding-Y 20px;
+    dt { float: left; clear: left; margin: 0; padding: $dtPadding; color: $labelTextColor; font: $labelFont; border-right: $inputBorder; background-color: hsla(0, 0.0000%, 84.3137%, 1.0000); }
+    dd { float: left; clear: none; margin: 0; padding: $ddPadding; color: $inputTextColor; font: $inputFont; 
+      > a { 
+          $spread: (($inputLineHeight + ($inputPadding-Y * 2)) - 14) / 2;
+          position: absolute; top: 2px; right: 0; padding: ($spread - 2) $spread ($spread - 2); border-left: $inputBorder;
+          &:hover div { opacity: 1; } 
+          div { opacity: 0.7; @include transition(opacity .1s linear); }
+      }
+    } 
+  }
+}
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Site-wide NavBar
+////////////////////////////////////////////////////////////////////////////////
 section.site-wide {
 	header.site-wide { font-family: 'mensch';
 		h1 { font-size: 30px; line-height: 30px; font-weight: normal; padding-top: 4px;
@@ -32,6 +57,31 @@ section.site-wide {
 		.nav > li > a { color: $cream; text-shadow: none; font-size: 22px; line-height: 22px; padding: 10px 10px 8px; }
 	}
 }
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Resource Actions
+////////////////////////////////////////////////////////////////////////////////
+header#resource-actions { margin: 50px 0 20px;
+	h1 { float: left; font-size: 44px; line-height: 44px; font-family: 'mensch'; color: $brownDark; }
+	form { float: left; width: 35%; padding: 0px 0 0 10px; 
+		input { height: auto; width: 100%; background-color: transparent; border: 2px solid $brownDark; @include border-radius(8px); font-size: $baseFontSize; line-height: $baseLineHeight; 
+		&:focus { background-color: hsla(0, 100%, 100%, 0.5); }
+		}	
+	}
+	a#action_link { float: right; background-color: $brownDark; border: none; color: $cream; text-shadow:none; font-family: 'mensch'; padding: 8px 15px 7px 13px; font-size: 20px; @include border-radius(8px); 
+		span:last-of-type  { margin-left: -6px; }
+	}
+}// refactor some of the a#new into variables in the twitter-bootstrap
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// _index.html
+////////////////////////////////////////////////////////////////////////////////
 
 .table { width: 100%;
   colgroup {
@@ -59,19 +109,57 @@ section.site-wide {
 	}
 }
 
-#content { padding-bottom: 30px; }
 
-header#resource-actions { margin: 50px 0 20px;
-	h1 { float: left; font-size: 44px; line-height: 44px; font-family: 'mensch'; color: $brownDark; }
-	form { float: left; width: 35%; padding: 0px 0 0 10px; 
-		input { width: 100%; background-color: transparent; border: 2px solid $brownDark; @include border-radius(8px); 
-		&:focus { background-color: hsla(0, 100%, 100%, 0.5); }
-		}	
-	}
-	a#action_link { float: right; background-color: $brownDark; border: none; color: $cream; text-shadow:none; font-family: 'mensch'; padding: 8px 15px 7px 13px; font-size: 20px; @include border-radius(8px); 
-		span:last-of-type  { margin-left: -6px; }
-	}
-}// refactor some of the a#new into variables in the twitter-bootstrap
+
+
+////////////////////////////////////////////////////////////////////////////////
+// _form.html 
+////////////////////////////////////////////////////////////////////////////////
+
+
+form {
+  &.wide { width: 780px; margin: 0 auto; 
+    .width-full { width: 756px; } //Need to make this a calculated number
+  }
+  fieldset {
+    &.publish, &.path {
+      .control-group { padding-right: 10px; }
+      select { width: auto; }
+    }
+  }
+  input {
+    &.width-auto { width: auto; }
+    &.date, &.time { text-align: center; font-size: $buttonFontSize; color: #afafaf; }
+    &.btn { margin-top: 23px; }
+  }
+  
+  select {
+    -webkit-appearance: button;
+       -moz-appearance: button;
+         -o-appearance: button;
+            appearance: button;
+  }
+
+  .boolean_toggler {
+    input { @extend .hidden; }
+    label {
+      display: inline-block;
+      position: relative;
+      background-color: $inputBGColor;
+      border: $inputBorder;
+      @include border-radius($inputBorderRadius);  
+      padding: $inputPadding;
+      color: $inputTextColor;
+      font: $inputFont;
+      text-align: center;
+      cursor: pointer;
+      // Give IE7 some love
+      @include ie7-restore-left-whitespace();
+    }
+  }
+}
+
+
 
 
 

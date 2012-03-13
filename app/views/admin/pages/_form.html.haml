@@ -1,0 +1,30 @@
+.form
+  = simple_form_for [ :admin, @page ], html: { class: 'wide'} do |f|
+    %fieldset.publish.clearfix
+      = f.input  :publish_date, wrapper_html: { class: 'pull-left' }, input_html: { class: 'span2 date', data: { parsing_pattern: '%m/%d/%y' }}
+      = f.input  :publish_time, wrapper_html: { class: 'pull-left' }, input_html: { class: 'span2 time', data: { parsing_pattern: '%I:%M %P' }}
+      = f.button :submit, "PUBLISH NOW", class: 'pull-left', id: 'publish'
+      = f.button :submit, "SAVE",        class: 'btn-primary'
+    %fieldset.path.well
+      #virtual-filepath-inputs.clearfix{ hidden: !current_page?(action: 'new') }
+        = f.input      :path,    wrapper_html: { class: 'pull-left' }, input_html: { class: 'writer'}
+        = f.input      :locale,  wrapper_html: { class: 'pull-left' }, input_html: { class: 'writer width-auto'}, as: :select, include_blank: false, collection: Page::LOCALES
+        = f.input      :format,  wrapper_html: { class: 'pull-left' }, input_html: { class: 'writer width-auto'}, as: :select, include_blank: false, collection: Page::FORMATS
+        = f.input      :handler, wrapper_html: { class: 'pull-left' }, input_html: { class: 'writer width-auto'}, as: :select, include_blank: false, collection: Page::HANDLERS
+        .control-group.pull-left
+          = f.label      :partial
+          .boolean_toggler
+            = f.check_box  :partial, class: 'writer'
+            = f.label      :partial, @page.partial.to_s
+        - unless current_page?(action: 'new')
+          = f.button :submit, "UPDATE", class: 'pull-right', id: 'update_filepath'
+      %dl#virtual-filepath.prepend
+        %dt  Virtual Filepath
+        %dd
+          = %w(path locale format handler).map { |p| content_tag :span, nil, id: "#{@page.class.to_s.downcase}_#{p}" }.join('.').html_safe
+          - unless current_page?(action: 'new')
+            = link_to '#', id: 'edit-filepath' do
+              .icon-pencil.ir edit
+    %fieldset
+      = f.input  :title, input_html: { class: 'width-full'}
+      = f.input  :body,  input_html: { class: 'width-full'}

@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Custom Variables
 ////////////////////////////////////////////////////////////////////////////////	
-	$brownDark: #4a4841;
-	$cream:			#f5f5f5;
+	$brownDark: hsla(47, 6.4748%, 27.2549%, 1.0000);
+	$cream:			hsla(0, 0.0000%, 96.0784%, 1.0000);
 	
 	$background: $cream image-url('CartoCMS/bg-pattern.png') repeat;
 
@@ -13,18 +13,18 @@
 // COLORS
 ////////////////////////////////////////////////////////////////////////////////
 
-$black:                 #000;
-$grayDarker:            #222;
-$grayDark:              #333;
-$gray:                  #555;
-$grayLight:             #999;
-$grayLighter:           #eee;
-$white:                 #fff;
+$black:                 #222;
+$grayDarker:            hsla(60, 3.8168%, 25.6863%, 1.0000);
+$grayDark:              hsla(0, 0.0000%, 62.3529%, 1.0000);
+$gray:                  hsla(0, 0.0000%, 68.6275%, 1.0000);
+$grayLight:             hsla(360, 1.8519%, 78.8235%, 1.0000);
+$grayLighter:           hsla(0, 0.0000%, 82.7451%, 1.0000);
+$white:                 hsla(0, 0.0000%, 97.2549%, 1.0000);
 
-$blue:                  #049cdb;
-$blueDark:              #0064cd;
-$green:                 #46a546;
-$red:                   #9d261d;
+$blue:                  hsla(195, 58.3673%, 48.0392%, 1.0000);
+$blueDark:              hsla(194, 74.2268%, 38.0392%, 1.0000);
+$green:                 hsla(96, 47.3684%, 55.2941%, 1.0000);
+$red:                   hsla(360, 86.4662%, 73.9216%, 1.0000);
 $yellow:                #ffc40d;
 $orange:                #f89406;
 $pink:                  #c3325f;
@@ -39,17 +39,23 @@ $purple:                #7a43b6;
 
 ///// TYPOGRAPHY /////
 $baseFontSize:          15px;
-$baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
 $baseLineHeight:        $baseFontSize * 1.4;
+$baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+//$displayFont:           ;
+$headlineFont:          'mensch';
+$body_SFont:            'volkorn';
+//$body_SSFont:           ;
+//$decor_1Font:           ;
+
 
 $textColor:             $brownDark;
-$headlineColor:					$grayDark;
+$headlineColor:					$brownDark;
 $linkColor:             $brownDark;
 $linkColorHover:        darken($linkColor, 15%);
 
 
 ///// CODE /////
-$codeColor:							$grayDark;
+$codeColor:							$grayDarker;
 
 
 ///// TABLES /////
@@ -63,27 +69,68 @@ $borderHorizontal:			3px solid hsla(0, 0.0000%, 87.747%, 1.0000);
 
 
 ///// FORMS /////
-$placeholderText:       $grayLight;
+$formFieldBottomMargin:   9px;
+$labelBottomMargin:       2px;
 
-$warningText:             #c09853;
-$warningBackground:       #fcf8e3;
-$warningBorder:           darken(adjust-hue($warningBackground, -10), 3%);
+$placeholderText:         $grayLight;
 
-$errorText:               #b94a48;
-$errorBackground:         #f2dede;
-$errorBorder:             darken(adjust-hue($errorBackground, -10), 3%);
+$inputBGColor:            $white;
+$selectBGColor:           $white;
+$textareaBGColor:         $white;
 
-$successText:             #468847;
-$successBackground:       #dff0d8;
-$successBorder:           darken(adjust-hue($successBackground, -10), 5%);
+$labelFontSize:           $baseFontSize;
+$inputFontSize:           24px;
+$buttonFontSize:          20px;
+$selectFontSize:          24px;
+$textareaFontSize:        $baseFontSize;
 
-$infoText:                #3a87ad;
-$infoBackground:          #d9edf7;
-$infoBorder:              darken(adjust-hue($infoBackground, -10), 7%);
+$labelFontWeight:         bold;
+$inputFontWeight:         normal;
+$buttonFontWeight:        normal;
+$selectFontWeight:        normal;
+$textareaFontWeight:      normal;
+
+$labelFontFamily:         'mensch';
+$inputFontFamily:         'vollkorn';
+$buttonFontFamily:        'mensch';
+$selectFontFamily:        'vollkorn';
+$textareaFontFamily:      'vollkorn';
+
+$inputTextColor:          $textColor;
+$selectTextColor:         $textColor;
+$textareaTextColor:       $textColor;
+$labelTextColor:          $textColor;
+
+
+$inputPadding-Y:          4px;
+$inputPadding-X:          10px;
+$inputPadding:            $inputPadding-Y $inputPadding-X;
+$selectPaddingTop:        4px;
+$selectPaddingRight:      10px;
+$selectPaddingBottom:     4px;
+$selectPaddingLeft:       10px;
+$textareaPadding:         4px 10px;
+                          
+$inputBorder:             2px solid hsla(0, 0.0000%, 84.3137%, 1.0000);
+$selectBorder:            2px solid hsla(0, 0.0000%, 84.3137%, 1.0000);
+$textareaBorder:          2px solid hsla(0, 0.0000%, 84.3137%, 1.0000);
+                          
+$inputBorderRadius:       6px;
+$selectBorderRadius:      6px;
+$textareaBorderRadius:    6px;
 
 
 ///// BUTTONS /////
-$primaryButtonBackground:    $linkColor;
+$defaultButtonBackground:    $gray;
+$defaultButtonColor:         $cream;
+$defaultButtonBorder:        3px solid $grayDark; //New grayDark
+$defaultButtonPadding:       10px 30px 8px;
+
+$primaryButtonBackground:    $blue;
+$primaryButtonBorder:        3px solid $blueDark;
+
+$inverseButtonBackground:    $brownDark;
+$inverseButtonBorder:        none;
 
 
 
@@ -91,9 +138,6 @@ $primaryButtonBackground:    $linkColor;
 ////////////////////////////////////////////////////////////////////////////////
 // COMPONENTS
 ////////////////////////////////////////////////////////////////////////////////
-
-///// BUTTONS /////
-
 
 ///// NAVIGATION /////
 $navbarHeight:                    40px;
@@ -130,6 +174,24 @@ $navbarLinkColorHover:            $white;
 $border-radius: true;
 $gradients: 		false;
 $shadows:   		false;
+
+
+///// States /////
+$warningText:             #c09853;
+$warningBackground:       #fcf8e3;
+$warningBorder:           darken(adjust-hue($warningBackground, -10), 3%);
+
+$errorText:               #b94a48;
+$errorBackground:         $red;
+$errorBorder:             darken(adjust-hue($errorBackground, -10), 3%);
+
+$successText:             #468847;
+$successBackground:       $green;
+$successBorder:           darken(adjust-hue($successBackground, -10), 5%);
+
+$infoText:                $textColor;
+$infoBackground:          lighten($blue, 45%);
+$infoBorder:              lighten($blueDark, 50%);
 
 
 ///// GRID SYSTEM /////
