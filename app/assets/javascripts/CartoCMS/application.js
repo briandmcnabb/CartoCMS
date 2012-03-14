@@ -5,4 +5,5 @@
 //= require strftime
 //= require bootstrap
 //= require CartoCMS/resource
-//= require CartoCMS/forms
+//= require CartoCMS/resource_form
+//= require CartoCMS/pages_form
