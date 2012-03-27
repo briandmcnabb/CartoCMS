@@ -1,3 +1,4 @@
+require 'devise'
 require 'inherited_resources'
 require 'has_scope'
 require 'responders'
@@ -11,6 +12,7 @@ require 'bootstrap-sass'
 require 'will_paginate'
 require 'remote_history'
 require 'CartoPages'
+require 'CartoAssets'
 require 'CartoCMS/engine'
 
 module CartoCMS

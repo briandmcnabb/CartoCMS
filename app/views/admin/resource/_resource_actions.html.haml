@@ -1,7 +1,0 @@
-%h1= link_to resource_class, collection_path, remote: true
-
-= form_tag collection_path, method: :get, id: 'resource_search', remote: true do
-  = text_field_tag :query, params[:query]
-  = submit_tag "Search", name: nil, hidden: true
-
-= yield(:action_link)

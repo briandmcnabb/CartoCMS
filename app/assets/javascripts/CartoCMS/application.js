@@ -4,6 +4,7 @@
 //= require remote_history
 //= require strftime
 //= require bootstrap
+//= require CartoAssets
 //= require CartoCMS/resource
 //= require CartoCMS/resource_form
 //= require CartoCMS/pages_form

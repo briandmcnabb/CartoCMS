@@ -2,41 +2,17 @@
   %title= content_for?(:title) ? "CartoCMS: #{yield(:title)}" : "CartoCMS"
   %meta{ :name => "description", :content => "CartoCMS" }/
   %meta{ :name => "author", :content => "New Cartographers Creative" }/
-  
+
 - stylesheet 'CartoCMS/application'
 
 - javascript 'CartoCMS/application'
-  
-- content_for :content do
 
+- content_for :content do
   %section.container.site-wide
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        %header.container.site-wide
-          %h1.pull-left
-            %span Carto
-            %span CMS
-          %nav
-            %ul.nav.pull-right
-              %li.dropdown
-                = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do
-                  %span= resource_class
-                  %b.caret 
-                %ul.dropdown-menu
-                  - %w(inquiry users posts stories topics events).each do |resource|
-                    -unless resource_class.to_s.downcase == resource
-                      %li= link_to resource.capitalize, "#{resource}_path"
-              %li.dropdown
-                = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do
-                  %span Admin
-                  %b.caret 
-                %ul.dropdown-menu
-                  %li= link_to 'Settings', '#'
-                  %li.divider
-                  %li= link_to 'Logout', '#'
-        
+    = render 'layouts/admin/navbar' if admin_signed_in?
+
     %section
-      %header#resource-actions.clearfix= render 'resource_actions'    
+      = render 'layouts/admin/resource_actions' unless devise_controller?
       = content_for?(:body) ? yield(:body) : yield
-                
+
 = parent_layout 'boilerplate'

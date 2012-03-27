@@ -16,6 +16,7 @@ gem 'bootstrap-sass', path: '../bootstrap-sass'#git: 'git://github.com/thomas-mc
 gem 'elastic_models', path: '../elastic_models'
 gem 'sortable_columns', path: '../sortable_columns'
 gem 'CartoPages', path: '../CartoPages'
+gem 'CartoAssets', path: '../CartoAssets'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'

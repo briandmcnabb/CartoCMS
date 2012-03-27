@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     CartoCMS (0.0.1.alpha)
+      CartoAssets
       CartoPages
       acts_as_list
       bootstrap-sass
@@ -19,6 +20,14 @@ PATH
       show_for
       simple_form (~> 2.0.0.rc)
       will_paginate (~> 3.0)
+
+PATH
+  remote: ../CartoAssets
+  specs:
+    CartoAssets (0.0.1)
+      carrierwave
+      rails (~> 3.1.0)
+      rmagick
 
 PATH
   remote: ../CartoPages
@@ -86,6 +95,8 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
+    carrierwave (0.5.8)
+      activesupport (~> 3.0)
     childprocess (0.2.8)
       ffi (~> 1.0.6)
     chronic (0.6.7)
@@ -164,10 +175,11 @@ GEM
       coffee-rails (~> 3.1.0)
       jquery-rails
       railties (>= 3.1.0)
-    responders (0.8.0)
+    responders (0.9.0)
       railties (~> 3.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rmagick (2.13.1)
     rspec (2.8.0)
       rspec-core (~> 2.8.0)
       rspec-expectations (~> 2.8.0)
@@ -223,6 +235,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  CartoAssets!
   CartoCMS!
   CartoPages!
   bootstrap-sass!

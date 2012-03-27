@@ -5,16 +5,16 @@ class Admin::ResourceController < Admin::ApplicationController
   self.responder = Admin::Responder
 
   #extend SortableColumns::Positionable
-  
+
   def destroy
     destroy! do |format|
       format.js { render nothing: true }
     end
   end
-  
-  
+
+
   private
-  
+
   def collection
     get_collection_ivar || begin
       c = end_of_association_chain.search(params)

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-#  devise_for :admins
+  devise_for :admins
   namespace :admin do
-    resources :pages
+    resources :admins
+    resources :pages do
+      resources :assets
+    end
+    resources :assets
   end
 end

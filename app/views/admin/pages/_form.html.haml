@@ -7,10 +7,10 @@
       = f.button :submit, "SAVE",        class: 'btn-primary'
     %fieldset.path.well
       #virtual-filepath-inputs.clearfix{ hidden: !current_page?(action: 'new') }
-        = f.input      :path,    wrapper_html: { class: 'pull-left' }, input_html: { class: 'writer'}
-        = f.input      :locale,  wrapper_html: { class: 'pull-left' }, input_html: { class: 'writer width-auto'}, as: :select, include_blank: false, collection: Page::LOCALES
-        = f.input      :format,  wrapper_html: { class: 'pull-left' }, input_html: { class: 'writer width-auto'}, as: :select, include_blank: false, collection: Page::FORMATS
-        = f.input      :handler, wrapper_html: { class: 'pull-left' }, input_html: { class: 'writer width-auto'}, as: :select, include_blank: false, collection: Page::HANDLERS
+        = f.input :path,    wrapper_html: { class: 'pull-left' }, input_html: { class: 'writer'}
+        = f.input :locale,  wrapper_html: { class: 'pull-left' }, input_html: { class: 'writer width-auto'}, as: :select, include_blank: false, collection: Page::LOCALES
+        = f.input :format,  wrapper_html: { class: 'pull-left' }, input_html: { class: 'writer width-auto'}, as: :select, include_blank: false, collection: Page::FORMATS
+        = f.input :handler, wrapper_html: { class: 'pull-left' }, input_html: { class: 'writer width-auto'}, as: :select, include_blank: false, collection: Page::HANDLERS
         .control-group.pull-left
           = f.label      :partial
           .boolean_toggler
@@ -28,3 +28,5 @@
     %fieldset
       = f.input  :title, input_html: { class: 'width-full'}
       = f.input  :body,  input_html: { class: 'width-full'}
+
+= carto_assets_uploader
