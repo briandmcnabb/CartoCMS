@@ -1,9 +1,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Custom Variables
-////////////////////////////////////////////////////////////////////////////////	
+////////////////////////////////////////////////////////////////////////////////
 	$brownDark: hsla(47, 6.4748%, 27.2549%, 1.0000);
 	$cream:			hsla(0, 0.0000%, 96.0784%, 1.0000);
-	
+
 	$background: $cream image-url('CartoCMS/bg-pattern.png') repeat;
 
 
@@ -110,11 +110,11 @@ $selectPaddingRight:      10px;
 $selectPaddingBottom:     4px;
 $selectPaddingLeft:       10px;
 $textareaPadding:         4px 10px;
-                          
+
 $inputBorder:             2px solid hsla(0, 0.0000%, 84.3137%, 1.0000);
 $selectBorder:            2px solid hsla(0, 0.0000%, 84.3137%, 1.0000);
 $textareaBorder:          2px solid hsla(0, 0.0000%, 84.3137%, 1.0000);
-                          
+
 $inputBorderRadius:       6px;
 $selectBorderRadius:      6px;
 $textareaBorderRadius:    6px;
@@ -195,9 +195,9 @@ $infoBorder:              lighten($blueDark, 50%);
 
 
 ///// GRID SYSTEM /////
-$gridColumns:             12;
-$gridColumnWidth:         60px;
-$gridGutterWidth:         20px;
+$gridColumns:             16;
+$gridColumnWidth:         45px;
+$gridGutterWidth:         15px;
 $gridRowWidth:            ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));
 
 $fluidGridColumnWidth:    6.382978723%;
