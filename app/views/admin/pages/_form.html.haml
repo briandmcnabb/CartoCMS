@@ -1,5 +1,5 @@
 .form
-  = simple_form_for [ :admin, @page ], html: { class: 'wide', remote: true } do |f|
+  = simple_form_for [ :admin, @page ], html: { class: 'wide' } do |f|
     %fieldset.publish.clearfix
       = f.input  :publish_date, wrapper_html: { class: 'pull-left' }, input_html: { class: 'span2 date', data: { parsing_pattern: '%m/%d/%y' }}
       = f.input  :publish_time, wrapper_html: { class: 'pull-left' }, input_html: { class: 'span2 time', data: { parsing_pattern: '%I:%M %P' }}

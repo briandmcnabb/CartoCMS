@@ -4,7 +4,7 @@ $("div#content").html("<%= j render 'form', attributes: attributes %>");
 
 // Update Action Link
 <% action_link = capture do %>
-  <%= link_to 'back', :back, remote: true, id: 'action_link', class: 'btn', data:{ page: params[:action] } %>
+  <%= link_to 'back', :back, id: 'action_link', class: 'btn', data:{ page: params[:action] } %>
 <% end %>
 
 $("a#action_link:not([data-page='<%= j params[:action] %>'])").replaceWith("<%= j action_link %>");

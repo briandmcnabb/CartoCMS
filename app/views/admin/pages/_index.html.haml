@@ -1,0 +1,33 @@
+%ul.nav.nav-pills
+  %li= link_to 'new', '#', class: 'btn', data: { toggle: 'modal', target: '#standard_modal' }
+
+%table.table.table-striped
+  %colgroup
+    %col
+    %col
+    %col
+    %col
+    %col.action_links
+
+  %thead
+    %tr
+      %th{ scope: 'col' }
+      %th{ scope: 'col' } Title
+      %th{ scope: 'col' } Virtual Filepath
+      %th{ scope: 'col' } Status
+      %th{ scope: 'col' }
+
+  %tbody
+    - @pages.each do |page|
+      %tr[page]
+        %td
+        %td= page.title
+        %td= page.virtual_filepath
+        %td= page.published_at && page.published_at < Time.now ? "Published" : "Draft"
+        %td
+          .action_links.clearfix
+            = link_to 'show',    admin_page_path(page),      class: 'icon-file   ir'
+            = link_to 'edit',    edit_admin_page_path(page), class: 'icon-pencil ir'
+            = link_to 'destroy', admin_page_path(page),      class: 'icon-trash  ir', remote: true, method: :delete, confirm: "Are you sure?"
+
+= render partial: 'form_short', layout: 'layouts/modal'

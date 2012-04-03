@@ -8,7 +8,7 @@
         %ul.nav.pull-right
           %li.dropdown
             = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do
-              %span= resource_class
+              %span= resource_class.to_s.pluralize
               %b.caret
             %ul.dropdown-menu
               - %w(assets inquiries pages).each do |resource| # Turn this into a config variable

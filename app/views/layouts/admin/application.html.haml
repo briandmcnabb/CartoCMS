@@ -1,7 +1,6 @@
 - content_for :head do
-  %title= content_for?(:title) ? "CartoCMS: #{yield(:title)}" : "CartoCMS"
+  %title= title "CartoCMS"
   %meta{ :name => "description", :content => "CartoCMS" }/
-  %meta{ :name => "author", :content => "New Cartographers Creative" }/
 
 - stylesheet 'CartoCMS/application'
 

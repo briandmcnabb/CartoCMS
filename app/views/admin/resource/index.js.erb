@@ -3,10 +3,10 @@ $("div#content").html("<%= j render 'index', attributes: index_attributes %>");
 
 // Update Action Link
 <% action_link = capture do %>
-  <%= link_to new_resource_path, remote: true, id: 'action_link', class: 'btn', data:{ page: params[:action] } do %>
+  <%= link_to new_resource_path, id: 'action_link', class: 'btn', data:{ page: params[:action] } do %>
     <span>+</span>
     <span>new</span>
-  <% end %>  
+  <% end %>
 <% end %>
 
 $("a#action_link:not([data-page='index'])").replaceWith("<%= j action_link %>");

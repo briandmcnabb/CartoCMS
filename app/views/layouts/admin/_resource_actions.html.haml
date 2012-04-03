@@ -1,8 +1,8 @@
 %header#resource-actions
-  %h1= link_to resource_class, collection_path, remote: true
+  %h1= link_to resource_class.to_s.pluralize, collection_path
 
   = form_tag collection_path, method: :get, id: 'resource_search', remote: true do
     = text_field_tag :query, params[:query]
     = submit_tag "Search", name: nil, hidden: true
 
-  = yield(:action_link)
+  = action_link

@@ -1,4 +1,4 @@
-%table.table.table-striped  
+%table.table.table-striped
   %colgroup
     %col
     - attributes.each do |attr|
@@ -20,8 +20,8 @@
           = content_tag :td, td(resource, attr), class: column_type(attr)
         %td
           .action_links.clearfix
-            = link_to 'show',    resource_path(resource),      class: 'icon-file   ir', remote: true
-            = link_to 'edit',    edit_resource_path(resource), class: 'icon-pencil ir', remote: true
-            = link_to 'destroy', resource_path(resource),      class: 'icon-trash  ir', remote: true, method: :delete, confirm: "Are you sure?" 
-          
+            = link_to 'show',    resource_path(resource),      class: 'icon-file   ir'
+            = link_to 'edit',    edit_resource_path(resource), class: 'icon-pencil ir'
+            = link_to 'destroy', resource_path(resource),      class: 'icon-trash  ir', remote: true, method: :delete, confirm: "Are you sure?"
+
 = will_paginate collection, remote: true

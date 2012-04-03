@@ -1,19 +1,22 @@
 module LayoutHelper
-  
-  # Nested Layouts Helper  
+
+  # Nested Layouts Helper
   def parent_layout(layout)
     render :template => "layouts/#{layout}"
   end
-  
-  
-  # Set title
-  def title(page_title, show_title = true)
-    content_for(:title) { h(page_title.to_s) }
-    @show_title = show_title
+
+
+  # Javascript Helpers
+  def bodyscript(*args)
+    content_for(:bodyscript) { javascript_include_tag(*args) }
   end
-  
-  def show_title?
-    @show_title
+
+  def headscript(*args)
+    content_for(:headscript) { javascript_include_tag(*args) }
+  end
+
+  def javascript(*args)
+    content_for(:javascript) { javascript_include_tag(*args) }
   end
 
 
@@ -22,17 +25,21 @@ module LayoutHelper
     content_for(:stylesheet) { stylesheet_link_tag(*args) }
   end
 
+  # Title
+  def title(site_name, options={})
+    action  = options[:action]  || dynamic_title
+    divider = options[:divider] || '::' if action
+    [site_name, divider, action].join(' ')
+  end
 
-  # Javascript Helpers
-  def javascript(*args)
-    content_for(:javascript) { javascript_include_tag(*args) }
-  end
-  
-  def headscript(*args)
-    content_for(:headscript) { javascript_include_tag(*args) }
-  end
-  
-  def bodyscript(*args)
-    content_for(:bodyscript) { javascript_include_tag(*args) }
+  private
+
+  def dynamic_title
+    case controller.action_name
+    when 'index' then "#{resource_class.to_s.pluralize}"
+    when 'show'  then "#{resource_class} #{resource.id}"
+    when 'new'   then "#{controller.action_name.capitalize} #{resource_class}"
+    when 'edit'  then "#{controller.action_name.capitalize} #{resource_class} #{resource.id}"
+    end
   end
 end
