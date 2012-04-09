@@ -23,8 +23,8 @@ $white:                 hsla(0, 0.0000%, 97.2549%, 1.0000);
 
 $blue:                  hsla(195, 58.3673%, 48.0392%, 1.0000);
 $blueDark:              hsla(194, 74.2268%, 38.0392%, 1.0000);
-$green:                 hsla(96, 47.3684%, 55.2941%, 1.0000);
-$red:                   hsla(360, 86.4662%, 73.9216%, 1.0000);
+$green:                 #699129;//hsla(96, 47.3684%, 55.2941%, 1.0000);
+$red:                   hsla(4, 72.7273%, 56.8627%, 1.0000);//#e44b34;
 $yellow:                #ffc40d;
 $orange:                #f89406;
 $pink:                  #c3325f;
@@ -102,18 +102,22 @@ $textareaTextColor:       $textColor;
 $labelTextColor:          $textColor;
 
 
-$inputPadding-Y:          4px;
+$inputPadding-Y:           4px;
+$selectPadding-Y:          4px;
+$textareaPadding-Y:        4px;
 $inputPadding-X:          10px;
-$inputPadding:            $inputPadding-Y $inputPadding-X;
-$selectPaddingTop:        4px;
-$selectPaddingRight:      10px;
-$selectPaddingBottom:     4px;
-$selectPaddingLeft:       10px;
-$textareaPadding:         4px 10px;
+$selectPadding-X:         10px;
+$textareaPadding-X:       10px;
 
-$inputBorder:             2px solid hsla(0, 0.0000%, 84.3137%, 1.0000);
-$selectBorder:            2px solid hsla(0, 0.0000%, 84.3137%, 1.0000);
-$textareaBorder:          2px solid hsla(0, 0.0000%, 84.3137%, 1.0000);
+$inputBorderWidth:        2px;
+$selectBorderWidth:       2px;
+$textareaBorderWidth:     2px;
+$inputBorderStyle:        solid;
+$selectBorderStyle:       solid;
+$textareaBorderStyle:     solid;
+$inputBorderColor:        hsla(0, 0.0000%, 84.3137%, 1.0000);
+$selectBorderColor:       hsla(0, 0.0000%, 84.3137%, 1.0000);
+$textareaBorderColor:     hsla(0, 0.0000%, 84.3137%, 1.0000);
 
 $inputBorderRadius:       6px;
 $selectBorderRadius:      6px;
@@ -123,7 +127,9 @@ $textareaBorderRadius:    6px;
 ///// BUTTONS /////
 $defaultButtonBackground:    $gray;
 $defaultButtonColor:         $cream;
-$defaultButtonBorder:        3px solid $grayDark; //New grayDark
+$defaultButtonBorderWidth:   3px;
+$defaultButtonBorderStyle:   solid;
+$defaultButtonBorderColor:   hsla(0, 0%, 0%, .10);
 $defaultButtonPadding:       10px 30px 8px;
 
 $primaryButtonBackground:    $blue;

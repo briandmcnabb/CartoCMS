@@ -1,4 +1,5 @@
-= simple_form_for [ :admin, resource ] do |f|
-	- attributes.each do |attr|
-		= attr.end_with?('_id') ? f.association(assc(attr)) : f.input(attr)
-	= f.button :submit, "submit"
+= simple_form_for [ :admin, resource ], html: { class: 'form-horizontal offset1' } do |f|
+  - attributes.each do |attr|
+    = attr.end_with?('_id') ? f.association(assc(attr, input_html: { class: 'span7'})) : f.input(attr, input_html: { class: 'span7'})
+  .form-actions.row
+    .span7= f.button :submit, "submit", class: 'btn btn-primary pull-right'

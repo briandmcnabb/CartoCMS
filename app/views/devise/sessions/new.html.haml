@@ -1,9 +1,13 @@
-%h2 Sign in
-= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  .inputs
-    = f.input :email, :required => false, :autofocus => true
-    = f.input :password, :required => false
-    = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
-  .actions
-    = f.button :submit, "Sign in"
-= render "links"
+.row
+  .span6.offset5
+    #logo= image_tag 'CartoCMS/logo.png'
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = f.input :email,    input_html: { class: 'span6'}, required: false, label: false, placeholder: 'john.doe@acme.com'
+      = f.input :password, input_html: { class: 'span6'}, required: false, label: false, placeholder: 'password'
+      .clearfix
+        - if devise_mapping.rememberable?
+          = f.input :remember_me, :label => false, wrapper_html: { class: 'pull-left boolean' } do
+            = f.input_field :remember_me, as: :boolean, boolean_style: :inline, class: 'pull-left'
+            = f.label :remember_me
+        = f.button :submit, 'Login', class: 'btn pull-right'
+    = render 'links'

@@ -15,7 +15,7 @@
   %tbody{ class: position_class, data: { position_url: position_url }}
     - collection.each do |resource|
       %tr[resource]
-        %td= positioning_handle
+        %td.handle= positioning_handle
         - attributes.map do |attr|
           = content_tag :td, td(resource, attr), class: column_type(attr)
         %td

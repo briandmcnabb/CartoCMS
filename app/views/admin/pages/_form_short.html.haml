@@ -1,5 +1,5 @@
 = simple_form_for [ :admin, Page.new ] do |f|
   .modal-body
-    = f.input  :title, input_html: { class: 'width-full'}
+    = f.input  :title, :autofocus => true, input_html: { class: 'width-full'}
   .modal-footer
     = f.button :submit, 'Create New Page', class: 'btn btn-primary'

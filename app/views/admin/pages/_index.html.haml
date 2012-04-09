@@ -1,5 +1,5 @@
-%ul.nav.nav-pills
-  %li= link_to 'new', '#', class: 'btn', data: { toggle: 'modal', target: '#standard_modal' }
+- content_for(:action_link) do
+  - link_to_modal('new', '#', id: 'action_link', class: 'btn')
 
 %table.table.table-striped
   %colgroup

@@ -8,3 +8,13 @@
 //= require CartoCMS/resource
 //= require CartoCMS/resource_form
 //= require CartoCMS/pages_form
+//= require ace/ace-uncompressed
+//= require ace/theme-carto_light
+//= require ace/mode-coffee
+//= require ace/mode-css
+//= require ace/mode-html
+//= require ace/mode-javascript
+//= require ace/mode-json
+//= require ace/mode-ruby
+//= require ace/mode-scss
+//= require ace/mode-xml

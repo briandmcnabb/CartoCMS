@@ -33,6 +33,7 @@ Gem::Specification.new do |s|
   s.add_dependency "elastic_models"
   s.add_dependency "remote_history", "~> 0.0.1"
   s.add_dependency "enumerize", "~> 0.0.4"
+  s.add_dependency "mercury-rails", "~> 0.3.1"
 
 
   s.add_development_dependency "sqlite3"

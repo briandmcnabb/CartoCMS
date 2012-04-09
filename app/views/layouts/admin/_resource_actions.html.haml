@@ -5,4 +5,7 @@
     = text_field_tag :query, params[:query]
     = submit_tag "Search", name: nil, hidden: true
 
-  = action_link
+  = content_for?(:action_link) ? yield(:action_link) : action_link
+
+- unless params[:action] == 'index'
+  %hr.double

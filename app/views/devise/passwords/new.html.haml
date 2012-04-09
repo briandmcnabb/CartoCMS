@@ -1,8 +1,7 @@
-%h2 Forgot your password?
-= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
-  = f.error_notification
-  .inputs
-    = f.input :email, :required => true
-  .actions
-    = f.button :submit, "Send me reset password instructions"
-= render "links"
+.row
+  .span6.offset5
+    #logo= image_tag 'CartoCMS/logo.png'
+    = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      = f.input :email, input_html: { class: 'span6'}, required: true, label: false, placeholder: 'john.doe@acme.com'
+      .clearfix= f.button :submit, 'Reset Password', class: 'btn pull-right'
+    = render 'links'

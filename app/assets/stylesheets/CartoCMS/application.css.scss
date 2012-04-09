@@ -47,6 +47,55 @@ dl {
   }
 }
 
+form.form-horizontal { margin-top: 85px; }
+.btn input[type='checkbox'] { margin: 0; }
+hr.double { margin: 40px 0 35px; border-top: 6px double $brownDark; }
+#logo { margin: 100px 0 25px; }
+#devise_links { text-align: right; color: $gray; padding-top: 10px;
+  a { color: $gray; font-size: $baseFontSize * .8; }
+}
+#account_settings, #account_removal { margin-top: 50px; }
+
+#editor_header {
+  height: 36px;
+  border: 2px solid #D7D7D7;
+  border-bottom: none;
+  @include border-radius(6px);
+  background-color: #E8E8E8;
+  -webkit-border-radius: 6px 6px 0 0;
+     -moz-border-radius: 6px 6px 0 0;
+       -o-border-radius: 6px 6px 0 0;
+          border-radius: 6px 6px 0 0;
+}
+
+.ace_editor {
+  border: 2px solid #D7D7D7;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+       -o-border-radius: 6px;
+          border-radius: 6px;
+}
+
+.ace-carto-light {
+  .ace_scroller {
+    padding-top:    10px;
+    padding-bottom: 10px;
+    -webkit-border-radius: 0 6px 6px 0;
+       -moz-border-radius: 0 6px 6px 0;
+         -o-border-radius: 0 6px 6px 0;
+            border-radius: 0 6px 6px 0;
+  }
+  .ace_gutter {
+    padding-top:    10px;
+    padding-bottom: 10px;
+    -webkit-border-radius: 6px 0 0 6px;
+       -moz-border-radius: 6px 0 0 6px;
+         -o-border-radius: 6px 0 0 6px;
+            border-radius: 6px 0 0 6px;
+  }
+}
+
+
 
 
 
@@ -107,7 +156,7 @@ header#resource-actions { @extend .clearfix; margin: 50px 0 20px;
 		&:last-of-type:after { display: none; }
 	}
 	td {
-	  &:first-of-type, &:last-of-type { opacity: 0.85; }
+	  &.handle, .action_links { opacity: 0.85; }
 	}
 	.action_links { padding-left: 10px; width: 62px;
     a { float: left;
@@ -128,16 +177,24 @@ form {
   &.wide { width: 780px; margin: 0 auto;
     .width-full { width: 756px; } //Need to make this a calculated number
   }
+
   fieldset {
     &.publish, &.path {
-      .control-group { padding-right: 10px; }
+      .control-group { padding-right: 10px;
+        > label {
+          &.boolean, &.select { padding-left: 0; text-align: center; }
+        }
+      }
       select { width: auto; }
+      input {
+        &.btn { margin-top: 23px; }
+      }
     }
   }
+
   input {
     &.width-auto { width: auto; }
     &.date, &.time { text-align: center; font-size: $buttonFontSize; color: #afafaf; }
-    &.btn { margin-top: 23px; }
   }
 
   select {
@@ -164,6 +221,10 @@ form {
       @include ie7-restore-left-whitespace();
     }
   }
+
+  .control-group.boolean { margin-top: $labelFontSize; padding-left: $labelFontSize * 0.6;
+    label { margin-left: $labelFontSize; font-family: 'vollkorn'; color: lighten($textColor, 10%); }
+  }
 }
 
 
@@ -183,3 +244,12 @@ form {
 // Non-semantic Helpers & Print Styles
 ////////////////////////////////////////////////////////////////////////////////
 @import 'non-semantic_helpers', 'print_styles';
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  -moz-text-overflow: ellipsis;
+   -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+}
