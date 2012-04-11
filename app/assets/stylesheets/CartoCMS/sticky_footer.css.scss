@@ -1,0 +1,17 @@
+////////////////////////////////////////////////////////////////////////////////
+// Sticky Footer
+////////////////////////////////////////////////////////////////////////////////
+
+$stickyFooterHeight: 40px;
+
+html, body, body>section {height: 100%;}
+#sticky-wrap { min-height: 100%; }
+
+section#top-level { overflow:auto; padding-bottom: $stickyFooterHeight; }
+footer#top-level { margin-top: $stickyFooterHeight * -1; height: $stickyFooterHeight; clear:both; width: 100%; }
+
+// Opera Fix
+body:before { content:""; height:100%; float:left; width:0; margin-top:-32767px; }
+
+// ie7 Exception
+.ie8 #sticky-wrap, .lt-ie7 #sticky-wrap { display:table; height:100% }

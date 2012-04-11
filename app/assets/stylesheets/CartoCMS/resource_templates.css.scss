@@ -1,0 +1,109 @@
+////////////////////////////////////////////////////////////////////////////////
+// _index.html
+////////////////////////////////////////////////////////////////////////////////
+
+.table { width: 100%;
+  colgroup {
+    col {
+      &:first-of-type { width:  1px; }
+      &:last-of-type  { width: 99px; }
+    }
+  }
+  th, td {
+    &.left, &.string { text-align: left; }
+    &.center, &.icon, &.boolean, &.datetime, &.timestamp, &.time, &.date { text-align: center; }
+    &.right, &.integer, &.float, &.decimal { text-align: right; }
+  }
+  th { position: relative; border-top: none; border-bottom: 6px double $brownDark; padding:  0 $rowPadding; font: bold 1.2em/1 'mensch';
+    &:after { display: block; content: ''; position: absolute; right: -1px; bottom: 0; height: 8px; border-right: 2px solid $brownDark; }
+    &:last-of-type:after { display: none; }
+  }
+  td {
+    &.handle, .action_links { opacity: 0.85; }
+  }
+  .action_links { padding-left: 10px; width: 62px;
+    a { float: left;
+      &:nth-of-type(2) { margin-left: 10px; margin-right: 10px; }
+    }
+  }
+}
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// _form.html
+////////////////////////////////////////////////////////////////////////////////
+
+
+form {
+  &.wide { width: 780px; margin: 0 auto;
+    .width-full { width: 756px; } //Need to make this a calculated number
+  }
+
+  fieldset {
+    &.publish, &.path {
+      .control-group { padding-right: 10px;
+        > label {
+          &.boolean, &.select { padding-left: 0; text-align: center; }
+        }
+      }
+      select { width: auto; }
+      input {
+        &.btn { margin-top: 23px; }
+      }
+    }
+  }
+
+  input {
+    &.width-auto { width: auto; }
+    &.date, &.time { text-align: center; font-size: $buttonFontSize; color: #afafaf; }
+  }
+
+  select {
+    -webkit-appearance: button;
+       -moz-appearance: button;
+         -o-appearance: button;
+            appearance: button;
+  }
+
+  .boolean_toggler {
+    input { @extend .hidden; }
+    label {
+      display: inline-block;
+      position: relative;
+      background-color: $inputBGColor;
+      border: $inputBorder;
+      @include border-radius($inputBorderRadius);
+      padding: $inputPadding;
+      color: $inputTextColor;
+      font: $inputFont;
+      text-align: center;
+      cursor: pointer;
+      // Give IE7 some love
+      @include ie7-restore-left-whitespace();
+    }
+  }
+
+  .control-group.boolean { margin-top: $labelFontSize; padding-left: $labelFontSize * 0.6;
+    label { margin-left: $labelFontSize; font-family: 'vollkorn'; color: lighten($textColor, 10%); }
+  }
+}
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// _resource_actions
+////////////////////////////////////////////////////////////////////////////////
+header#resource-actions { @extend .clearfix; margin: 50px 0 20px;
+  h1 { float: left; font-size: 44px; line-height: 44px; font-family: 'mensch'; color: $brownDark; }
+  form { float: left; width: 35%; padding: 0px 0 0 10px;
+    input { height: auto; width: 100%; background-color: transparent; border: 2px solid $brownDark; @include border-radius(8px); font-size: $baseFontSize; line-height: $baseLineHeight;
+    &:focus { background-color: hsla(0, 100%, 100%, 0.5); }
+    }
+  }
+  a#action_link { float: right; background-color: $brownDark; border: none; color: $cream; text-shadow:none; font-family: 'mensch'; padding: 8px 15px 7px 13px; font-size: 20px; @include border-radius(8px);
+    span:last-of-type  { margin-left: -6px; }
+  }
+}// refactor some of the a#new into variables in the twitter-bootstrap

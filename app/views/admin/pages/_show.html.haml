@@ -1,0 +1,7 @@
+.clearfix
+  = show_for resource do |r|
+    = r.attribute :title
+    = r.attribute :published_at, label: "Status" do
+      = resource.published_at && resource.published_at < Time.now ? "Published" : "Draft"
+    = r.attribute :body
+    = r.attribute :virtual_filepath

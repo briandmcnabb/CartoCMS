@@ -3,3 +3,31 @@ jQuery ->
   # Ajax Delete
   $('div#content').on 'ajax:success', 'a[data-method="delete"]', ->
     $(@).closest('tr').fadeOut()
+
+
+  # Boolean Toggler
+  $('div#content').on 'change', '.boolean_toggler input', ->
+    checkbox_state = $(@).is ':checked'
+    $(@).siblings('label').text checkbox_state
+
+
+  # Datepicker
+   $('div#content').on 'focus', 'input.date', ->
+     $(@).datepicker
+       dateFormat: 'mm/dd/y'
+
+
+  # jQuery Collapse
+  $(".details").collapse
+    head: "label.summary"
+    group: ".hidden-content"
+    show: ->
+      @animate
+        opacity: "toggle"
+        height: "toggle"
+      , 200
+    hide: ->
+      @animate
+        opacity: "toggle"
+        height: "toggle"
+      , 200

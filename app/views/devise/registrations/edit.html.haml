@@ -1,18 +1,19 @@
-#account_settings.row
-  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal well span12 offset2', method: :put }) do |f|
-    %h2 Account
-    %hr
-    = f.input :email, input_html: { class: 'span6'}
-    %hr
-    = f.input :password, input_html: { class: 'span6'}, autocomplete: 'off'
-    = f.input :password_confirmation, label: "Confirm Password", input_html: { class: 'span6'}
-    %hr
-    = f.input :current_password, input_html: { class: 'span6'}
-    .form-actions.row
-      .span6= f.button :submit, "Update", class: 'btn btn-primary pull-right'
+#content
+  #account_settings.row
+    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal well span12 offset2', method: :put }) do |f|
+      %h2 Account
+      %hr
+      = f.input :email, input_html: { class: 'span6'}
+      %hr
+      = f.input :password, input_html: { class: 'span6'}, autocomplete: 'off'
+      = f.input :password_confirmation, label: "Confirm Password", input_html: { class: 'span6'}
+      %hr
+      = f.input :current_password, input_html: { class: 'span6'}
+      .form-actions.row
+        .span6= f.button :submit, "Update", class: 'btn btn-primary pull-right'
 
-#account_removal.row
-  .well.span12.offset2
-    %h2.pull-left Permanently Delete Your Account
-    .pull-right
-      = link_to "Delete", registration_path(resource_name), confirm: "Are you sure?", method: :delete, class: 'btn btn-danger'
+  #account_removal.row
+    .well.span12.offset2
+      %h2.pull-left Permanently Delete Your Account
+      .pull-right
+        = link_to "Delete", registration_path(resource_name), confirm: "Are you sure?", method: :delete, class: 'btn btn-danger'

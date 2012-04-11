@@ -1,0 +1,12 @@
+////////////////////////////////////////////////////////////////////////////////
+// jQuery Collapse
+////////////////////////////////////////////////////////////////////////////////
+
+.details { margin-top: $baseFontSize * 3;
+  $margin-bottom: $baseFontSize * 2;
+  $padding-bottom: $baseFontSize * (2 / 3);
+  .summary { margin-bottom: $margin-bottom; border-bottom: $inputBorder; padding: 0 0 $padding-bottom 20px; background: image-url("CartoCMS/arrows.png") no-repeat 0 -35px;
+    &.active {background-position: 0 8px;}
+    a { font-size: $baseFontSize * 1.1; text-decoration:none; }
+  }
+}

@@ -1,8 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Variables, Normalize.css & Base Styles
 ////////////////////////////////////////////////////////////////////////////////
-@import 'normalize', 'variables', 'mixins', 'bootstrap';
-
+@import 'normalize', 'variables', 'mixins', 'bootstrap', 'global_overrides';
 
 
 
@@ -10,7 +9,6 @@
 // Gem Styles
 ////////////////////////////////////////////////////////////////////////////////
 @import 'CartoAssets';
-
 
 
 
@@ -23,233 +21,36 @@
 
 
 
-
 ////////////////////////////////////////////////////////////////////////////////
-// Global Styles (Overrides)
+// Application Layout
 ////////////////////////////////////////////////////////////////////////////////
-body { background: $background; padding-top: $navbarFixedOffset; }
-
-dl {
-  &.prepend { @extend .clearfix; position: relative; margin: 0; border: $inputBorder; border-radius: $inputBorderRadius;
-    $dtPTop:    $inputLineHeight - $labelLineHeight + $inputPadding-Y - 1;
-    $dtPBottom: $inputPadding-Y + 1;
-    $dtPadding: $dtPTop 20px $dtPBottom;
-    $ddPadding: $inputPadding-Y 20px;
-    dt { float: left; clear: left; margin: 0; padding: $dtPadding; color: $labelTextColor; font: $labelFont; border-right: $inputBorder; background-color: hsla(0, 0.0000%, 84.3137%, 1.0000); }
-    dd { float: left; clear: none; margin: 0; padding: $ddPadding; color: $inputTextColor; font: $inputFont;
-      > a {
-          $spread: (($inputLineHeight + ($inputPadding-Y * 2)) - 14) / 2;
-          position: absolute; top: 2px; right: 0; padding: ($spread - 2) $spread ($spread - 2); border-left: $inputBorder;
-          &:hover div { opacity: 1; }
-          div { opacity: 0.7; @include transition(opacity .1s linear); }
+header#top-level { padding-top: $navbarFixedOffset;
+  .container { font-family: 'mensch';
+    h1 { font-size: 30px; line-height: 30px; font-weight: normal; padding-top: 4px;
+      span {
+        &:first-of-type { color: $cream;  font-family: 'wisdom_script'; }
+        &:last-of-type  { color: #bababa; margin-left: -14px; }
       }
     }
+    .nav > li > a { color: $cream; text-shadow: none; font-size: 22px; line-height: 22px; padding: 10px 10px 8px; }
   }
 }
 
-form.form-horizontal { margin-top: 85px; }
-.btn input[type='checkbox'] { margin: 0; }
-hr.double { margin: 40px 0 35px; border-top: 6px double $brownDark; }
-#logo { margin: 100px 0 25px; }
-#devise_links { text-align: right; color: $gray; padding-top: 10px;
-  a { color: $gray; font-size: $baseFontSize * .8; }
-}
-#account_settings, #account_removal { margin-top: 50px; }
-
-#editor_header {
-  height: 36px;
-  border: 2px solid #D7D7D7;
-  border-bottom: none;
-  @include border-radius(6px);
-  background-color: #E8E8E8;
-  -webkit-border-radius: 6px 6px 0 0;
-     -moz-border-radius: 6px 6px 0 0;
-       -o-border-radius: 6px 6px 0 0;
-          border-radius: 6px 6px 0 0;
-}
-
-.ace_editor {
-  border: 2px solid #D7D7D7;
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-       -o-border-radius: 6px;
-          border-radius: 6px;
-}
-
-.ace-carto-light {
-  .ace_scroller {
-    padding-top:    10px;
-    padding-bottom: 10px;
-    -webkit-border-radius: 0 6px 6px 0;
-       -moz-border-radius: 0 6px 6px 0;
-         -o-border-radius: 0 6px 6px 0;
-            border-radius: 0 6px 6px 0;
-  }
-  .ace_gutter {
-    padding-top:    10px;
-    padding-bottom: 10px;
-    -webkit-border-radius: 6px 0 0 6px;
-       -moz-border-radius: 6px 0 0 6px;
-         -o-border-radius: 6px 0 0 6px;
-            border-radius: 6px 0 0 6px;
-  }
+footer#top-level { border-top: 1px solid white; background-color: hsla(0, 100%, 100%, 0.25);
+  p { color: $gray; margin: 0; font-family: 'mensch'; line-height: 0.714; }
+  a { color: $gray; }
 }
 
 
 
-
-
 ////////////////////////////////////////////////////////////////////////////////
-// Site-wide NavBar
+// Components
 ////////////////////////////////////////////////////////////////////////////////
-section.site-wide {
-	header.site-wide { font-family: 'mensch';
-		h1 { font-size: 30px; line-height: 30px; font-weight: normal; padding-top: 4px;
-		  span {
-		    &:first-of-type { color: $cream;  font-family: 'wisdom_script'; }
-  			&:last-of-type  { color: #bababa; margin-left: -14px; }
-		  }
-		}
-		.nav > li > a { color: $cream; text-shadow: none; font-size: 22px; line-height: 22px; padding: 10px 10px 8px; }
-	}
-}
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-// Resource Actions
-////////////////////////////////////////////////////////////////////////////////
-header#resource-actions { @extend .clearfix; margin: 50px 0 20px;
-	h1 { float: left; font-size: 44px; line-height: 44px; font-family: 'mensch'; color: $brownDark; }
-	form { float: left; width: 35%; padding: 0px 0 0 10px;
-		input { height: auto; width: 100%; background-color: transparent; border: 2px solid $brownDark; @include border-radius(8px); font-size: $baseFontSize; line-height: $baseLineHeight;
-		&:focus { background-color: hsla(0, 100%, 100%, 0.5); }
-		}
-	}
-	a#action_link { float: right; background-color: $brownDark; border: none; color: $cream; text-shadow:none; font-family: 'mensch'; padding: 8px 15px 7px 13px; font-size: 20px; @include border-radius(8px);
-		span:last-of-type  { margin-left: -6px; }
-	}
-}// refactor some of the a#new into variables in the twitter-bootstrap
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-// _index.html
-////////////////////////////////////////////////////////////////////////////////
-
-.table { width: 100%;
-  colgroup {
-    col {
-      &:first-of-type { width:  1px; }
-      &:last-of-type  { width: 99px; }
-    }
-  }
-  th, td {
-    &.left, &.string { text-align: left; }
-    &.center, &.icon, &.boolean, &.datetime, &.timestamp, &.time, &.date { text-align: center; }
-    &.right, &.integer, &.float, &.decimal { text-align: right; }
-  }
-	th { position: relative; border-top: none; border-bottom: 6px double $brownDark; padding:  0 $rowPadding; font: bold 1.2em/1 'mensch';
-		&:after { display: block; content: ''; position: absolute; right: -1px; bottom: 0; height: 8px; border-right: 2px solid $brownDark; }
-		&:last-of-type:after { display: none; }
-	}
-	td {
-	  &.handle, .action_links { opacity: 0.85; }
-	}
-	.action_links { padding-left: 10px; width: 62px;
-    a { float: left;
-    	&:nth-of-type(2) { margin-left: 10px; margin-right: 10px; }
-    }
-	}
-}
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-// _form.html
-////////////////////////////////////////////////////////////////////////////////
-
-
-form {
-  &.wide { width: 780px; margin: 0 auto;
-    .width-full { width: 756px; } //Need to make this a calculated number
-  }
-
-  fieldset {
-    &.publish, &.path {
-      .control-group { padding-right: 10px;
-        > label {
-          &.boolean, &.select { padding-left: 0; text-align: center; }
-        }
-      }
-      select { width: auto; }
-      input {
-        &.btn { margin-top: 23px; }
-      }
-    }
-  }
-
-  input {
-    &.width-auto { width: auto; }
-    &.date, &.time { text-align: center; font-size: $buttonFontSize; color: #afafaf; }
-  }
-
-  select {
-    -webkit-appearance: button;
-       -moz-appearance: button;
-         -o-appearance: button;
-            appearance: button;
-  }
-
-  .boolean_toggler {
-    input { @extend .hidden; }
-    label {
-      display: inline-block;
-      position: relative;
-      background-color: $inputBGColor;
-      border: $inputBorder;
-      @include border-radius($inputBorderRadius);
-      padding: $inputPadding;
-      color: $inputTextColor;
-      font: $inputFont;
-      text-align: center;
-      cursor: pointer;
-      // Give IE7 some love
-      @include ie7-restore-left-whitespace();
-    }
-  }
-
-  .control-group.boolean { margin-top: $labelFontSize; padding-left: $labelFontSize * 0.6;
-    label { margin-left: $labelFontSize; font-family: 'vollkorn'; color: lighten($textColor, 10%); }
-  }
-}
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-// Media Queries
-////////////////////////////////////////////////////////////////////////////////
-	/* add media query styles here */
-
+@import 'ace', 'devise', 'jquery.collapse', 'resource_templates', 'sticky_footer';
 
 
 
 ////////////////////////////////////////////////////////////////////////////////
 // Non-semantic Helpers & Print Styles
 ////////////////////////////////////////////////////////////////////////////////
-@import 'non-semantic_helpers', 'print_styles';
-
-.ellipsis {
-  white-space: nowrap;
-  overflow: hidden;
-  -moz-text-overflow: ellipsis;
-   -ms-text-overflow: ellipsis;
-    -o-text-overflow: ellipsis;
-       text-overflow: ellipsis;
-}
+  @import 'non-semantic_helpers', 'print_styles';

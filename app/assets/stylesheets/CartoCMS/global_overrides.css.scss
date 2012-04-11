@@ -1,0 +1,26 @@
+////////////////////////////////////////////////////////////////////////////////
+// Global Styles (Overrides)
+////////////////////////////////////////////////////////////////////////////////
+body { background: $background; }
+
+dl {
+  &.prepend { @extend .clearfix; position: relative; margin: 0; border: $inputBorder; border-radius: $inputBorderRadius;
+    $dtPTop:    $inputLineHeight - $labelLineHeight + $inputPadding-Y - 1;
+    $dtPBottom: $inputPadding-Y + 1;
+    $dtPadding: $dtPTop 20px $dtPBottom;
+    $ddPadding: $inputPadding-Y 20px;
+    dt { float: left; clear: left; margin: 0; padding: $dtPadding; color: $labelTextColor; font: $labelFont; border-right: $inputBorder; background-color: hsla(0, 0.0000%, 84.3137%, 1.0000); }
+    dd { float: left; clear: none; margin: 0; padding: $ddPadding; color: $inputTextColor; font: $inputFont;
+      > a {
+          $spread: (($inputLineHeight + ($inputPadding-Y * 2)) - 14) / 2;
+          position: absolute; top: 2px; right: 0; padding: ($spread - 2) $spread ($spread - 2); border-left: $inputBorder;
+          &:hover div { opacity: 1; }
+          div { opacity: 0.7; @include transition(opacity .1s linear); }
+      }
+    }
+  }
+}
+
+form.form-horizontal { margin-top: 85px; }
+hr.double { margin: 40px 0 35px; border-top: 6px double $brownDark; }
+.btn input[type='checkbox'] { margin: 0; }
