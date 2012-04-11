@@ -2,10 +2,10 @@ PATH
   remote: .
   specs:
     CartoCMS (0.0.1.alpha)
-      CartoAssets
-      CartoPages
       acts_as_list
       bootstrap-sass
+      carrierwave
+      chronic
       coffee-rails (~> 3.1.0)
       devise (~> 2.0.0)
       elastic_models
@@ -17,25 +17,12 @@ PATH
       rails (~> 3.1.0)
       remote_history (~> 0.0.1)
       responders
+      rmagick
       sass-rails (~> 3.1)
       show_for
+      simple_ace_editor
       simple_form (~> 2.0.0.rc)
       will_paginate (~> 3.0)
-
-PATH
-  remote: ../CartoAssets
-  specs:
-    CartoAssets (0.0.1)
-      carrierwave
-      rails (~> 3.1.0)
-      rmagick
-
-PATH
-  remote: ../CartoPages
-  specs:
-    CartoPages (0.0.1)
-      chronic
-      rails (~> 3.1.0)
 
 PATH
   remote: ../bootstrap-sass
@@ -48,6 +35,13 @@ PATH
     elastic_models (0.0.0.2)
       sortable_columns (~> 0.0.0.3)
       tire
+
+PATH
+  remote: ../simple_ace_editor
+  specs:
+    simple_ace_editor (0.0.1)
+      rails (~> 3.1)
+      simple_form (~> 2.0)
 
 PATH
   remote: ../sortable_columns
@@ -247,13 +241,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  CartoAssets!
   CartoCMS!
-  CartoPages!
   bootstrap-sass!
   capybara (~> 1.1.2)
   elastic_models!
   jquery-rails
   rspec-rails (~> 2.8.1)
+  simple_ace_editor!
   sortable_columns!
   sqlite3

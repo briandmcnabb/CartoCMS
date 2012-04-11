@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  # Devise
   devise_for :admins
+
+  # Admin Interface
   namespace :admin do
     resources :admins
     resources :pages do
@@ -7,4 +10,8 @@ Rails.application.routes.draw do
     end
     resources :assets
   end
+
+  # Pages
+  match ':path', to: 'pages#show'
 end
+

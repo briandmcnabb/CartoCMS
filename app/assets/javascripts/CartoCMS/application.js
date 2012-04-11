@@ -5,7 +5,7 @@
 //= require strftime
 //= require bootstrap
 //= require jquery.collapse
-//= require CartoAssets
+//= require CartoCMS/assets
 //= require CartoCMS/resource
 //= require CartoCMS/pages_form
-//= require CartoPages/ace
+//= require CartoCMS/ace

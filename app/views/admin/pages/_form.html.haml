@@ -5,12 +5,13 @@
       = f.input  :publish_time, wrapper_html: { class: 'pull-left' }, input_html: { class: 'span3 time', data: { parsing_pattern: '%I:%M %P' }}
       = f.button :submit, "PUBLISH NOW", class: 'pull-left', id: 'publish'
       = f.button :submit, "SAVE",        class: 'btn-primary pull-right'
+    %hr
     %fieldset
       = f.input  :title, input_html: { class: 'span14'}
       = f.input  :body,  input_html: { class: 'span14'}, label: false, as: :ace, ace: { mode: 'html' }
+    %hr
     .details
       %label.summary Advanced Options
-      %hr
       %fieldset.path.hidden-content
         #virtual-filepath-inputs.clearfix
           = f.input :path,    wrapper_html: { class: 'pull-left' }, input_html: { class: 'writer'}
@@ -27,7 +28,6 @@
         %dl#virtual-filepath.prepend
           %dt  Virtual Filepath
           %dd= %w(path locale format handler).map { |p| content_tag :span, nil, id: "#{@page.class.to_s.downcase}_#{p}" }.join('.').html_safe
-
 
 
 = carto_assets_uploader

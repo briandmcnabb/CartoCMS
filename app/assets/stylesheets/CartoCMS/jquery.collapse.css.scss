@@ -2,11 +2,11 @@
 // jQuery Collapse
 ////////////////////////////////////////////////////////////////////////////////
 
-.details { margin-top: $baseFontSize * 3;
-  $margin-bottom: $baseFontSize * 2;
-  $padding-bottom: $baseFontSize * (2 / 3);
-  .summary { margin-bottom: $margin-bottom; border-bottom: $inputBorder; padding: 0 0 $padding-bottom 20px; background: image-url("CartoCMS/arrows.png") no-repeat 0 -35px;
+.details { margin: ($baseFontSize * 2) 0 $baseFontSize;
+  $font-size: $baseFontSize * 1.1;
+  .summary { margin-left: $font-size * 0.6; padding-left: 20px; background: image-url("CartoCMS/arrows.png") no-repeat 0 -35px;
     &.active {background-position: 0 8px;}
-    a { font-size: $baseFontSize * 1.1; text-decoration:none; }
+    a { font-size: $font-size; text-decoration:none; }
   }
+  .hidden-content { margin-top: $baseFontSize * (2 / 3); border-top: $inputBorder; padding-top: ($baseFontSize * 2);}
 }

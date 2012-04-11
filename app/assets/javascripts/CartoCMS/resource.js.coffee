@@ -22,12 +22,6 @@ jQuery ->
     head: "label.summary"
     group: ".hidden-content"
     show: ->
-      @animate
-        opacity: "toggle"
-        height: "toggle"
-      , 200
+      @slideToggle()
     hide: ->
-      @animate
-        opacity: "toggle"
-        height: "toggle"
-      , 200
+      @slideToggle()

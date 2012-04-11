@@ -16,8 +16,8 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
   s.add_dependency "rails", "~> 3.1.0"
-  s.add_dependency "CartoPages"
-  s.add_dependency "CartoAssets"
+  s.add_dependency "carrierwave"
+  s.add_dependency "rmagick"
   s.add_dependency "devise", "~> 2.0.0"
   s.add_dependency "inherited_resources"
   s.add_dependency "has_scope"
@@ -34,6 +34,8 @@ Gem::Specification.new do |s|
   s.add_dependency "remote_history", "~> 0.0.1"
   s.add_dependency "enumerize", "~> 0.0.4"
   s.add_dependency "mercury-rails", "~> 0.3.1"
+  s.add_dependency "simple_ace_editor"
+  s.add_dependency "chronic"
 
 
   s.add_development_dependency "sqlite3"

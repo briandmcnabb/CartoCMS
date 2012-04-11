@@ -12,8 +12,11 @@ require 'bootstrap-sass'
 require 'will_paginate'
 require 'remote_history'
 require 'mercury-rails'
-require 'CartoPages'
-require 'CartoAssets'
+require "simple_ace_editor"
+require "chronic"
+require "carrierwave"
+require "rmagick"
+require 'CartoCMS/resolver'
 require 'CartoCMS/engine'
 
 module CartoCMS
