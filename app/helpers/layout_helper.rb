@@ -7,10 +7,6 @@ module LayoutHelper
 
 
   # Javascript Helpers
-  def bodyscript(*args)
-    content_for(:bodyscript) { javascript_include_tag(*args) }
-  end
-
   def headscript(*args)
     content_for(:headscript) { javascript_include_tag(*args) }
   end
@@ -25,12 +21,15 @@ module LayoutHelper
     content_for(:stylesheet) { stylesheet_link_tag(*args) }
   end
 
+
   # Title
   def title(site_name, options={})
     action  = options[:action]  || dynamic_title
     divider = options[:divider] || '::' if action
     [site_name, divider, action].join(' ')
   end
+
+
 
   private
 

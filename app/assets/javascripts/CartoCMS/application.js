@@ -8,4 +8,3 @@
 //= require CartoCMS/assets
 //= require CartoCMS/resource
 //= require CartoCMS/pages_form
-//= require CartoCMS/ace

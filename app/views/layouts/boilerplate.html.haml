@@ -16,7 +16,7 @@
   %meta{ :name => "author",      :content => "New Cartographers Creative" }/
   %link{ rel: 'author', href: 'humans.txt' }/
 
-  = content_for?(:stylesheet) ? yield(:stylesheet) : stylesheet_link_tag('application')
+  = yield :stylesheet
   = yield :headscript
   = csrf_meta_tags
 
@@ -29,8 +29,8 @@
   = content_for?(:content) ? yield(:content) : yield
 
 
-  = content_for?(:javascript) ? yield(:javascript) : javascript_include_tag('application')
-  = yield :bodyscript
+  = yield :javascript
+  = yield :simple_ace_editor
 
 
   - if ENV['GOOGLE_ANALYTICS']
