@@ -1,0 +1,24 @@
+#resource_form.row
+  .form-horizontal.well.span14.offset1
+    %h2 Test Text
+    %hr
+    = show_for resource do |u|
+      = u.attribute :email
+      %hr
+      %h3 Login Stats
+      = u.attribute :sign_in_count
+      = u.attribute :current_sign_in_at, format: :short
+      = u.attribute :current_sign_in_ip
+      = u.attribute :last_sign_in_at, format: :short
+      = u.attribute :last_sign_in_ip
+      %hr
+      %h3 Password Reset
+      = u.attribute :reset_password_sent_at, format: :short
+      = u.attribute :reset_password_token
+      = link_to 'Resend Reset Password Token', '#'
+      %hr
+      %h3 Failed Attempts
+      = u.attribute :failed_attempts
+      = u.attribute :unlock_token
+      = u.attribute :locked_at
+      = link_to 'Resend Reset Password Token', '#'

@@ -30,8 +30,9 @@ module CartoCms
         copy_file 'humans.txt', 'public/humans.txt'
       end
 
-      def copy_pages_migration
+      def copy_migrations
         migration_template 'pages_migration.rb', 'db/migrate/carto_create_pages.rb'
+        migration_template 'assets_migration.rb', 'db/migrate/carto_create_assets.rb'
       end
 
 

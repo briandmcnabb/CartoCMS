@@ -1,0 +1,49 @@
+////////////////////////////////////////////////////////////////////////////////
+// Variables, Normalize.css & Base Styles
+////////////////////////////////////////////////////////////////////////////////
+@import 'normalize', 'CartoCMS/variables', 'CartoCMS/mixins', 'bootstrap', 'CartoCMS/global_overrides';
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Fonts
+////////////////////////////////////////////////////////////////////////////////
+@include font-face('mensch');
+@include font-face('vollkorn');
+@include font-face('wisdom_script');
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Application Layout
+////////////////////////////////////////////////////////////////////////////////
+header#top-level { padding-top: $navbarFixedOffset;
+  .container { font-family: 'mensch';
+    h1 { font-size: 30px; line-height: 30px; font-weight: normal; padding-top: 4px;
+      span {
+        &:first-of-type { color: $cream;  font-family: 'wisdom_script'; }
+        &:last-of-type  { color: #bababa; margin-left: -14px; }
+      }
+    }
+    .nav > li > a { color: $cream; text-shadow: none; font-size: 22px; line-height: 22px; padding: 10px 10px 8px; }
+  }
+}
+
+footer#top-level { border-top: 1px solid white; background-color: hsla(0, 100%, 100%, 0.25);
+  p { color: $gray; margin: 0; font-family: 'mensch'; line-height: 0.714; }
+  a { color: $gray; }
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Components
+////////////////////////////////////////////////////////////////////////////////
+@import 'CartoCMS/ace', 'CartoCMS/assets', 'CartoCMS/devise', 'CartoCMS/jquery.collapse', 'CartoCMS/resource_templates', 'CartoCMS/sticky_footer';
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Non-semantic Helpers & Print Styles
+////////////////////////////////////////////////////////////////////////////////
+  @import 'non-semantic_helpers', 'print_styles';

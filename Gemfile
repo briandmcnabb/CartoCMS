@@ -12,10 +12,9 @@ gem "jquery-rails"
 # your gemspec. These might include edge Rails or gems from your path or
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
-gem 'bootstrap-sass', path: '../bootstrap-sass'#git: 'git://github.com/thomas-mcdonald/bootstrap-sass.git', branch: '2.0'
 gem 'elastic_models', path: '../elastic_models'
 gem 'sortable_columns', path: '../sortable_columns'
-gem 'simple_ace_editor', path: '../simple_ace_editor'
+gem 'simple_ace_input', path: '../simple_ace_input'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'

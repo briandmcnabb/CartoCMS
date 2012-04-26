@@ -1,0 +1,7 @@
+#resource_form.row
+  = simple_form_for [ :admin, resource ], html: { class: 'form-horizontal well span14 offset1' } do |f|
+    %h2 Test Text
+    %hr
+    = f.input :email, input_html: { class: 'span8'}
+    .form-actions.row
+      .span8= f.button :submit, "submit", class: 'btn btn-primary pull-right'

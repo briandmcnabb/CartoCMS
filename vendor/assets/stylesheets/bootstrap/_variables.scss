@@ -1,0 +1,226 @@
+////////////////////////////////////////////////////////////////////////////////
+// COLORS
+////////////////////////////////////////////////////////////////////////////////
+
+$black:                 #000 !default;
+$grayDarker:            #222 !default;
+$grayDark:              #333 !default;
+$gray:                  #555 !default;
+$grayLight:             #999 !default;
+$grayLighter:           #eee !default;
+$white:                 #fff !default;
+
+$blue:                  #049cdb !default;
+$blueDark:              #0064cd !default;
+$green:                 #46a546 !default;
+$red:                   #9d261d !default;
+$yellow:                #ffc40d !default;
+$orange:                #f89406 !default;
+$pink:                  #c3325f !default;
+$purple:                #7a43b6 !default;
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// BASE
+////////////////////////////////////////////////////////////////////////////////
+
+///// TYPOGRAPHY /////
+$baseFontSize:            13px !default;
+$baseFontFamily:          "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$lineHeightFactor:        1.4;
+$baseLineHeight:          ($baseFontSize * $lineHeightFactor) !default;
+
+$textColor:               $grayDark !default;
+$headlineColor:					  $grayDark !default;
+$linkColor:               #08c !default;
+$linkColorHover:          darken($linkColor, 15%) !default;
+
+
+///// CODE /////
+$codeColor:							  $grayDark !default;
+
+
+///// TABLES /////
+$rowPadding:						  ($baseFontSize * 0.615) !default;
+
+$stripePattern:					  'odd' !default;
+$stripeColor:						  #f9f9f9 !default;
+
+$borderHorizontal:			  1px solid #ddd !default;
+
+
+///// FORMS /////
+$formFieldBottomMargin:   9px !default;
+$labelBottomMargin:       5px !default;
+$placeholderText:         $grayLight;
+
+$inputBGColor:            $white;
+$selectBGColor:           $white;
+$textareaBGColor:         $white;
+
+$labelFontSize:           $baseFontSize !default;
+$inputFontSize:           $baseFontSize !default;
+$buttonFontSize:          $baseFontSize !default;
+$selectFontSize:          $baseFontSize !default;
+$textareaFontSize:        $baseFontSize !default;
+
+$labelFontFamily:         $baseFontFamily !default;
+$inputFontFamily:         $baseFontFamily !default;
+$buttonFontFamily:        $baseFontFamily !default;
+$selectFontFamily:        $baseFontFamily !default;
+$textareaFontFamily:      $baseFontFamily !default;
+
+$labelFontWeight:         normal !default;
+$inputFontWeight:         normal !default;
+$buttonFontWeight:        normal !default;
+$selectFontWeight:        normal !default;
+$textareaFontWeight:      normal !default;
+
+$labelLineHeight:         $labelFontSize * $lineHeightFactor !default;
+$inputLineHeight:         $inputFontSize * $lineHeightFactor !default;
+$buttonLineHeight:        $buttonFontSize !default;
+$selectLineHeight:        ($selectFontSize * $lineHeightFactor) + ($selectPadding-Y * 2) + 4 !default;
+$textareaLineHeight:      $textareaFontSize * $lineHeightFactor !default;
+
+$labelFont:              normal normal $labelFontWeight    #{$labelFontSize}/#{$labelLineHeight}       $labelFontFamily    !default;
+$inputFont:              normal normal $inputFontWeight    #{$inputFontSize}/#{$inputLineHeight}       $inputFontFamily    !default;
+$buttonFont:             normal normal $buttonFontWeight   #{$buttonFontSize}/#{$buttonLineHeight}     $buttonFontFamily   !default;
+$selectFont:             normal normal $selectFontWeight   #{$selectFontSize}/#{$selectLineHeight}     $selectFontFamily   !default;
+$textareaFont:           normal normal $textareaFontWeight #{$textareaFontSize}/#{$textareaLineHeight} $textareaFontFamily !default;
+
+$inputTextColor:          $gray !default;
+$selectTextColor:         $gray !default;
+$textareaTextColor:       $gray !default;
+$labelTextColor:          $textColor !default;
+
+$inputPadding-Y:          4px !default;
+$selectPadding-Y:         4px !default;
+$textareaPadding-Y:       4px !default;
+$inputPadding-X:          4px !default;
+$selectPadding-X:         4px !default;
+$textareaPadding-X:       4px !default;
+$inputPadding:            $inputPadding-Y $inputPadding-X !default;
+$selectPadding:           $selectPadding-Y $selectPadding-X !default;
+$textareaPadding:         $textareaPadding-Y $textareaPadding-X !default;
+
+$inputBorderWidth:        1px !default;
+$selectBorderWidth:       1px !default;
+$textareaBorderWidth:     1px !default;
+$inputBorderStyle:        solid !default;
+$selectBorderStyle:       solid !default;
+$textareaBorderStyle:     solid !default;
+$inputBorderColor:        #ccc !default;
+$selectBorderColor:       #ccc !default;
+$textareaBorderColor:     #ccc !default;
+$inputBorder:             $inputBorderWidth $inputBorderStyle $inputBorderColor !default;
+$selectBorder:            $selectBorderWidth $selectBorderStyle $selectBorderColor !default;
+$textareaBorder:          $textareaBorderWidth $textareaBorderStyle $textareaBorderColor !default;
+
+$inputBorderRadius:       3px !default;
+$selectBorderRadius:      3px !default;
+$textareaBorderRadius:    3px !default;
+
+$formFieldBottomMargin:   9px !default;
+
+$placeholderText:       	$grayLight !default;
+
+
+
+///// BUTTONS /////
+$defaultButtonBackground:    $linkColor !default;
+$defaultButtonColor:         $textColor !default;
+$defaultButtonBorderWidth:   1px !default;
+$defaultButtonBorderStyle:   solid !default;
+$defaultButtonBorderColor:   #ccc !default;
+$defaultButtonBorder:        $defaultButtonBorderWidth $defaultButtonBorderStyle $defaultButtonBorderColor !default;
+$defaultButtonPadding:       4px 10px 4px !default;
+
+$primaryButtonBackground:    hsla(195, 58.3673%, 48.0392%, 1.0000) !default;
+$primaryButtonBorder:        inherit !default;
+
+$inverseButtonBackground:    $brownDark !default;
+$inverseButtonBorder:        inherit !default;
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// COMPONENTS
+////////////////////////////////////////////////////////////////////////////////
+
+///// NAVIGATION /////
+$navbarHeight:                    40px !default;
+$navbarBackground:                $grayDarker !default;
+$navbarBackgroundHighlight:       $grayDark !default;
+
+$navbarVerticalPosition:  				0px !default;
+$navbarFixedOffset:								$navbarHeight + $navbarVerticalPosition;
+
+$navbarText:                      $grayLight !default;
+$navbarLinkColor:                 $grayLight !default;
+$navbarLinkColorHover:            $white !default;
+
+
+///// LABELS /////
+
+
+///// THUMBNAILS /////
+
+
+///// ALERTS /////
+
+
+///// PROGRESS BARS /////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// GLOBAL
+////////////////////////////////////////////////////////////////////////////////
+
+///// FEATURES /////
+$border-radius: true !default;  // straight or rounded
+$gradients:  		true !default;  // true or false
+$shadows:    		true !default; 	// true or false
+
+
+///// States /////
+$warningText:             #c09853 !default;
+$warningBackground:       #fcf8e3 !default;
+$warningBorder:           darken(adjust-hue($warningBackground, -10), 3%) !default;
+
+$errorText:               #b94a48 !default;
+$errorBackground:         #f2dede !default;
+$errorBorder:             darken(adjust-hue($errorBackground, -10), 3%) !default;
+
+$successText:             #468847 !default;
+$successBackground:       #dff0d8 !default;
+$successBorder:           darken(adjust-hue($successBackground, -10), 5%) !default;
+
+$infoText:                #3a87ad !default;
+$infoBackground:          #d9edf7 !default;
+$infoBorder:              darken(adjust-hue($infoBackground, -10), 7%) !default;
+
+
+///// GRID SYSTEM /////
+$gridColumns:             12 !default;
+$gridColumnWidth:         60px !default;
+$gridGutterWidth:         20px !default;
+$gridRowWidth:            ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));
+
+$fluidGridColumnWidth:    6.382978723% !default;
+$fluidGridGutterWidth:    2.127659574% !default;
+
+
+///// Z-INDEX ///////
+$zindexDropdown:        1000;
+$zindexPopover:         1010;
+$zindexTooltip:         1020;
+$zindexFixedNavbar:     1030;
+$zindexModalBackdrop:   1040;
+$zindexModal:           1050;
+

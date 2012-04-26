@@ -5,13 +5,8 @@ class Admin::AssetsController < Admin::ResourceController
 
   # Configuration
   defaults resource_class: @resource_class || Asset
-  actions :all, except: ['show', 'new']
+  actions :index, :create, :destroy
   respond_to :json
-
-  # Associations
-  optional_belongs_to :page
-
-
 
   def index
     index! do |format|
