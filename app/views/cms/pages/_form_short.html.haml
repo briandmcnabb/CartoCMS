@@ -1,0 +1,6 @@
+= simple_form_for [:cms, Page.new], html: { class: 'form-horizontal' } do |f|
+  .modal-body
+    = f.input :title, autofocus: true
+    = f.input :body, label: 'Template', collection: PageTemplate.order('position').map { |template| [template.title, template.body] }
+  .modal-footer
+    = f.button :submit, 'Create New Page', class: 'btn btn-primary'

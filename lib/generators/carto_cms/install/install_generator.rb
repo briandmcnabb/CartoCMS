@@ -6,7 +6,7 @@ module CartoCms
 
       source_root File.expand_path("../templates", __FILE__)
 
-      class_option :subdomain, :type => :boolean, :default => false, :desc => "Route to CartoCMS via 'admin' subdomain"
+      class_option :subdomain, :type => :boolean, :default => false, :desc => "Route to CartoCMS via 'cms' subdomain"
 
 
       def add_routes
@@ -17,7 +17,7 @@ module CartoCms
       def add_stylesheets
         remove_file 'app/assets/stylesheets/application.css'
         copy_file 'application.css.scss', 'app/assets/stylesheets/application.css.scss'
-        copy_file 'variables.css.scss', 'app/assets/stylesheets/variables.css.scss'
+        copy_file 'variables.css.scss',   'app/assets/stylesheets/variables.css.scss'
       end
 
       def add_config_vars
@@ -31,8 +31,10 @@ module CartoCms
       end
 
       def copy_migrations
-        migration_template 'pages_migration.rb', 'db/migrate/carto_create_pages.rb'
-        migration_template 'assets_migration.rb', 'db/migrate/carto_create_assets.rb'
+        migration_template 'migrations/users_migration.rb',          'db/migrate/devise_create_users.rb'
+        migration_template 'migrations/pages_migration.rb',          'db/migrate/create_pages.rb'
+        migration_template 'migrations/page_templates_migration.rb', 'db/migrate/create_page_templatess.rb'
+        migration_template 'migrations/assets_migration.rb',         'db/migrate/create_assets.rb'
       end
 
 

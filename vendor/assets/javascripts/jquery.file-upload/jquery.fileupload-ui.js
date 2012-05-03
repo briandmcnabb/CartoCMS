@@ -42,7 +42,7 @@
             // By default, files added to the widget are uploaded as soon
             // as the user clicks on the start buttons. To enable automatic
             // uploads, set the following option to true:
-            autoUpload: false,
+            autoUpload: true,
             // The following option limits the number of files that are
             // allowed to be uploaded using this widget:
             maxNumberOfFiles: undefined,
@@ -59,9 +59,9 @@
             // The maximum file size of images that are to be displayed as preview:
             previewSourceMaxFileSize: 5000000, // 5MB
             // The maximum width of the preview images:
-            previewMaxWidth: 80,
+            previewMaxWidth: 60,
             // The maximum height of the preview images:
-            previewMaxHeight: 80,
+            previewMaxHeight: 60,
             // By default, preview images are displayed as canvas elements
             // if supported by the browser. Set the following option to false
             // to always display preview images as img elements:

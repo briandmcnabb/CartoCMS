@@ -25,3 +25,12 @@ jQuery ->
       @slideToggle()
     hide: ->
       @slideToggle()
+
+
+  # Positionable
+  $('ul#positionable').sortable
+   axis: 'y'
+   handle: '.handle'
+   placeholder: 'placeholder'
+   update: ->
+     $.post($(this).data('position_url'), $(this).sortable('serialize'))

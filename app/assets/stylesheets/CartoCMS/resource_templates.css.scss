@@ -1,12 +1,12 @@
 ////////////////////////////////////////////////////////////////////////////////
-// _index.html
+// _index-table.html
 ////////////////////////////////////////////////////////////////////////////////
 
-.table { width: 100%;
+.table { width: 100%; margin: 21px 0 0;
   colgroup {
     col {
       &:first-of-type { width:  1px; }
-      &:last-of-type  { width: 99px; }
+      &:last-of-type  { width: 69px; }
     }
   }
   th, td {
@@ -21,13 +21,36 @@
   td {
     &.handle, .action_links { opacity: 0.85; }
   }
-  .action_links { padding-left: 10px; width: 62px;
+  .action_links { width: 43px;
     a { float: left;
-      &:nth-of-type(2) { margin-left: 10px; margin-right: 10px; }
+      &:last-of-type { margin-left: 15px; }
     }
   }
 }
 
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// _index-list.html
+////////////////////////////////////////////////////////////////////////////////
+
+ul#positionable { list-style: none;
+  li { @extend .clearfix; margin-bottom: 20px; padding: 5px 0;
+    &:last-of-type { margin-bottom: 0; }
+    &.placeholder { height: 37px; background-color: hsla(0, 0%, 0%, 0.025); border-top: 1px solid hsla(0, 0%, 0%, 0.05); border-bottom: 1px solid hsla(0, 0%, 0%, 0.05); }
+    .handle {  border-right: 1px solid #e5e5e5; padding: 12px 10px 13px 0; }
+    .resource { padding-left: 10px;
+      h3 { line-height: 1; }
+      p { margin: 0; }
+    }
+    .action_links { border-left: 1px solid #e5e5e5; padding: 12px 0 13px;
+      a { float: left; margin-left: 15px;
+      &:hover { opacity: 0.8; }
+      }
+    }
+  }
+}
 
 
 
@@ -60,7 +83,7 @@ form {
     &.date, &.time { text-align: center; font-size: $buttonFontSize; color: #afafaf; }
   }
 
-  select {
+  select.select-button {
     -webkit-appearance: button;
        -moz-appearance: button;
          -o-appearance: button;

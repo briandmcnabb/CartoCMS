@@ -141,8 +141,8 @@
 @mixin gridSystemColumns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, $columns) {
   width: ($gridColumnWidth * $columns) + ($gridGutterWidth * ($columns - 1));
 }
-@mixin gridSystemOffset($gridColumnWidth, $gridGutterWidth, $columns) {
-  margin-left: ($gridColumnWidth * $columns) + ($gridGutterWidth * ($columns - 1)) + ($gridGutterWidth * 2);
+@mixin gridSystemOffset($gridColumnWidth, $gridGutterWidth, $columns, $adjustment: 0px) {
+  margin-left: ($gridColumnWidth * $columns) + ($gridGutterWidth * ($columns - 1)) + ($gridGutterWidth * 2) - $adjustment;
 }
 @mixin gridSystemGridColumn($gridGutterWidth) {
   float: left;
@@ -168,6 +168,11 @@
   // Offset column options
   @for $i from 1 through $gridColumns - 1 {
     .offset#{$i} { @include gridSystemOffset($gridColumnWidth, $gridGutterWidth, $i) }
+  }
+  .well {
+     @for $i from 1 through $gridColumns - 1 {
+      &.offset#{$i}, .offset#{$i} { @include gridSystemOffset($gridColumnWidth, $gridGutterWidth, $i, 20px) }
+    }
   }
 }
 

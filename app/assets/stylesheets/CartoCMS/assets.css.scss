@@ -1,20 +1,24 @@
 @import 'jquery-file-upload';
 
-.fileupload-buttonbar { margin-bottom: 30px;
-  .btn-group.pull-right { padding-right: 20px; }
-}
+ul#files { list-style: none;
+  li { @extend .clearfix; margin-bottom: 20px; padding: 5px 0;
+    &:last-of-type { margin-bottom: 0; }
 
-td {
-  &.preview { padding-left: 0;
-    div { width: 80px; height: 85px; }
+    .preview { height: 60px; width: 60px; }
+    .center-panel { width: 100%; min-width: 300px; max-width: 400px; margin-left: 10px; padding-left: 10px; border-left: 1px solid #e5e5e5;
+      .top { @extend .clearfix;
+        .name { float: left; }
+        .size { float: right; }
+      }
+      .bottom {}
+      h3 { line-height: 1; }
+      p { margin: 0; }
+    }
+    .delete { border-left: 1px solid #e5e5e5; padding: 12px 0 13px 15px;
+      button { background-color: transparent; padding: 0; border: none; }
+      a { float: left; margin-left: 15px;
+      &:hover { opacity: 0.8; }
+      }
+    }
   }
-  &.name div { @extend .ellipsis; width: 150px; }
-  &.size div { width:  68px; text-align: right; }
-  &.spacer div { width: 166px; }
-  &.error div { @extend .ellipsis; width: 272px; }
-  &.delete { padding-right: 0; }
-}
-
-.files .progress {
-  width: 166px;
 }

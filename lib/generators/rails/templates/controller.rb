@@ -1,4 +1,4 @@
-class Admin::<%= controller_class_name %>Controller < Admin::ResourceController
+class Cms::<%= controller_class_name %>Controller < Cms::ResourceController
 <% if options[:singleton] -%>
   defaults :singleton => true
 <% end -%>

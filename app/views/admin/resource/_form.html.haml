@@ -1,8 +1,0 @@
-#resource_form.row
-  = simple_form_for [ :admin, resource ], html: { class: 'form-horizontal well span14 offset1' } do |f|
-    %h2 Test Text
-    %hr
-    - attributes.each do |attr|
-      = attr.end_with?('_id') ? f.association(assc(attr, input_html: { class: 'span8'})) : f.input(attr, input_html: { class: 'span8'})
-    .form-actions.row
-      .span8= f.button :submit, "submit", class: 'btn btn-primary pull-right'

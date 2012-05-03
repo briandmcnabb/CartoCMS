@@ -1,0 +1,36 @@
+//= form_for [:cms, parent_resource, Asset.new].compact, html: { id: "fileupload", multipart: true } do |f|
+//  .fileupload-buttonbar
+//    .row
+//      .span14.offset1
+//        %button.btn.fileinput-button
+//          %i.icon-plus.icon-white
+//          Add Files
+//          = f.file_field :asset_path, multiple: true
+//  .row
+//    .span14.offset1
+//      .well
+//        %table.table.table-striped
+//          %tbody.files
+//        #loading
+//
+//
+//= render 'cms/assets/template-errors'
+//= render 'cms/assets/template-upload'
+//= render 'cms/assets/template-download'
+
+
+= form_for [:cms, parent_resource, Asset.new].compact, html: { id: "fileupload", multipart: true } do |f|
+  .row
+    .well.span14.offset1
+      .fileupload-buttonbar
+        %button.btn.fileinput-button
+          %i.icon-plus.icon-white
+          Add Files
+          = f.file_field :asset_path, multiple: true
+      %hr
+      %ul#files.span10.offset2
+
+
+= render 'cms/assets/template-errors'
+= render 'cms/assets/template-upload'
+= render 'cms/assets/template-download'

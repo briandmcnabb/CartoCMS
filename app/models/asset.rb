@@ -29,7 +29,7 @@ class Asset < ActiveRecord::Base
     "size" => asset_path.size,
     "url"  => asset_path.url,
     "thumbnail_url" => asset_path.respond_to?(:thumb) ? asset_path.url(:thumb) : nil,
-    "delete_path" => admin_asset_path(id),
+    "delete_path" => cms_asset_path(id),
     "delete_type" => "DELETE"
    }
   end

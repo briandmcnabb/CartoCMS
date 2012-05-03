@@ -1,0 +1,14 @@
+.row
+  .well.span14.offset1
+    %h2= resource_class.to_s.pluralize.gsub(/\w(?=[A-Z])/){ |match| "#{match} " }
+    %hr
+    %ul#positionable.span12.offset1{ data: {position_url: position_url} }
+      - collection.each do |resource|
+        %li[resource]
+          .handle.pull-left= content_tag(:div, "drag handle", class: 'icon-align-justify ir')
+          .resource.pull-left
+            %h3= resource.title
+            %p=  resource.description.truncate(75)
+          .action_links.pull-right
+            = link_to 'edit',    edit_resource_path(resource), class: 'icon-pencil ir'
+            = link_to 'destroy', resource_path(resource),      class: 'icon-trash  ir', remote: true, method: :delete, confirm: "Are you sure?"

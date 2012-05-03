@@ -18,7 +18,7 @@ module LinkHelper
 
   def mercury_save_url
     id = params[:id] || current_page_id
-    controller = "admin/#{params[:controller]}"
+    controller = "cms/#{params[:controller]}"
     url_for({controller: controller, action: 'update', id: id, only_path: false})
   end
 end

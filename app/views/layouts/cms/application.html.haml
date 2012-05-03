@@ -1,0 +1,22 @@
+- content_for :head do
+  %title= title "CartoCMS"
+  %meta{ :name => "description", :content => "CartoCMS" }/
+
+- stylesheet 'CartoCMS'
+- javascript 'CartoCMS'
+
+- content_for :content do
+  %section
+    #sticky-wrap
+      %header#top-level= render 'layouts/cms/navbar' if admin_signed_in?
+      %section#top-level.container
+        = render 'layouts/cms/resource_actions' unless devise_controller?
+        = content_for?(:body) ? yield(:body) : yield
+    %footer#top-level.vline-center
+      .vline-wrap
+        .container
+          %p#legal.pull-left 2012 New Cartographers All Rights Reserved
+          %p#attribution.pull-right= link_to 'New-Cartographers.com', 'http://new-cartographers.com'
+
+
+= parent_layout 'boilerplate'
