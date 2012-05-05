@@ -6,7 +6,7 @@ jQuery ($)->
       fu = $("#fileupload").data("fileupload")
       template = undefined
       fu._adjustMaxNumberOfFiles -files.length
-      template = fu._renderDownload(files).appendTo($("#fileupload #files"))
+      template = fu._renderDownload(files).appendTo($("#fileupload .files"))
       fu._reflow = fu._transition and template.length and template[0].offsetWidth
       template.addClass "in"
       $("#loading").remove()

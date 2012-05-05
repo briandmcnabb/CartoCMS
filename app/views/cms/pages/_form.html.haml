@@ -32,4 +32,5 @@
           %dd= %w(path locale format handler).map { |p| content_tag :span, nil, id: "#{@page.class.to_s.downcase}_#{p}" }.join('.').html_safe
 
 = link_to_modal 'assets', '#', id: 'action_link', class: 'btn'
-= render partial: 'cms/assets/index-table', layout: 'layouts/modal'
+= render partial: 'cms/assets/uploader-modal', layout: 'layouts/modal'
+

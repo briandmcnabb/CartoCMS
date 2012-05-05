@@ -1,0 +1,15 @@
+= form_for [:cms, parent_resource, Asset.new].compact, html: { id: "fileupload", multipart: true } do |f|
+  .modal-header
+    .close{ data: { dismiss: 'modal' } } &times;
+    .fileupload-buttonbar
+      %button.btn.fileinput-button
+        %i.icon-plus.icon-white
+        Add Files
+        = f.file_field :asset_path, multiple: true
+
+  .modal-body
+    %ul.files
+
+= render 'cms/assets/template-errors'
+= render 'cms/assets/template-upload'
+= render 'cms/assets/template-download'

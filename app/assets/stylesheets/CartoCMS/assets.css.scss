@@ -1,24 +1,40 @@
-@import 'jquery-file-upload';
+button.fileinput-button { position: relative; overflow: hidden; margin: 15px 5px 10px 0;
+  input { position: absolute; top: 0; right: 0; margin: 0; border: solid transparent; border-width: 0 0 100px 200px; opacity: 0; filter: alpha(opacity=0); -moz-transform: translate(-300px, 0) scale(4); direction: ltr; cursor: pointer; }
+}
 
-ul#files { list-style: none;
+ul.files { list-style: none; margin: 0 40px;
   li { @extend .clearfix; margin-bottom: 20px; padding: 5px 0;
     &:last-of-type { margin-bottom: 0; }
 
     .preview { height: 60px; width: 60px; }
-    .center-panel { width: 100%; min-width: 300px; max-width: 400px; margin-left: 10px; padding-left: 10px; border-left: 1px solid #e5e5e5;
+    .center-panel { width: 380px; margin: 4px 0 0 10px; padding-left: 10px; border-left: 1px solid #e5e5e5;
       .top { @extend .clearfix;
-        .name { float: left; }
-        .size { float: right; }
+        p.name { float: left; }
+        p.size { float: right; color: $gray; }
       }
-      .bottom {}
-      h3 { line-height: 1; }
-      p { margin: 0; }
+      .bottom {
+        .progress { width: 325px; }
+      }
     }
-    .delete { border-left: 1px solid #e5e5e5; padding: 12px 0 13px 15px;
-      button { background-color: transparent; padding: 0; border: none; }
-      a { float: left; margin-left: 15px;
-      &:hover { opacity: 0.8; }
+    .delete { margin-top: 4px; border-left: 1px solid #e5e5e5; padding: 14px 0 15px 15px;
+      button { background-color: transparent; padding: 0; border: none;
+        &:hover { opacity: 0.8; }
       }
     }
   }
 }
+
+.modal-body {
+  ul.files {
+    li {
+      .center-panel { width: 325px; }
+    }
+  }
+}
+
+
+/* Fix for IE 6: */
+*html .fileinput-button { line-height: 22px; margin: 1px -3px 0 0; }
+
+/* Fix for IE 7: */
+*+html .fileinput-button { margin: 1px 0 0 0; }

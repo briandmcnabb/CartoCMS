@@ -30,4 +30,4 @@
               = link_to 'edit',    edit_cms_page_path(page), class: 'icon-pencil ir'
               = link_to 'destroy', cms_page_path(page),      class: 'icon-trash  ir', remote: true, method: :delete, confirm: "Are you sure?"
 
-= render partial: 'form_short', layout: 'layouts/modal'
+= render partial: 'form-modal', layout: 'layouts/modal'

@@ -12,7 +12,7 @@
 
   %meta{ 'http-equiv' => "X-UA-Compatible", :content => "IE=edge,chrome=1"}/
   %meta{ :name => "viewport", :content => "width=device-width" }/
-  = yield(:head) if content_for?(:head)
+  = yield :head
   %meta{ :name => "author",      :content => "New Cartographers Creative" }/
   %link{ rel: 'author', href: 'humans.txt' }/
 
