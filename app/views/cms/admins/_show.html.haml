@@ -1,24 +1,41 @@
-#resource_form.row
-  .form-horizontal.well.span14.offset1
-    %h2 Test Text
+#user-show.row
+  .well.span14.offset1
+    #header.clearfix
+      %h2
+        = resource.email
+      #stats.clearfix
+        #sign-in.pull-left
+          = resource.sign_in_count
+          %span SIGN-INS
+        %ul#session.pull-right
+          %li
+            %span.name Last Session
+            %span.date= resource.last_sign_in_at.strftime('%_m %b %H:%M')
+            %span.ip= resource.last_sign_in_ip
+          %li
+            %span.name Current Session
+            %span.date= resource.current_sign_in_at.strftime('%_m %b %H:%M')
+            %span.ip= resource.current_sign_in_ip
     %hr
-    = show_for resource do |u|
-      = u.attribute :email
-      %hr
-      %h3 Login Stats
-      = u.attribute :sign_in_count
-      = u.attribute :current_sign_in_at, format: :short
-      = u.attribute :current_sign_in_ip
-      = u.attribute :last_sign_in_at, format: :short
-      = u.attribute :last_sign_in_ip
-      %hr
-      %h3 Password Reset
-      = u.attribute :reset_password_sent_at, format: :short
-      = u.attribute :reset_password_token
-      = link_to 'Resend Reset Password Token', '#'
-      %hr
-      %h3 Failed Attempts
-      = u.attribute :failed_attempts
-      = u.attribute :unlock_token
-      = u.attribute :locked_at
-      = link_to 'Resend Reset Password Token', '#'
+    #resets.clearfix
+      #password_reset.span6.offset1
+        %h3 Password Reset
+        %ul
+          %li
+            %strong.label RESET PASSWORD SENT AT
+            %p= resource.reset_password_sent_at || "Not Specified"
+          %li
+            %strong.label RESET PASSWORD TOKEN
+            %p= resource.reset_password_token || "Not Specified"
+        = link_to 'RESEND TOKEN', '#', class: 'btn pull-right'
+      #failed_attempts.span5.offset2
+        %h3= "Failed Attempts (#{resource.failed_attempts})"
+        %ul
+          %li
+            %strong.label LOCKED AT
+            %p= resource.locked_at || "Not Specified"
+          %li
+            %strong.label UNLOCK TOKEN
+            %p= resource.unlock_token || "Not Specified"
+        = link_to 'RESEND TOKEN', '#', class: 'btn pull-right'
+    %hr

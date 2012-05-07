@@ -1,6 +1,10 @@
 #resource_form.row
   = simple_form_for [:cms, resource], html: { class: 'form-horizontal well span14 offset1' } do |f|
-    %h2 Test Text
+    #header.clearfix
+      - if params[:action] == 'new'
+        = render 'header-new'
+      - else
+        = render 'header-edit'
     %hr
     - attributes.each do |attr|
       = attr.end_with?('_id') ? f.association(assc(attr, input_html: { class: 'span8'})) : f.input(attr, input_html: { class: 'span8'})

@@ -1,0 +1,31 @@
+#user-show {
+  #header {
+    h2 { background: image-url('CartoCMS/icon-user-big.png') no-repeat left bottom; padding-left: 40px; line-height: 1; }
+    #stats { margin: 15px 15px 10px 70px;
+      #sign-in { margin-top: 20px; font-size: 36px; font-weight: bold;
+        span { font-size: 12px; }
+      }
+      ul#session { list-style: none; margin: 0;
+        li { text-align: right; font-size: 17px;
+          &:first-of-type { padding-bottom: 10px; }
+          span { line-height: 1; }
+          span.name { font-size: 16px; font-weight: bold; }
+          span.date { background: image-url('CartoCMS/icon-time.png') no-repeat left center; margin-left: 40px; padding-left: 25px; }
+          span.ip {   background: image-url('CartoCMS/icon-ip.png')   no-repeat left center; margin-left: 40px; padding-left: 25px; }
+        }
+      }
+    }
+  }
+  #password_reset, #failed_attempts {
+    padding: 25px 0 5px;
+    ul { list-style: none; margin: 0;
+      li { padding: 0;
+        p { font-size: 14px; }
+      }
+    }
+  }
+  #password_reset { border-right: 1px solid #e5e5e5;
+    .btn { margin-right: 40px; }
+  }
+  .btn { font-size: 14px; font-family: helvetic; font-weight: bold; padding: 4px 7px; }
+}

@@ -1,5 +1,11 @@
 jQuery ($)->
-  $("#fileupload").fileupload()
+  $("#fileupload").fileupload
+    destroy: (e, data)->
+      triggerObject = $(e.target)
+      message = triggerObject.data('confirm-message') || triggerObject.parent().data('confirm-message')
+      if confirm(message)
+        $.blueimpUI.fileupload.prototype
+        .options.destroy.call(this, e, data);
 
   if $('#fileupload').length
     $.getJSON $("#fileupload").prop("action"), (files) ->

@@ -1,2 +1,2 @@
 - attributes
-#content= render(@position ? 'index-list' : "index-table")
+#content= render (@position ? 'index-list' : "index-table"), attributes: index_attributes(collection)

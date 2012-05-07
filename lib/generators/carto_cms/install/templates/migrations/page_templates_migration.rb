@@ -3,11 +3,12 @@ class CreatePageTemplates < ActiveRecord::Migration
     create_table :page_templates do |t|
       t.integer :position
       t.string :title
+      t.text :description
       t.text :body
 
       t.timestamps
     end
 
-    add_index :page_templates, :position,     unique: true
+    add_index :page_templates, :position
   end
 end

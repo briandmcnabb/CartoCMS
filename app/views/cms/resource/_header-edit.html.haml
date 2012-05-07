@@ -1,0 +1,12 @@
+.pull-left
+  #name.edit
+    %span= resource_class.to_s.gsub(/\w(?=[A-Z])/){ |match| "#{match} " }.downcase
+    %span= "%04d" % resource.id
+.pull-right
+  %ul#dates
+    %li
+      created
+      %span= resource.created_at.strftime "%m-%d-%y"
+    %li
+      modified
+      %span= resource.updated_at.strftime "%m-%d-%y"

@@ -7,7 +7,7 @@
         %li[resource]
           .handle.pull-left= content_tag(:div, "drag handle", class: 'icon-align-justify ir')
           .resource.pull-left
-            %h3= resource.title
+            %h3= resource.name
             %p=  resource.description.truncate(75)
           .action_links.pull-right
             = link_to 'edit',    edit_resource_path(resource), class: 'icon-pencil ir'
