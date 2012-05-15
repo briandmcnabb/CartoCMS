@@ -1,4 +1,6 @@
 class Page < ActiveRecord::Base
+  #extend FriendlyId
+  #friendly_id :relative_path, use: [:slugged, :history]
 
   # Constants
   LOCALES  = I18n.available_locales.map(&:to_s)
@@ -61,6 +63,10 @@ class Page < ActiveRecord::Base
 
   def normalized_time
     @publish_time.gsub(/\A0+/, '')
+  end
+
+  def relative_path
+    path.split('/').last
   end
 
   def set_default_filepath

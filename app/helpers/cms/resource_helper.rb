@@ -1,9 +1,12 @@
 module Cms::ResourceHelper
 
   def attributes
-    attributes = column_names - %w(id created_at updated_at)
-    attributes = position(attributes)
-    @attributes ||= params[:action] == 'index' ? remove_text_column_types(attributes) : attributes
+    @attributes ||=
+      if params[:action] == 'index'
+        remove_text_column_types column_names
+      else
+        remove_system_updated_fields column_names
+      end
   end
 
   def column_names
@@ -33,10 +36,8 @@ module Cms::ResourceHelper
     end
   end
 
-  def position(attributes)
-    index = attributes.index 'position'
-    @position ||= attributes.slice! index if index
-    attributes
+  def position
+    @position ||= column_names.index 'position'
   end
 
   def td(object, attribute, options = {})
@@ -48,7 +49,7 @@ module Cms::ResourceHelper
     if @position
       humanized_column_name(attribute)
     else
-      sortable humanized_column_name(attribute), remote:true
+      sortable attribute, title: humanized_column_name(attribute), remote: true
     end
   end
 
@@ -65,6 +66,13 @@ module Cms::ResourceHelper
   end
 
   def remove_text_column_types(attributes)
-    attributes.map { |attribute| attribute unless columns_hash[attribute] == :text }.compact
+    remove_system_updated_fields(attributes).map do |attribute|
+      attribute unless columns_hash[attribute] == :text
+    end.compact
+
+  end
+
+  def remove_system_updated_fields(attributes)
+    attributes - %w(id position created_at updated_at)
   end
 end

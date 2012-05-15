@@ -1,7 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-// Global Styles (Overrides)
+// Pages
 ////////////////////////////////////////////////////////////////////////////////
-body { background: $background; }
 
 dl {
   &.prepend { @extend .clearfix; position: relative; margin: 0; border: $inputBorder; border-radius: $inputBorderRadius;
@@ -20,39 +19,3 @@ dl {
     }
   }
 }
-
-form.form-horizontal { margin-top: 85px; }
-hr.double { margin: 40px 0 35px; border-top: 6px double $brownDark; }
-.btn input[type='checkbox'] { margin: 0; }
-
-#content {
-  >.well { min-height: 542px;}
-}
-
-.pagination {
-  ul { background-color: #f5f5f5;}
-}
-
-
-/// Modal ///
-.modal {
-  form {
-    &.form-horizontal { margin-top: 0;
-      .modal-body {
-        .control-group {
-          >label { width: 75px; }
-          div.controls { margin-left: 95px;
-            input { width: 380px; }
-            select { width: 404px;
-              option:first-of-type { color: $grayLight; }
-            }
-          }
-        }
-      }
-      .modal-footer {
-        input[type='submit'] { margin-right: 30px; }
-      }
-    }
-  }
-}
-

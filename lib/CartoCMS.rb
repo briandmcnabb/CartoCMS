@@ -1,4 +1,6 @@
 require 'devise'
+require 'devise_invitable'
+require 'friendly_id'
 require 'inherited_resources'
 require 'has_scope'
 require 'responders'

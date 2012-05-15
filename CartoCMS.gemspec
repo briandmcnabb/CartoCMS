@@ -16,9 +16,11 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
   s.add_dependency "rails", "~> 3.1.0"
+  s.add_dependency "friendly_id", "~> 4.0.1"
   s.add_dependency "carrierwave"
   s.add_dependency "rmagick"
-  s.add_dependency "devise", "~> 2.0.0"
+  s.add_dependency "devise", ">= 2.0.0"
+  s.add_dependency "devise_invitable", "~> 1.0.0"
   s.add_dependency "inherited_resources"
   s.add_dependency "has_scope"
   s.add_dependency "responders"
@@ -35,6 +37,7 @@ Gem::Specification.new do |s|
   s.add_dependency "simple_ace_input"
   s.add_dependency "chronic"
   s.add_dependency "nokogiri"
+  s.add_dependency "rack-rewrite"
 
 
   s.add_development_dependency "sqlite3"

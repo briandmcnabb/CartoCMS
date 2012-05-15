@@ -1,17 +1,16 @@
 - content_for :head do
   %title= title "CartoCMS"
-  %meta{ :name => "description", :content => "CartoCMS" }/
+  %meta{ :name => "description", :content => "CartoCMS by New Cartographers, LLC" }/
 
 - stylesheet 'CartoCMS'
 - javascript 'CartoCMS'
 
-- content_for :content do
+- content_for :boilerplate do
   %section
     #sticky-wrap
-      %header#top-level= render 'layouts/cms/navbar' if admin_signed_in?
+      %header#top-level= render 'layouts/cms/navbar' if user_signed_in?
       %section#top-level.container
-        = render 'layouts/cms/resource_actions' unless devise_controller?
-        = content_for?(:body) ? yield(:body) : yield
+        = content_for?(:application) ? yield(:application) : yield
     %footer#top-level.vline-center
       .vline-wrap
         .container

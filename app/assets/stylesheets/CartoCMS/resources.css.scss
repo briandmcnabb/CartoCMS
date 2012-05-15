@@ -1,4 +1,56 @@
 ////////////////////////////////////////////////////////////////////////////////
+// Resource Template (General)
+////////////////////////////////////////////////////////////////////////////////
+section#top-level {
+  >.row {
+    >.well { margin-top: 40px; min-height: 542px;
+      &+div {
+        >.pagination { margin-top: 0; margin-left: -19px;
+          ul { background-color: #f5f5f5;}
+        }
+      }
+      >header {
+        &+hr { margin: 12px 0 30px;}
+        h1 { margin: 20px 0 0 10px; font-size: 40px; }
+      }
+    }
+  }
+}
+
+#edit, #new {
+  header {
+    h1 { padding-left: 40px; }
+    ul#dates { list-style: none; margin: 0; font-weight: bold; text-rendering: optimizelegibility;
+      li { font-size: 13px; text-align: right; color: #5d5b55;
+        &:first-of-type { color: $gray;  padding-bottom: 10px; }
+        span { padding: 0 30px 0 10px; font-size: 24px; }
+      }
+    }
+  }
+}
+
+#edit {
+  header {
+    h1 { background: image-url('CartoCMS/icon-pencil-big.png') no-repeat left 50%; }
+  }
+}
+
+#new {
+  header {
+    h1 { background: image-url('CartoCMS/icon-plus-big.png') no-repeat left 50%; }
+  }
+}
+
+.new_resource_link { margin-top: 20px; }
+
+.panel { position: relative;
+  ul.resource_nav { list-style: none; position: absolute; top: 30px; right: -35px;
+    li:hover { opacity: 0.9; }
+    li:nth-of-type(2) { margin-top: 265px; }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
 // _index-table.html
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -57,21 +109,8 @@ ul#positionable { list-style: none;
 ////////////////////////////////////////////////////////////////////////////////
 // _form.html
 ////////////////////////////////////////////////////////////////////////////////
-
 form {
-  #header { height: 62px; color: #5d5b55; font-weight: bold; text-rendering: optimizelegibility;
-    &+hr { margin: 12px 0 30px;}
-    #name {  height: 26px; margin: 30px 0 0 10px; padding-left: 40px; font-size: 40px;
-      &.edit { background: image-url('CartoCMS/icon-pencil-big.png') no-repeat left bottom; }
-      &.new  { background: image-url('CartoCMS/icon-plus-big.png') no-repeat left bottom; }
-    }
-    ul#dates { list-style: none; margin: 0;
-      li { font-size: 13px; text-align: right;
-        &:first-of-type { color: $gray;  padding-bottom: 10px; }
-        span { padding: 0 30px 0 10px; font-size: 24px; }
-      }
-    }
-  }
+  &.form-horizontal { margin-top: 40px; }
   fieldset {
     &.publish, &.path {
       .control-group { padding-right: 10px;
@@ -121,20 +160,16 @@ form {
   }
 }
 
+.btn input[type='checkbox'] { margin: 0; }
+
 
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// _resource_actions
+// Small Dark Button
 ////////////////////////////////////////////////////////////////////////////////
-header#resource-actions { @extend .clearfix; margin: 50px 0 20px;
-  h1 { float: left; font-size: 44px; line-height: 44px; font-family: 'mensch'; color: $brownDark; }
-  form { float: left; width: 35%; padding: 0px 0 0 10px;
-    input { height: auto; width: 100%; background-color: transparent; border: 2px solid $brownDark; @include border-radius(8px); font-size: $baseFontSize; line-height: $baseLineHeight;
-    &:focus { background-color: hsla(0, 100%, 100%, 0.5); }
-    }
-  }
-  a#action_link { float: right; background-color: $brownDark; border: none; color: $cream; text-shadow:none; font-family: 'mensch'; padding: 8px 15px 7px 13px; font-size: 20px; @include border-radius(8px);
-    span:last-of-type  { margin-left: -6px; }
-  }
-}// refactor some of the a#new into variables in the twitter-bootstrap
+.btn-small-dark { background-color: $brownDark; border: none; color: $cream; text-shadow:none; font-family: 'mensch'; padding: 8px 15px 7px 13px; font-size: 20px; @include border-radius(8px);
+  span:last-of-type  { margin-left: -6px; }
+}
+
+

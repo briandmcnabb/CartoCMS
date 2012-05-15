@@ -1,0 +1,3 @@
+%h1.pull-left= resource_class.to_s.titleize.pluralize
+.pull-right.new_resource_link= link_to_modal("#{content_tag(:i, '', class: 'icon-plus icon-white')}Invite".html_safe, '#', class: 'btn btn-small-dark')
+= render partial: 'devise/invitations/new-modal', layout: 'layouts/modal'

@@ -7,24 +7,30 @@ Rails.application.routes.draw do
   end
 
   # Devise
-  devise_for :admins
+  devise_for :users, controllers: { registrations: "cms/registrations" }
 
   # Admin Interface
   #constraints subdomain: "cms" do
   #  scope module: "cms", as: "cms"  do
-  #    resources :admins
+  #    resources :users
   #    resources :pages
   #    resources :assets, only: [:index, :new, :create, :destroy]
   #  end
   #end
 
   namespace :cms do
-    resources :admins
-    resources :pages
-    resources :page_templates do
+    resources :assets, only: [:index, :new, :create, :destroy]
+    resources :users, except: [:edit, :update]
+    resources :pages, except: [:show]
+    resources :page_templates, except: [:show] do
       collection { post :position }
     end
-    resources :assets, only: [:index, :new, :create, :destroy]
+    resources :sliders, except: [:show] do
+      collection { post :position }
+    end
+    resources :slides, except: [:index, :show] do
+      collection { post :position }
+    end
   end
 
   # Pages

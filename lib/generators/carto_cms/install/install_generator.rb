@@ -31,10 +31,13 @@ module CartoCms
       end
 
       def copy_migrations
-        migration_template 'migrations/users_migration.rb',          'db/migrate/devise_create_users.rb'
+        migration_template 'migrations/assets_migration.rb',         'db/migrate/create_assets.rb'
         migration_template 'migrations/pages_migration.rb',          'db/migrate/create_pages.rb'
         migration_template 'migrations/page_templates_migration.rb', 'db/migrate/create_page_templatess.rb'
-        migration_template 'migrations/assets_migration.rb',         'db/migrate/create_assets.rb'
+        migration_template 'migrations/sliders_migration.rb',        'db/migrate/create_sliders.rb'
+        migration_template 'migrations/slides_migration.rb',         'db/migrate/create_friendly_id_slugs.rb'
+        migration_template 'migrations/slugs_migration.rb',          'db/migrate/create_slides.rb'
+        migration_template 'migrations/users_migration.rb',          'db/migrate/devise_create_users.rb'
       end
 
 

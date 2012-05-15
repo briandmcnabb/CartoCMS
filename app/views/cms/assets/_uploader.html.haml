@@ -1,13 +1,17 @@
-= form_for [:cms, parent_resource, Asset.new].compact, html: { id: "fileupload", multipart: true } do |f|
-  .fileupload-buttonbar
-    %button.btn.fileinput-button
-      %i.icon-plus.icon-white
-      Add Files
-      = f.file_field :asset_path, multiple: true
-  %hr
-  %ul.files
+- content_for :new_resource_link do
+  - link_to "#{content_tag(:i, '', class: 'icon-plus icon-white')} add files".html_safe, '#', id: 'add_files', class: 'btn btn-small-dark'
+
+.span10.offset2
+  = form_for [:cms, parent_resource, Asset.new].compact, html: { id: "fileupload", multipart: true } do |f|
+    .fileupload-buttonbar.zeroHeight
+      %button.btn.fileinput-button.btn-small-dark.invisible
+        %i.icon-plus.icon-white
+        Add Files
+        = f.file_field :asset_path, multiple: true
+
+    %ul.files
 
 
-= render 'cms/assets/template-errors'
-= render 'cms/assets/template-upload'
-= render 'cms/assets/template-download'
+  = render 'cms/assets/template-errors'
+  = render 'cms/assets/template-upload'
+  = render 'cms/assets/template-download'

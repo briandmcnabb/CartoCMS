@@ -1,7 +1,7 @@
 - content_for(:extra_scripts) { javascript_include_tag("carto_simple_ace_input") }
 
 .form.row
-  = simple_form_for [:cms, @page], html: { class: 'well span14 offset1 remote_submittable' } do |f|
+  = simple_form_for [:cms, @page], html: { class: 'span14 remote_submittable' } do |f|
     %fieldset.publish.clearfix
       = f.input  :publish_date, wrapper_html: { class: 'pull-left' }, input_html: { class: 'span3 date', data: { parsing_pattern: '%m/%d/%y' }}
       = f.input  :publish_time, wrapper_html: { class: 'pull-left' }, input_html: { class: 'span3 time', data: { parsing_pattern: '%I:%M %P' }}

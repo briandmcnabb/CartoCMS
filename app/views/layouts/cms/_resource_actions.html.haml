@@ -1,9 +1,0 @@
-%header#resource-actions
-  %h1= link_to resource_class.to_s.pluralize.gsub(/\w(?=[A-Z])/){ |match| "#{match} " }, collection_path
-
-  - if params[:action] == 'index'
-    = form_tag collection_path, method: :get, id: 'resource_search', remote: true do
-      = text_field_tag :query, params[:query]
-      = submit_tag "Search", name: nil, hidden: true
-
-  = content_for?(:new_resource_link) ? yield(:new_resource_link) : new_resource_link

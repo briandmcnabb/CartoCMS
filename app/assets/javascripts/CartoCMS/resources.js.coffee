@@ -4,6 +4,11 @@ jQuery ->
   $('div#content').on 'ajax:success', 'a[data-method="delete"]', ->
     $(@).closest('tr').fadeOut()
 
+  # Assets: Add Files
+  $('div.panel header').on 'click', 'a#add_files', (event)->
+    event.preventDefault()
+    $('input#asset_asset_path').click()
+
 
   # Boolean Toggler
   $('div#content').on 'change', '.boolean_toggler input', ->

@@ -1,0 +1,10 @@
+.modal-header
+  .close{ data: { dismiss: 'modal' } } &times;
+  %h2 Invite New User
+
+= simple_form_for User.new, url: invitation_path(:user), html: { class: 'form-horizontal', method: :post } do |f|
+  .modal-body
+    = f.input :email, placeholder: 'john.doe@acme.com'
+    /= f.input :role
+  .modal-footer
+    = f.button :submit, "Invite!", class: 'btn btn-primary'

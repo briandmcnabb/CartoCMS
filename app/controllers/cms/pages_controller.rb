@@ -3,17 +3,10 @@ class Cms::PagesController < Cms::ResourceController
   include Mercury::ParamsMapper
   respond_to :json
 
-  def create
-    create!{ edit_resource_path }
-  end
-
   def update
     @page = Page.find(params[:id])
     normalize_params_hash(@page) if mercury_update?
-    #if mercury_update?
-    #  map_virtual_content_fields_to(@page.body)
-    #end
-    update!
+    update! { edit_resource_path }
   end
 
 

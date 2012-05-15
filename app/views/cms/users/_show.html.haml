@@ -1,0 +1,21 @@
+#resets.clearfix
+  #password_reset.span6.offset1
+    %h3 Password Reset
+    %ul
+      %li
+        %strong.label RESET PASSWORD SENT AT
+        %p= resource.reset_password_sent_at || "Not Specified"
+      %li
+        %strong.label RESET PASSWORD TOKEN
+        %p= resource.reset_password_token || "Not Specified"
+    = link_to 'RESEND TOKEN', '#', class: 'btn pull-right'
+  #failed_attempts.span5.offset2
+    %h3= "Failed Attempts (#{resource.failed_attempts})"
+    %ul
+      %li
+        %strong.label LOCKED AT
+        %p= resource.locked_at || "Not Specified"
+      %li
+        %strong.label UNLOCK TOKEN
+        %p= resource.unlock_token || "Not Specified"
+    = link_to 'RESEND TOKEN', '#', class: 'btn pull-right'

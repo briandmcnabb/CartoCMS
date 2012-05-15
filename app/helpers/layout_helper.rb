@@ -1,5 +1,11 @@
 module LayoutHelper
 
+  # Index Partial Selector
+  def index_partial
+    position ? 'index-list' : "index-table"
+  end
+
+
   # Nested Layouts Helper
   def parent_layout(layout)
     render :template => "layouts/#{layout}"
@@ -20,25 +26,6 @@ module LayoutHelper
   def stylesheet(*args)
     content_for(:stylesheet) { stylesheet_link_tag(*args) }
   end
-
-
-  # Title
-  def title(site_name, options={})
-    action  = options[:action]  || dynamic_title
-    divider = options[:divider] || '::' if action
-    [site_name, divider, action].join(' ')
-  end
-
-
-
-  private
-
-  def dynamic_title
-    case controller.action_name
-    when 'index' then "#{resource_class.to_s.pluralize}"
-    when 'show'  then "#{resource_class} #{resource.id}"
-    when 'new'   then "#{controller.action_name.capitalize} #{resource_class}"
-    when 'edit'  then "#{controller.action_name.capitalize} #{resource_class} #{resource.id}"
-    end
-  end
 end
+
+

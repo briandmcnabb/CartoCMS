@@ -6,6 +6,7 @@
 //= require bootstrap
 //= require jquery.collapse
 //= require jquery.file-upload
+//= require jquery.chosen
 
 //= require CartoCMS/resources
 //= require CartoCMS/assets

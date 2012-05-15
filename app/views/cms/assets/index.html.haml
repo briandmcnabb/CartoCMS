@@ -1,3 +1,1 @@
-#content
-  .row
-    .well.span10.offset3= render 'uploader'
+#index.row= render partial: 'uploader', attributes: index_attributes(collection), layout: 'panel'

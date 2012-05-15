@@ -1,0 +1,22 @@
+.panel.well.span14.offset1
+  %header.clearfix{ class: "#{params[:controller].split('/')[1]} #{params[:action]}"}
+    = render "header-#{params[:action]}"
+    %ul.resource_nav
+      - unless params[:action] == 'index'
+        %li
+          = link_to collection_path do
+            %i.button-back
+      - if params[:action] == 'edit' && params[:controller] == 'cms/pages'
+        %li
+          = link_to mercury_edit_url do
+            %i.button-edit-in-page
+
+  %hr
+
+  #content
+    = yield
+
+    - if params[:action] == 'edit' && resource.respond_to?(:slide)
+      %hr
+      =link_to_modal 'Add to Slider', '#', class: 'btn'
+      = render partial: 'cms/slides/form-modal', layout: 'layouts/modal'

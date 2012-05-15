@@ -1,0 +1,35 @@
+.icon-cog-big {
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  vertical-align: text-top;
+  background-image: image-url("CartoCMS/icon-cog-big.png");
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+
+  @include ie7-restore-right-whitespace();
+}
+
+.button-back {
+  display: inline-block;
+  width: 35px;
+  height: 44px;
+  vertical-align: text-top;
+  background-image: image-url("CartoCMS/button-back.png");
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+
+  @include ie7-restore-right-whitespace();
+}
+
+.button-edit-in-page {
+  display: inline-block;
+  width: 35px;
+  height: 129px;
+  vertical-align: text-top;
+  background-image: image-url("CartoCMS/button-edit-in-page.png");
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+
+  @include ie7-restore-right-whitespace();
+}

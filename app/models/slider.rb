@@ -1,12 +1,14 @@
-class Slider
+class Slider < ActiveRecord::Base
+  #extend FriendlyId
+  #friendly_id :name, use: [:slugged, :history]
+
   acts_as_list
 
+  # Accessible Attributes
+  attr_accessible :name, :description
 
   # Association
   has_many :slides
-
-  # Nested Models
-  accepts_nested_attributes_for :slides, reject_if: :all_blank, allow_destroy: true
 
   # Validation
   validates :position, presence: true

@@ -1,0 +1,9 @@
+.row
+  .span6.offset5
+    #logo= image_tag 'CartoCMS/logo.png'
+    = simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put } do |f|
+      = f.hidden_field :invitation_token
+      = f.input :password,              input_html: { class: 'span6'}, required: false, label: false, placeholder: 'password'
+      = f.input :password_confirmation, input_html: { class: 'span6'}, required: false, label: false, placeholder: 'password confirmation'
+      .clearfix
+        = f.button :submit, "Set Password", class: 'pull-right'
