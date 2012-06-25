@@ -1,6 +1,6 @@
-class Page < ActiveRecord::Base
-  #extend FriendlyId
-  #friendly_id :relative_path, use: [:slugged, :history]
+ class Page < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :relative_path, use: [:slugged, :history]
 
   # Constants
   LOCALES  = I18n.available_locales.map(&:to_s)
@@ -9,8 +9,8 @@ class Page < ActiveRecord::Base
 
 
   # Accessors
-  attr_accessible :body, :format, :handler, :locale, :partial, :path, :publish_date, :publish_time, :title
-  attr_writer :publish_date, :publish_time
+  attr_accessible :body, :format, :handler, :locale, :name, :partial, :path, :publish_date, :publish_time
+  attr_writer   :publish_date, :publish_time
 
   def publish_date
     @publish_date ||= published_at.try(:strftime, '%m/%d/%y')
@@ -27,26 +27,25 @@ class Page < ActiveRecord::Base
 
 
   # Validations
-  validates :title,   presence: true
-  validates :body,    presence: true, unless: "published_at.nil?"
+  validates :name,    presence: true
   validates :path,    presence: true
   validates :locale,  inclusion: LOCALES
   validates :format,  inclusion: FORMATS
   validates :handler, inclusion: HANDLERS
 
 
-  # Associations
-  has_many :assets, as: :attachable
-  has_many :images, as: :attachable
+  ## Associations
+  #has_many :assets, as: :attachable
+  #has_many :images, as: :attachable
 
   # Callbacks
-  before_validation :set_default_filepath, on: :create
   before_update :set_published_at
   after_save :clear_resolver_cache
 
 
   # Scopes
-  scope :published, lambda { where("published_at < ?", Time.now.to_date ) }
+  scope :published, -> { where("published_at < ?", Time.now) }
+  scope :visible,   ->(user_signed_in) { user_signed_in ? self.scoped : self.published }
 
 
 
@@ -66,12 +65,13 @@ class Page < ActiveRecord::Base
   end
 
   def relative_path
+    set_default_filepath if path.nil?
     path.split('/').last
   end
 
   def set_default_filepath
     self.partial = false
-    self.path    = "pages/#{title.parameterize}"
+    self.path    = "pages/#{name.parameterize}"
     self.locale  = "#{I18n.default_locale}"
     self.format  = "html"
     self.handler = "erb"
@@ -89,6 +89,16 @@ class Page < ActiveRecord::Base
     require "singleton"
     include Singleton
 
+    # User Sign-in Status
+    attr :user_sign_in_status, true
+
+    def self.update_user_sign_in_status(status)
+      instance.user_sign_in_status = status
+      instance
+    end
+
+
+    # Find templates stored in the db
     def find_templates(name, prefix, partial, details)
       conditions = {
         path:    normalize_path(name, prefix),
@@ -98,7 +108,7 @@ class Page < ActiveRecord::Base
         partial: partial || false
       }
 
-      ::Page.published.where(conditions).map do |record|
+      ::Page.visible(user_sign_in_status).where(conditions).map do |record|
         initialize_template(record)
       end
     end

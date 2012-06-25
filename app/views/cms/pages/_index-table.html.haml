@@ -12,7 +12,7 @@
   %thead
     %tr
       %th{ scope: 'col' }
-      %th{ scope: 'col' } Title
+      %th{ scope: 'col' } Name
       %th{ scope: 'col' } Virtual Filepath
       %th{ scope: 'col' } Status
       %th{ scope: 'col' }
@@ -21,11 +21,11 @@
     - @pages.each do |page|
       %tr[page]
         %td
-        %td= page.title
+        %td= page.name
         %td= page.virtual_filepath
         %td= page.published_at && page.published_at < Time.now ? "Published" : "Draft"
-        %td
-          .action_links.clearfix
+        %td.action_links
+          .clearfix
             = link_to 'edit',    edit_cms_page_path(page), class: 'icon-pencil ir'
             = link_to 'destroy', cms_page_path(page),      class: 'icon-trash  ir', remote: true, method: :delete, confirm: "Are you sure?"
 

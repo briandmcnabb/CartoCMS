@@ -2,4 +2,4 @@
   - attributes.each do |attr|
     = attr.end_with?('_id') ? f.association(assc(attr, input_html: { class: 'span8'})) : f.input(attr, input_html: { class: 'span8'})
   .form-actions.row
-    .span8= f.button :submit, "submit", class: 'btn btn-primary pull-right'
+    .span8= f.button :submit, "submit", class: 'btn-primary pull-right'

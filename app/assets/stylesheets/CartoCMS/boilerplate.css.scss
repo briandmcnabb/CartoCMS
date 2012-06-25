@@ -1,7 +1,11 @@
+@import "bootstrap/mixins";
+@import "CartoCMS/mixins";
+@include font-face('arvil_sans');
+
 ////////////////////////////////////////////////////////////////////////////////
 // Sticky Footer
 ////////////////////////////////////////////////////////////////////////////////
-  $stickyFooterHeight: 40px !default;
+$stickyFooterHeight: 40px !default;
 html, body, body>section {
   height: 100%;
 }

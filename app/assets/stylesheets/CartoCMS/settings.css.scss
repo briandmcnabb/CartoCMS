@@ -1,0 +1,20 @@
+.nav-tabs.nav-stacked {
+  >li {
+    >a {
+      border: none;
+      border-bottom: 1px solid #ddd;
+      font-weight: bold;
+    }
+    &.active { font-weight: bold; }
+    &:first-child, &:last-child {
+      >a { @include border-radius(0px) }
+    }
+    &:last-child  {
+      >a { border:none; }
+    }
+  }
+}
+
+header#settings {
+  h2 { background: hsla(0, 0%, 0%, 0.05); border-bottom: 1px solid #ddd; padding-right: 50px; text-align: right; }
+}

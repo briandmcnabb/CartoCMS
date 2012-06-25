@@ -18,8 +18,8 @@
         %td
         - attributes.map do |attr|
           = content_tag :td, td(resource, attr), class: column_type(attr)
-        %td
-          .action_links.clearfix
+        %td.action_links
+          .clearfix
             - if _routes_context.respond_to? :show
               = link_to 'show',      resource_path(resource), class: 'icon-info-sign ir'
             - if _routes_context.respond_to? :edit

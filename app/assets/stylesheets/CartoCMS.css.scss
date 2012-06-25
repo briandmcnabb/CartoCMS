@@ -16,8 +16,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Components & Resources
 ////////////////////////////////////////////////////////////////////////////////
-@import 'CartoCMS/components';
-@import 'CartoCMS/resources', 'CartoCMS/assets', 'CartoCMS/images', 'CartoCMS/pages', 'CartoCMS/users';
+@import 'jcrop', 'nivo-slider';
+@import 'CartoCMS/component_config';
+@import 'CartoCMS/resources', 'CartoCMS/assets', 'CartoCMS/connections', 'CartoCMS/images', 'CartoCMS/pages', 'CartoCMS/settings', 'CartoCMS/users';
 
 
 

@@ -1,3 +1,4 @@
 class Cms::UsersController < Cms::SortableResourceController
-  actions :all, except: [:edit, :update]
+  load_and_authorize_resource
+  actions :all, except: [:new, :edit]
 end

@@ -1,8 +1,13 @@
 apps:
   # production: heroku-app-name
 development: &defaults
-  # example_variable: example_value
+  #geonames_username: [username]
+  #mc_api_key: [key]
 test:
   # <<: *defaults
 production:
-  # example_variable: example_value
+  #rackspace_username: [username]
+  #rackspace_api_key: [key]
+  #rackspace_directory: [directory]
+  #rackspace_cdn_host: [cdn_host]
+  #mc_api_key: [key]

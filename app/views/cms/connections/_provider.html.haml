@@ -1,0 +1,4 @@
+%li
+  = link_to "/auth/#{provider}", class: "clearfix unconnected connection" do
+    .pull-left= provider_image provider
+    .pull-left= content_tag :p, "connect to #{provider}"

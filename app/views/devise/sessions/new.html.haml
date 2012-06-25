@@ -1,13 +1,15 @@
 .row
-  .span6.offset5
+  .offset5
     #logo= image_tag 'CartoCMS/logo.png'
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      = f.input :email,    input_html: { class: 'span6'}, required: false, label: false, placeholder: 'john.doe@acme.com'
-      = f.input :password, input_html: { class: 'span6'}, required: false, label: false, placeholder: 'password'
-      .clearfix
-        - if devise_mapping.rememberable?
-          = f.input :remember_me, :label => false, wrapper_html: { class: 'pull-left boolean' } do
-            = f.input_field :remember_me, as: :boolean, boolean_style: :inline, class: 'pull-left'
-            = f.label :remember_me
-        = f.button :submit, 'Login', class: 'pull-right'
-    = render 'links'
+      .span
+        = f.input :email,    required: false, label: false, placeholder: 'john.doe@acme.com', input_html: { class: 'span6', validate: { uniqueness: false }}
+        = f.input :password, required: false, label: false, placeholder: 'password',          input_html: { class: 'span6', validate: { confirmation: false }}
+      .span6
+        .clearfix
+          - if devise_mapping.rememberable?
+            = f.input :remember_me, :label => false, wrapper_html: { class: 'pull-left boolean' } do
+              = f.input_field :remember_me, as: :boolean, boolean_style: :inline, class: 'pull-left'
+              = f.label :remember_me
+          = f.button :submit, 'Login', class: 'pull-right'
+        = render 'links'

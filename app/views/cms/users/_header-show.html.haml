@@ -4,11 +4,13 @@
     = resource.sign_in_count
     %span= pluralize(resource.sign_in_count, 'sign-in').split(' ')[1].upcase
   %ul#session.pull-right
-    %li
-      %span.name Last Session
-      %span.date= resource.last_sign_in_at.strftime('%_m %b %H:%M')
-      %span.ip= resource.last_sign_in_ip
-    %li
-      %span.name Current Session
-      %span.date= resource.current_sign_in_at.strftime('%_m %b %H:%M')
-      %span.ip= resource.current_sign_in_ip
+    - if resource.last_sign_in_at
+      %li
+        %span.name Last Session
+        %span.date= resource.last_sign_in_at.strftime('%_m %b %I:%M%P')
+        %span.ip= resource.last_sign_in_ip
+    - if resource.current_sign_in_at
+      %li
+        %span.name Current Session
+        %span.date= resource.current_sign_in_at.strftime('%_m %b %I:%M%P')
+        %span.ip= resource.current_sign_in_ip

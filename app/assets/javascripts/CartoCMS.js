@@ -1,13 +1,19 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require remote_history
 //= require strftime
 //= require bootstrap
 //= require jquery.collapse
 //= require jquery.file-upload
 //= require jquery.chosen
+//= require jquery.nivo-slider
+//= require jquery.jcrop
+//= require client_side_validations
 
-//= require CartoCMS/resources
+//= require CartoCMS/application
 //= require CartoCMS/assets
+//= require CartoCMS/image_crop
 //= require CartoCMS/pages
+//= require CartoCMS/resources
+//= require CartoCMS/slider
+//= require CartoCMS/users

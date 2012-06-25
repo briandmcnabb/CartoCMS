@@ -25,12 +25,18 @@ class CreateUsers < ActiveRecord::Migration
       # Rememberable
       t.datetime :remember_created_at
 
+      # Role
+      t.boolean  :admin
+
       # Trackable
       t.integer  :sign_in_count, default: 0
       t.datetime :current_sign_in_at
       t.datetime :last_sign_in_at
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
+
+      # Timezone
+      t.string   :time_zone
 
       # Slug
       t.string :slug, null: false

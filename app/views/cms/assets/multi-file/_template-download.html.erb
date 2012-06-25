@@ -1,0 +1,43 @@
+<script id="template-download" type="text/html">
+  {% for (var i=0, files=o.files, l=files.length, file=files[0]; i<l; file=files[++i]) { %}
+    <li class="template-download fade">
+      {% if (file.error) { %}
+        <div class="preview pull-left"></div>
+        <div class="center-panel pull-left">
+          <div class="top">
+            <p class="name">{%=file.name%}</p>
+            <p class="size">{%=o.formatFileSize(file.size)%}</p>
+          </div>
+          <div class="bottom">
+            <div class="error"><span class="label label-important">Error</span> {%=fileUploadErrors[file.error] || file.error%}</div>
+          </div>
+        </div>
+      {% } else { %}
+        <div class="preview pull-left vline-center">
+          {% if (file.thumbnail_url) { %}
+            <div class="thumb vline-wrap">
+              <img src="{%=file.thumbnail_url%}">
+            </div>
+            <div class="hover_links">
+              <a href="{%=file.edit_path%}" rel="nofolow"><i class="icon-pencil"></i></a>
+            </div>
+          {% } %}
+        </div>
+        <div class="center-panel pull-left">
+          <div class="top">
+            <p class="name">
+              <a href="{%=file.url%}" title="{%=file.name%}" rel="{%=file.thumbnail_url&&'gallery'%}">{%=file.name%}</a>
+            </p>
+            <p class="size">{%=o.formatFileSize(file.size)%}</p>
+          </div>
+          <div class="bottom">
+            <%= clippy("{%=file.url%}") %>
+          </div>
+        </div>
+      {% } %}
+      <div class="delete pull-right">
+          <button data-type="delete" data-url="{%=file.delete_path%}" data-confirm-message="Are you sure?"><i class="icon-trash"></i></button>
+      </div>
+    </li>
+  {% } %}
+</script>

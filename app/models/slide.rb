@@ -1,6 +1,6 @@
 class Slide < ActiveRecord::Base
-  #extend FriendlyId
-  #friendly_id :name, use: [:slugged, :history]
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :history]
 
   acts_as_list
 
@@ -8,12 +8,11 @@ class Slide < ActiveRecord::Base
   attr_accessible :name, :description, :slider_id, :slideable_id, :slideable_type
 
   # Association
-  has_one    :image
+  has_one    :image, as: :attachable
   belongs_to :slider
   belongs_to :slideable, polymorphic: true
 
   # Validation
-  validates :position,  presence: true
   validates :name,      presence: true
   validates :slider_id, presence: true
 end

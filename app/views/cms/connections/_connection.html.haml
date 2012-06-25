@@ -1,0 +1,6 @@
+%li[connection]
+  .pull-left= provider_image connection.provider
+  .pull-left= content_tag :p, connection.username
+  .pull-right
+    = link_to [:cms, @connectable.class.to_s.singularize.downcase, connection], method: :delete, confirm: 'Are you sure you want to remove this connection?', class: 'remove' do
+      .close{ data: { dismiss: 'modal' } } &times;

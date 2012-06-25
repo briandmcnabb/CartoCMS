@@ -2,11 +2,11 @@
   .close{ data: { dismiss: 'modal' } } &times;
   = content_tag :h3, 'Create ' + resource_class.to_s.titleize
 
-= simple_form_for [:cms, resource.slide.build], html: { class: 'form-horizontal' } do |f|
-    = f.input :slideable_id,   as: :hidden
-    = f.input :slideable_type, as: :hidden
+= simple_form_for [:cms, resource.build_slide], html: { class: 'form-horizontal' } do |f|
+  = f.input :slideable_id,   as: :hidden
+  = f.input :slideable_type, as: :hidden
   .modal-body
-    = f.input :name, autofocus: true
-    = f.input :slider_id, label: 'Slider', collection: Slider.order('position').map { |slider| [slider.name, slider.id] }
+    = f.input :name, autofocus: true, input_html: {value: resource.name}
+    = f.input :slider_id, label: 'Slider', include_blank: false, collection: Slider.order('position').map { |slider| [slider.name, slider.id] }
   .modal-footer
-    = f.button :submit, 'Create Slide', class: 'btn btn-primary'
+    = f.button :submit, 'Create Slide', class: 'btn-primary'

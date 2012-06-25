@@ -60,6 +60,35 @@ $inputBGColor:            $white;
 $selectBGColor:           $white;
 $textareaBGColor:         $white;
 
+$inputPadding-Y:          4px !default;
+$selectPadding-Y:         4px !default;
+$textareaPadding-Y:       4px !default;
+$inputPadding-X:          4px !default;
+$selectPadding-X:         4px !default;
+$textareaPadding-X:       4px !default;
+$inputPadding:            $inputPadding-Y $inputPadding-X !default;
+$selectPadding:           $selectPadding-Y $selectPadding-X !default;
+$textareaPadding:         $textareaPadding-Y $textareaPadding-X !default;
+
+$inputBorderWidth:        1px !default;
+$selectBorderWidth:       1px !default;
+$textareaBorderWidth:     1px !default;
+$inputBorderStyle:        solid !default;
+$selectBorderStyle:       solid !default;
+$textareaBorderStyle:     solid !default;
+$inputBorderColor:        #ccc !default;
+$selectBorderColor:       #ccc !default;
+$textareaBorderColor:     #ccc !default;
+$inputBorder:             $inputBorderWidth $inputBorderStyle $inputBorderColor !default;
+$selectBorder:            $selectBorderWidth $selectBorderStyle $selectBorderColor !default;
+$textareaBorder:          $textareaBorderWidth $textareaBorderStyle $textareaBorderColor !default;
+
+$inputBorderRadius:       3px !default;
+$selectBorderRadius:      3px !default;
+$textareaBorderRadius:    3px !default;
+
+$formFieldBottomMargin:   9px !default;
+
 $labelFontSize:           $baseFontSize !default;
 $inputFontSize:           $baseFontSize !default;
 $buttonFontSize:          $baseFontSize !default;
@@ -95,35 +124,6 @@ $selectTextColor:         $gray !default;
 $textareaTextColor:       $gray !default;
 $labelTextColor:          $textColor !default;
 
-$inputPadding-Y:          4px !default;
-$selectPadding-Y:         4px !default;
-$textareaPadding-Y:       4px !default;
-$inputPadding-X:          4px !default;
-$selectPadding-X:         4px !default;
-$textareaPadding-X:       4px !default;
-$inputPadding:            $inputPadding-Y $inputPadding-X !default;
-$selectPadding:           $selectPadding-Y $selectPadding-X !default;
-$textareaPadding:         $textareaPadding-Y $textareaPadding-X !default;
-
-$inputBorderWidth:        1px !default;
-$selectBorderWidth:       1px !default;
-$textareaBorderWidth:     1px !default;
-$inputBorderStyle:        solid !default;
-$selectBorderStyle:       solid !default;
-$textareaBorderStyle:     solid !default;
-$inputBorderColor:        #ccc !default;
-$selectBorderColor:       #ccc !default;
-$textareaBorderColor:     #ccc !default;
-$inputBorder:             $inputBorderWidth $inputBorderStyle $inputBorderColor !default;
-$selectBorder:            $selectBorderWidth $selectBorderStyle $selectBorderColor !default;
-$textareaBorder:          $textareaBorderWidth $textareaBorderStyle $textareaBorderColor !default;
-
-$inputBorderRadius:       3px !default;
-$selectBorderRadius:      3px !default;
-$textareaBorderRadius:    3px !default;
-
-$formFieldBottomMargin:   9px !default;
-
 $placeholderText:       	$grayLight !default;
 
 
@@ -140,7 +140,7 @@ $defaultButtonPadding:       4px 10px 4px !default;
 $primaryButtonBackground:    hsla(195, 58.3673%, 48.0392%, 1.0000) !default;
 $primaryButtonBorder:        inherit !default;
 
-$inverseButtonBackground:    $brownDark !default;
+$inverseButtonBackground:    $black !default;
 $inverseButtonBorder:        inherit !default;
 
 
@@ -189,6 +189,9 @@ $shadows:    		true !default; 	// true or false
 
 
 ///// States /////
+$inputFocusBorder:        rgba(82,168,236,.8) !default;
+$inputFocusShaddow:       inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6) !default;
+
 $warningText:             #c09853 !default;
 $warningBackground:       #fcf8e3 !default;
 $warningBorder:           darken(adjust-hue($warningBackground, -10), 3%) !default;

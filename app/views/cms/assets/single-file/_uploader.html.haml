@@ -1,0 +1,11 @@
+= simple_form_for [:cms, parent, Image.new].compact, html: { id: "single-file_upload", multipart: true } do |f|
+  .fileupload-buttonbar.zeroHeight
+    .invisible
+      = f.file_field :asset_path, multiple: true
+
+  .files
+
+
+  = render 'cms/assets/single-file/template-errors'
+  = render 'cms/assets/single-file/template-upload'
+  = render 'cms/assets/single-file/template-download'

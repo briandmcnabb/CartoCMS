@@ -14,12 +14,6 @@ jQuery ($)->
   window.ace_input = new AceInput() if $('textarea.ace').length
 
 
-  # Update Filepath
-  $('input#update_filepath').on 'click', (event)->
-    event.preventDefault()
-    $.rails.handleRemote $('form.remote_submittable')
-
-
   # FilepathWriter
   $(document).on 'ajaxSuccess ready', ->
     if $('#virtual-filepath').length

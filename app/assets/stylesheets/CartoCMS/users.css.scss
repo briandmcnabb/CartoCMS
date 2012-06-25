@@ -32,6 +32,8 @@ header.users.show {
   }
 }
 
+#resets { padding-bottom: 10px; }
+
 #password_reset, #failed_attempts {
   padding: 25px 0 5px;
   ul { list-style: none; margin: 0;
@@ -44,4 +46,8 @@ header.users.show {
 
 #password_reset { border-right: 1px solid #e5e5e5;
   .btn { margin-right: 40px; }
+}
+
+#admin {
+  label { padding-left: 25px; }
 }

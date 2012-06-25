@@ -1,12 +1,12 @@
 class CreateSlides < ActiveRecord::Migration
   def change
     create_table :slides do |t|
-      t.integer :position
+      t.integer :position,    null: false
+      t.string  :slug,        null: false
+      t.string  :name,        null: false
+      t.text    :description, null: false, default: ''
       t.references :slider
       t.references :slideable, polymorphic: true
-      t.string :name
-      t.text :description
-      t.string :slug, null: false
 
       t.timestamps
     end

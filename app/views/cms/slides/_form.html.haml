@@ -1,0 +1,23 @@
+- panel_back_path [:edit, :cms, resource.slider]
+
+.row
+  .span5.vline-center
+    #dropzone.well.fade.vline-wrap{class: ('empty' unless resource.image)}
+      = render partial: 'cms/assets/single-file/uploader',  locals: { parent: resource }
+      - if resource.image
+        %figure.template-download
+          .preview
+            = link_to edit_cms_asset_path(resource.image), title: resource.image.asset_path do
+              = image_tag resource.image.asset_path.url(:medium)
+          .hover_links
+            = link_to [:edit, :cms, resource.image] do
+              %i.icon-pencil
+            = link_to [:cms, resource.image], remote: true, method: :delete, confirm: "Are you sure?" do
+              %i.icon-trash
+
+  .pull-right
+    = simple_form_for [:cms, resource], remote: true do |f|
+      = f.input :name, input_html: { class: 'span8'}
+      = f.input :description, input_html: { class: 'span8'}
+      .form-actions.row
+        .span8= f.button :submit, "save", class: 'btn-primary pull-right'

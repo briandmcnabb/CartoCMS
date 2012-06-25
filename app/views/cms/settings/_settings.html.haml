@@ -1,0 +1,9 @@
+- content_for :panel do
+  %nav.span4
+    %ul.nav.nav-tabs.nav-stacked
+      = settings_navigation
+  %section.span8.offset1
+    %header#settings
+    = yield
+
+= render template: 'cms/resource/_panel'

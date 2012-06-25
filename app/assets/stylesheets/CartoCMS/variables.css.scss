@@ -64,7 +64,7 @@ $rowPadding:						13px;
 $stripePattern:					'odd';
 $stripeColor:						hsla(0, 100%, 100%, 0.25);
 
-$borderHorizontal:			3px solid hsla(0, 0.0000%, 87.747%, 1.0000);
+$borderHorizontal:			1px solid hsla(0, 0.0000%, 87.747%, 1.0000);
 
 
 
@@ -183,17 +183,20 @@ $shadows:   		false;
 
 
 ///// States /////
+$inputFocusBorder:        rgba(82,168,236,.8);
+$inputFocusShaddow:       inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+
 $warningText:             #c09853;
 $warningBackground:       #fcf8e3;
-$warningBorder:           darken(adjust-hue($warningBackground, -10), 3%);
+$warningBorder:           $inputBorderColor;
 
 $errorText:               #b94a48;
 $errorBackground:         $red;
-$errorBorder:             darken(adjust-hue($errorBackground, -10), 3%);
+$errorBorder:             $inputBorderColor;
 
 $successText:             #468847;
 $successBackground:       $green;
-$successBorder:           darken(adjust-hue($successBackground, -10), 5%);
+$successBorder:           $inputBorderColor;
 
 $infoText:                $textColor;
 $infoBackground:          lighten($blue, 45%);

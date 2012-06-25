@@ -1,22 +1,23 @@
 .panel.well.span14.offset1
   %header.clearfix{ class: "#{params[:controller].split('/')[1]} #{params[:action]}"}
-    = render "header-#{params[:action]}"
+    = render "header-#{panel_header_type(params[:action])}"
     %ul.resource_nav
       - unless params[:action] == 'index'
         %li
-          = link_to collection_path do
+          = link_to panel_back_path do
             %i.button-back
-      - if params[:action] == 'edit' && params[:controller] == 'cms/pages'
-        %li
-          = link_to mercury_edit_url do
-            %i.button-edit-in-page
+      = content_for :custom_panel_buttons
+
 
   %hr
 
-  #content
-    = yield
+  #content{class: params[:action]}
+    = content_for?(:panel) ? yield(:panel) : yield
 
     - if params[:action] == 'edit' && resource.respond_to?(:slide)
       %hr
-      =link_to_modal 'Add to Slider', '#', class: 'btn'
-      = render partial: 'cms/slides/form-modal', layout: 'layouts/modal'
+      -if resource.slide.nil?
+        =link_to_modal 'Add to Slider', '#', class: 'btn'
+        = render partial: 'cms/slides/form-modal', layout: 'layouts/modal'
+      -else
+        = render partial: 'cms/resource/index-list', locals: { collection: Array(resource.slide) }

@@ -1,4 +1,14 @@
 module LayoutHelper
+  # Flash Messages
+  def flash_messages
+    out = ''
+    flash.each do |name, msg|
+      out << content_tag(:aside, msg, class: 'flash_message', id: "flash_#{name}")
+    end
+    flash.clear
+    out.html_safe
+  end
+
 
   # Index Partial Selector
   def index_partial
@@ -8,7 +18,7 @@ module LayoutHelper
 
   # Nested Layouts Helper
   def parent_layout(layout)
-    render :template => "layouts/#{layout}"
+    render template: "layouts/#{layout}"
   end
 
 

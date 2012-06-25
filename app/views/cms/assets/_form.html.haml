@@ -1,0 +1,9 @@
+- panel_back_path session[:return_to]
+
+%center= jcrop resource.asset_path, box_width: 825, aspect_ratio: (resource.attachable.slider.aspect_ratio if resource.attachable)
+
+= simple_form_for [:cms, resource] do |f|
+  - %w[crop_x crop_y crop_w crop_h].each do |attr|
+    = f.input attr, as: :hidden
+  %hr
+  = f.button :submit, "Crop", class: 'btn-primary pull-right'

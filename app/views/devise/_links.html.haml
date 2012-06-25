@@ -3,8 +3,8 @@
     - resource_class.omniauth_providers.each do |provider|
       = link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
 
-  - sign_in = link_to("Sign in", new_session_path(resource_name)) if controller_name != 'sessions'
-  - password = link_to("Forgot Password?", new_password_path(resource_name)) if devise_mapping.recoverable? && controller_name != 'passwords'
-  - confirmation = link_to("Confirmation Instructions?", new_confirmation_path(resource_name)) if devise_mapping.confirmable? && controller_name != 'confirmations'
-  - unlock = link_to("Locked Out?", new_unlock_path(resource_name)) if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
+  - sign_in = link_to("Sign in", new_session_path(resource_name)) if controller_name.downcase != 'sessions'
+  - password = link_to("Forgot Password?", new_password_path(resource_name)) if devise_mapping.recoverable? && controller_name.downcase != 'passwords'
+  - confirmation = link_to("Confirmation Instructions?", new_confirmation_path(resource_name)) if devise_mapping.confirmable? && controller_name.downcase != 'confirmations'
+  - unlock = link_to("Locked Out?", new_unlock_path(resource_name)) if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name.downcase != 'unlocks'
   = [sign_in, password, confirmation, unlock].compact.join(" | ").html_safe

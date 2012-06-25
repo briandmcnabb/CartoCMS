@@ -33,3 +33,15 @@
 
   @include ie7-restore-right-whitespace();
 }
+
+.button-assets {
+  display: inline-block;
+  width: 35px;
+  height: 82px;
+  vertical-align: text-top;
+  background-image: image-url("CartoCMS/button-assets.png");
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+
+  @include ie7-restore-right-whitespace();
+}

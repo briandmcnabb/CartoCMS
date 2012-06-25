@@ -1,0 +1,9 @@
+- content_for(:extra_scripts) { javascript_include_tag("carto_simple_ace_input") }
+
+.row
+  = simple_form_for [:cms, resource], html: { class: 'span14' } do |f|
+    = f.input  :name,        input_html: { class: 'span14'}
+    = f.input  :description, input_html: { class: 'span14'}
+    %hr
+    = f.input  :body,        input_html: { class: 'span14'}, label: false, as: :ace, ace: { mode: 'html' }
+    = f.button :submit, "Save", class: 'btn-primary pull-right'

@@ -1,14 +1,226 @@
 ////////////////////////////////////////////////////////////////////////////////
-// Variables
+// COLORS
 ////////////////////////////////////////////////////////////////////////////////
-	// add variables here //
 
-///// Base Styles /////
-// $text_color: [override default value];
-// $text_selection_color: [override default value];
-// $text_selection_background: [override default value];
-// $invalid_input: [override default value];
+$black:                 #000;
+$grayDarker:            #222;
+$grayDark:              #333;
+$gray:                  #555;
+$grayLight:             #999;
+$grayLighter:           #eee;
+$white:                 #fff;
+
+$blue:                  #049cdb;
+$blueDark:              #0064cd;
+$green:                 #46a546;
+$red:                   #9d261d;
+$yellow:                #ffc40d;
+$orange:                #f89406;
+$pink:                  #c3325f;
+$purple:                #7a43b6;
 
 
 
+
+////////////////////////////////////////////////////////////////////////////////
+// BASE
+////////////////////////////////////////////////////////////////////////////////
+
+///// TYPOGRAPHY /////
+$baseFontSize:            13px;
+$baseFontFamily:          "Helvetica Neue", Helvetica, Arial, sans-serif;
+$lineHeightFactor:        1.4;
+$baseLineHeight:          ($baseFontSize * $lineHeightFactor);
+
+$textColor:               $grayDark;
+$headlineColor:           $grayDark;
+$linkColor:               #08c;
+$linkColorHover:          darken($linkColor, 15%);
+
+
+///// CODE /////
+$codeColor:               $grayDark;
+
+
+///// TABLES /////
+$rowPadding:              ($baseFontSize * 0.615);
+
+$stripePattern:           'odd';
+$stripeColor:             #f9f9f9;
+
+$borderHorizontal:        1px solid #ddd;
+
+
+///// FORMS /////
+$formFieldBottomMargin:   9px;
+$labelBottomMargin:       5px;
+$placeholderText:         $grayLight;
+
+$inputBGColor:            $white;
+$selectBGColor:           $white;
+$textareaBGColor:         $white;
+
+$labelFontSize:           $baseFontSize;
+$inputFontSize:           $baseFontSize;
+$buttonFontSize:          $baseFontSize;
+$selectFontSize:          $baseFontSize;
+$textareaFontSize:        $baseFontSize;
+
+$labelFontFamily:         $baseFontFamily;
+$inputFontFamily:         $baseFontFamily;
+$buttonFontFamily:        $baseFontFamily;
+$selectFontFamily:        $baseFontFamily;
+$textareaFontFamily:      $baseFontFamily;
+
+$labelFontWeight:         normal;
+$inputFontWeight:         normal;
+$buttonFontWeight:        normal;
+$selectFontWeight:        normal;
+$textareaFontWeight:      normal;
+
+$labelLineHeight:         $labelFontSize * $lineHeightFactor;
+$inputLineHeight:         $inputFontSize * $lineHeightFactor;
+$buttonLineHeight:        $buttonFontSize;
+$selectLineHeight:        ($selectFontSize * $lineHeightFactor) + ($selectPadding-Y * 2) + 4;
+$textareaLineHeight:      $textareaFontSize * $lineHeightFactor;
+
+$labelFont:              normal normal $labelFontWeight    #{$labelFontSize}/#{$labelLineHeight}       $labelFontFamily   ;
+$inputFont:              normal normal $inputFontWeight    #{$inputFontSize}/#{$inputLineHeight}       $inputFontFamily   ;
+$buttonFont:             normal normal $buttonFontWeight   #{$buttonFontSize}/#{$buttonLineHeight}     $buttonFontFamily  ;
+$selectFont:             normal normal $selectFontWeight   #{$selectFontSize}/#{$selectLineHeight}     $selectFontFamily  ;
+$textareaFont:           normal normal $textareaFontWeight #{$textareaFontSize}/#{$textareaLineHeight} $textareaFontFamily;
+
+$inputTextColor:          $gray;
+$selectTextColor:         $gray;
+$textareaTextColor:       $gray;
+$labelTextColor:          $textColor;
+
+$inputPadding-Y:          4px;
+$selectPadding-Y:         4px;
+$textareaPadding-Y:       4px;
+$inputPadding-X:          4px;
+$selectPadding-X:         4px;
+$textareaPadding-X:       4px;
+$inputPadding:            $inputPadding-Y $inputPadding-X;
+$selectPadding:           $selectPadding-Y $selectPadding-X;
+$textareaPadding:         $textareaPadding-Y $textareaPadding-X;
+
+$inputBorderWidth:        1px;
+$selectBorderWidth:       1px;
+$textareaBorderWidth:     1px;
+$inputBorderStyle:        solid;
+$selectBorderStyle:       solid;
+$textareaBorderStyle:     solid;
+$inputBorderColor:        #ccc;
+$selectBorderColor:       #ccc;
+$textareaBorderColor:     #ccc;
+$inputBorder:             $inputBorderWidth $inputBorderStyle $inputBorderColor;
+$selectBorder:            $selectBorderWidth $selectBorderStyle $selectBorderColor;
+$textareaBorder:          $textareaBorderWidth $textareaBorderStyle $textareaBorderColor;
+
+$inputBorderRadius:       3px;
+$selectBorderRadius:      3px;
+$textareaBorderRadius:    3px;
+
+$formFieldBottomMargin:   9px;
+
+$placeholderText:         $grayLight;
+
+
+
+///// BUTTONS /////
+$defaultButtonBackground:    $linkColor;
+$defaultButtonColor:         $textColor;
+$defaultButtonBorderWidth:   1px;
+$defaultButtonBorderStyle:   solid;
+$defaultButtonBorderColor:   #ccc;
+$defaultButtonBorder:        $defaultButtonBorderWidth $defaultButtonBorderStyle $defaultButtonBorderColor;
+$defaultButtonPadding:       4px 10px 4px;
+
+$primaryButtonBackground:    hsla(195, 58.3673%, 48.0392%, 1.0000);
+$primaryButtonBorder:        inherit;
+
+$inverseButtonBackground:    $brownDark;
+$inverseButtonBorder:        inherit;
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// COMPONENTS
+////////////////////////////////////////////////////////////////////////////////
+
+///// NAVIGATION /////
+$navbarHeight:                    40px;
+$navbarBackground:                $grayDarker;
+$navbarBackgroundHighlight:       $grayDark;
+
+$navbarVerticalPosition:          0px;
+$navbarFixedOffset:               $navbarHeight + $navbarVerticalPosition;
+
+$navbarText:                      $grayLight;
+$navbarLinkColor:                 $grayLight;
+$navbarLinkColorHover:            $white;
+
+
+///// LABELS /////
+
+
+///// THUMBNAILS /////
+
+
+///// ALERTS /////
+
+
+///// PROGRESS BARS /////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// GLOBAL
+////////////////////////////////////////////////////////////////////////////////
+
+///// FEATURES /////
+$border-radius: true;  // straight or rounded
+$gradients:     true;  // true or false
+$shadows:       true;  // true or false
+
+
+///// States /////
+$warningText:             #c09853;
+$warningBackground:       #fcf8e3;
+$warningBorder:           darken(adjust-hue($warningBackground, -10), 3%);
+
+$errorText:               #b94a48;
+$errorBackground:         #f2dede;
+$errorBorder:             darken(adjust-hue($errorBackground, -10), 3%);
+
+$successText:             #468847;
+$successBackground:       #dff0d8;
+$successBorder:           darken(adjust-hue($successBackground, -10), 5%);
+
+$infoText:                #3a87ad;
+$infoBackground:          #d9edf7;
+$infoBorder:              darken(adjust-hue($infoBackground, -10), 7%);
+
+
+///// GRID SYSTEM /////
+$gridColumns:             12;
+$gridColumnWidth:         60px;
+$gridGutterWidth:         20px;
+$gridRowWidth:            ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));
+
+$fluidGridColumnWidth:    6.382978723%;
+$fluidGridGutterWidth:    2.127659574%;
+
+
+///// Z-INDEX ///////
+$zindexDropdown:        1000;
+$zindexPopover:         1010;
+$zindexTooltip:         1020;
+$zindexFixedNavbar:     1030;
+$zindexModalBackdrop:   1040;
+$zindexModal:           1050;
 

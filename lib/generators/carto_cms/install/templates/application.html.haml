@@ -1,0 +1,17 @@
+- content_for :head do
+  %title= title "[Put Title Here]"
+  %meta{ :name => "description", :content => "[Put Site Description Here]" }/
+
+- stylesheet 'application'
+- javascript 'application'
+
+- content_for :boilerplate do
+  %section
+    #sticky-wrap
+      %header
+      %section
+    %footer#top-level.vline-center
+      .vline-wrap
+        .container
+
+= parent_layout 'boilerplate'

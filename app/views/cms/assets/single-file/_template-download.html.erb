@@ -1,0 +1,19 @@
+<script id="template-download" type="text/html">
+  {% for (var i=0, files=o.files, l=files.length, file=files[0]; i<l; file=files[++i]) { %}
+    <figure class="template-download fade">
+      {% if (file.error) { %}
+        <div class="error"><span class="label label-important">Error</span> {%=fileUploadErrors[file.error] || file.error%}</div>
+      {% } else { %}
+        <div class="preview">
+          {% if (file.dropzone_url) { %}
+            <a href="{%=file.edit_path%}" title="{%=file.name%}" rel="gallery"><img src="{%=file.preview_url%}"></a>
+          {% } %}
+        </div>
+      {% } %}
+      <div class="hover_links">
+          <a href="{%=file.edit_path%}" rel="nofolow"><i class="icon-pencil"></i></a>
+          <a href="{%=file.delete_path%}" data-confirm="Are you sure?" data-method="delete" data-remote="true" rel="nofolow"><i class="icon-trash"></i></a>
+      </div>
+    </figure>
+  {% } %}
+</script>

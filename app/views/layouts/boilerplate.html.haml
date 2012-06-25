@@ -16,7 +16,7 @@
   %meta{ :name => "author", :content => "New Cartographers Creative" }/
   %link{ rel: 'author', href: 'humans.txt' }/
 
-  = yield :stylesheet
+  = content_for?(:stylesheet) ? yield(:stylesheet) : stylesheet_link_tag('CartoCMS/boilerplate', 'CartoCMS/mixins')
   = yield :headscript
   = csrf_meta_tags
 

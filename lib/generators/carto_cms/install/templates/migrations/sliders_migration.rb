@@ -1,10 +1,11 @@
 class CreateSliders < ActiveRecord::Migration
   def change
     create_table :sliders do |t|
-      t.integer :position
-      t.string  :name
-      t.text    :description
-      t.string  :slug, null: false
+      t.integer :position,    null: false
+      t.string  :slug,        null: false
+      t.string  :name,        null: false
+      t.text    :description, null: false, default: ''
+      t.float   :aspect_ratio
 
       t.timestamps
     end

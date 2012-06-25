@@ -1,6 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Global
 ////////////////////////////////////////////////////////////////////////////////
+@include font-face('arvil_sans');
 @include font-face('mensch');
 @include font-face('vollkorn');
 @include font-face('wisdom_script');
@@ -11,6 +12,25 @@ a.btn, h1, h2, h3, h4, h5, h6 {
   &:hover { text-decoration: none; }
 }
 
+.control-group.disabled .controls {
+  position: relative;
+}
+
+.form-horizontal {
+  .control-group.disabled .controls {
+    float: left;
+    margin-left: 10px;
+  }
+}
+
+input.disabled {
+  + a {
+    $spread: (($inputLineHeight + ($inputPadding-Y * 2)) - 14) / 2;
+    position: absolute; top: 5px; right: 0px; padding: ($spread - 6) $spread ($spread - 6); border-left: $inputBorder;
+    &:hover div { opacity: 1; }
+    div { opacity: 0.7; @include transition(opacity .1s linear); }
+  }
+}
 
 
 
@@ -66,4 +86,50 @@ footer#top-level { border-top: 1px solid white; background-color: hsla(0, 100%, 
       }
     }
   }
+}
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Flash Messages
+////////////////////////////////////////////////////////////////////////////////
+section.container#top-level {
+  position: relative;
+}
+
+aside.flash_message {
+  position: absolute;
+  width: 45%;
+  top: 7px;
+  left: 50%;
+  margin-left: -22.5%;
+  padding: 5px 0;
+  background-color: hsla(0, 0%, 0%, 0.1);
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  color: $brownDark;
+  text-align: center;
+  border: 2px solid $cream;
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    border: 5px solid hsla(0, 0%, 0%, 0.1);
+    -webkit-border-radius: 13px;
+       -moz-border-radius: 13px;
+            border-radius: 13px;
+  }
+  &#flash_alert  { background-image: image-url('CartoCMS/icon-alert.png'); }
+  &#flash_notice { background-image: image-url('CartoCMS/icon-notice.png'); }
+  &#flash_timedout { display: none; }
 }

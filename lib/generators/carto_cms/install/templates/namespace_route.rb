@@ -1,5 +1,5 @@
 # CartoCMS Routes
   namespace :cms do
-    # root to: "example_resource#action"
+    root to: "users#index"
     # resources :example_resource
   end

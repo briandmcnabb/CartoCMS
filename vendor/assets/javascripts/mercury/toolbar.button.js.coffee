@@ -34,25 +34,25 @@ class @Mercury.Toolbar.Button
 
         when 'palette'
           @element.addClass("mercury-button-palette")
-          url = if jQuery.isFunction(mixed) then mixed.call(@, @name) else mixed
-          @handled[type] = new Mercury.Palette(url, @name, @defaultDialogOptions())
+          result = if jQuery.isFunction(mixed) then mixed.call(@, @name) else mixed
+          @handled[type] = if typeof result is 'string' then new Mercury.Palette(result, @name, @defaultDialogOptions()) else result
 
         when 'select'
           @element.addClass("mercury-button-select").find('em').html(@title)
-          url = if jQuery.isFunction(mixed) then mixed.call(@, @name) else mixed
-          @handled[type] = new Mercury.Select(url, @name, @defaultDialogOptions())
+          result = if jQuery.isFunction(mixed) then mixed.call(@, @name) else mixed
+          @handled[type] = if typeof result is 'string' then new Mercury.Select(result, @name, @defaultDialogOptions()) else result
 
         when 'panel'
           @element.addClass('mercury-button-panel')
-          url = if jQuery.isFunction(mixed) then mixed.call(@, @name) else mixed
           @handled['toggle'] = true
-          @handled[type] = new Mercury.Panel(url, @name, @defaultDialogOptions())
+          result = if jQuery.isFunction(mixed) then mixed.call(@, @name) else mixed
+          @handled[type] = if typeof result is 'string' then new Mercury.Panel(result, @name, @defaultDialogOptions()) else result
 
         when 'modal'
-          @handled[type] = if jQuery.isFunction(mixed) then mixed.apply(@, @name) else mixed
+          @handled[type] = if jQuery.isFunction(mixed) then mixed.call(@, @name) else mixed
 
         when 'lightview'
-          @handled[type] = if jQuery.isFunction(mixed) then mixed.apply(@, @name) else mixed
+          @handled[type] = if jQuery.isFunction(mixed) then mixed.call(@, @name) else mixed
 
         else throw Mercury.I18n('Unknown button type \"%s\" used for the \"%s\" button.', type, @name)
 
@@ -72,8 +72,8 @@ class @Mercury.Toolbar.Button
         @element.removeClass('active')
 
     Mercury.on 'region:focused', (event, options) =>
-      if @handled.regions && options.region && options.region.type
-        if @handled.regions.indexOf(options.region.type) > -1
+      if @handled.regions && options.region && options.region.type()
+        if @handled.regions.indexOf(options.region.type()) > -1
           @element.removeClass('disabled')
         else
           @element.addClass('disabled')

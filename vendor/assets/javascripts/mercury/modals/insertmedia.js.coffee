@@ -19,7 +19,7 @@
     if selection.is && image = selection.is('img')
       @element.find('#media_image_url').val(image.attr('src'))
       @element.find('#media_image_alignment').val(image.attr('align'))
-      setTimeout 300, => @element.find('#media_image_url').focus()
+      setTimeout((=> @element.find('#media_image_url').focus()), 300)
 
     # if we're editing an iframe (assume it's a video for now)
     if selection.is && iframe = selection.is('iframe')
@@ -29,13 +29,13 @@
         @element.find('#media_youtube_url').val("http://youtu.be/#{src.match(/\/embed\/(\w+)/)[1]}")
         @element.find('#media_youtube_width').val(iframe.width())
         @element.find('#media_youtube_height').val(iframe.height())
-        setTimeout 300, => @element.find('#media_youtube_url').focus()
+        setTimeout((=> @element.find('#media_youtube_url').focus()), 300)
       else if src.indexOf('http://player.vimeo.com') > -1
         # it's a vimeo video
         @element.find('#media_vimeo_url').val("http://vimeo.com/#{src.match(/\/video\/(\w+)/)[1]}")
         @element.find('#media_vimeo_width').val(iframe.width())
         @element.find('#media_vimeo_height').val(iframe.height())
-        setTimeout 300, => @element.find('#media_vimeo_url').focus()
+        setTimeout((=> @element.find('#media_vimeo_url').focus()), 300)
 
 
   # build the image or youtube embed on form submission
@@ -51,14 +51,16 @@
 
       when 'youtube_url'
         url = @element.find('#media_youtube_url').val()
-        unless /^http:\/\/youtu.be\//.test(url)
+        unless /^https?:\/\/youtu.be\//.test(url)
           Mercury.notify('Error: The provided youtube share url was invalid.')
           return
-        code = url.replace('http://youtu.be/', '')
+        code = url.replace(/https?:\/\/youtu.be\//, '')
+        protocol = 'http'
+        protocol = 'https' if /^https:/.test(url)
         value = jQuery('<iframe>', {
           width: @element.find('#media_youtube_width').val() || 560,
           height: @element.find('#media_youtube_height').val() || 349,
-          src: "http://www.youtube.com/embed/#{code}?wmode=transparent",
+          src: "#{protocol}://www.youtube.com/embed/#{code}?wmode=transparent",
           frameborder: 0,
           allowfullscreen: 'true'
         })
@@ -66,14 +68,16 @@
 
       when 'vimeo_url'
         url = @element.find('#media_vimeo_url').val()
-        unless /^http:\/\/vimeo.com\//.test(url)
+        unless /^https?:\/\/vimeo.com\//.test(url)
           Mercury.notify('Error: The provided vimeo url was invalid.')
           return
-        code = url.replace('http://vimeo.com/', '')
+        code = url.replace(/^https?:\/\/vimeo.com\//, '')
+        protocol = 'http'
+        protocol = 'https' if /^https:/.test(url)
         value = jQuery('<iframe>', {
           width: @element.find('#media_vimeo_width').val() || 400,
           height: @element.find('#media_vimeo_height').val() || 225,
-          src: "http://player.vimeo.com/video/#{code}?title=1&byline=1&portrait=0&color=ffffff",
+          src: "#{protocol}://player.vimeo.com/video/#{code}?title=1&byline=1&portrait=0&color=ffffff",
           frameborder: 0
         })
         Mercury.trigger('action', {action: 'insertHTML', value: value})

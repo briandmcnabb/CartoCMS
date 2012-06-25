@@ -5,9 +5,12 @@ class Cms::AssetsController < Cms::ResourceController
 
   # Configuration
   defaults resource_class: @resource_class || Asset
-  actions :index, :create, :destroy
+  actions :index, :create, :edit, :update, :destroy
+  belongs_to :slide, polymorphic: true, optional: true
   respond_to :json
+  respond_to :js, only: :destroy
 
+  # Actions
   def index
     index! do |format|
       format.json { render json: collection.collect { |r| r.to_jq_upload }.to_json }
@@ -15,7 +18,7 @@ class Cms::AssetsController < Cms::ResourceController
   end
 
   def create
-    @asset = parent.send(@resource_class).build(params[:asset]) if parent_exist
+    @asset = parent.send("build_#{@resource_class}",params[:asset]) if parent_exist
     create! do |success, failure|
       success.html { render json: [resource.to_jq_upload].to_json, content_type: 'text/html', layout: false }
       success.json { render json: [resource.to_jq_upload].to_json }
@@ -23,12 +26,24 @@ class Cms::AssetsController < Cms::ResourceController
     end
   end
 
+  def edit
+    session[:return_to] = request.referer
+    edit!
+  end
 
-  private
+  def update
+    update! do |success, failure|
+      success.html { redirect_to session[:return_to] }
+    end
+  end
+
+
+
+private
 
   def collection
     get_collection_ivar || begin
-      c = end_of_association_chain.order("created_at DESC").scoped
+      c = end_of_association_chain.unassociated.order("created_at DESC").scoped
       set_collection_ivar(c)
     end
   end
@@ -52,6 +67,6 @@ class Cms::AssetsController < Cms::ResourceController
 
   def set_resource_class(klass='asset')
     klass = klass.to_s
-    @resource_class = parent_exist ? klass.pluralize : klass.capitalize.constantize
+    @resource_class = parent_exist ? klass : klass.capitalize.constantize
   end
 end

@@ -1,5 +1,4 @@
 class MercuryController < ActionController::Base
-  include ::Mercury::Authentication
 
   protect_from_forgery
   before_filter :authenticate, :only => :edit
@@ -29,6 +28,6 @@ class MercuryController < ActionController::Base
   private
 
   def authenticate
-    redirect_to "/#{params[:requested_uri]}" unless can_edit?
+    redirect_to "/#{params[:requested_uri]}" unless user_signed_in?
   end
 end

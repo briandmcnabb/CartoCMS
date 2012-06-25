@@ -8,8 +8,9 @@ class @Mercury.PageEditor
   constructor: (@saveUrl = null, @options = {}) ->
     throw Mercury.I18n('Mercury.PageEditor can only be instantiated once.') if window.mercuryInstance
 
-    @options.visible = true unless (@options.visible == false || @options.visible == 'no')
+    @options.visible = true unless (@options.visible == false || @options.visible == 'false')
     @visible = @options.visible
+    @options.saveDataType = 'json' unless (@options.saveDataType == false || @options.saveDataType)
 
     window.mercuryInstance = @
     @regions = []
@@ -28,17 +29,20 @@ class @Mercury.PageEditor
     @resize()
 
     @iframe.on 'load', => @initializeFrame()
-    @iframe.get(0).contentWindow.document.location.href = @iframeSrc(null, true)
+    @iframe.one 'load', => @bindEvents()
+    @loadIframeSrc(null)
 
 
   initializeFrame: ->
     try
       return if @iframe.data('loaded')
       @iframe.data('loaded', true)
-      Mercury.notify("Opera isn't a fully supported browser, your results may not be optimal.") if jQuery.browser.opera
+
+      # set document reference of iframe
       @document = jQuery(@iframe.get(0).contentWindow.document)
-      stylesToInject = Mercury.config.injectedStyles.replace(/{{regionClass}}/g, Mercury.config.regions.className)
-      jQuery("<style mercury-styles=\"true\">").html(stylesToInject).appendTo(@document.find('head'))
+
+      # inject styles for document to be able to highlight regions and other tools
+      jQuery("<style mercury-styles=\"true\">").html(Mercury.config.injectedStyles).appendTo(@document.find('head'))
 
       # jquery: make jQuery evaluate scripts within the context of the iframe window
       iframeWindow = @iframe.get(0).contentWindow
@@ -47,12 +51,15 @@ class @Mercury.PageEditor
       iframeWindow.Mercury = Mercury
       iframeWindow.History = History if window.History && History.Adapter
 
-      @bindEvents()
+      # (re) initialize the editor against the new document
+      @bindDocumentEvents()
       @resize()
       @initializeRegions()
       @finalizeInterface()
+
+      # trigger ready events
       Mercury.trigger('ready')
-      jQuery(iframeWindow).trigger('mercury:ready')
+      iframeWindow.jQuery(iframeWindow).trigger('mercury:ready') if iframeWindow.jQuery
       iframeWindow.Event.fire(iframeWindow, 'mercury:ready') if iframeWindow.Event && iframeWindow.Event.fire
       iframeWindow.onMercuryReady() if iframeWindow.onMercuryReady
 
@@ -63,8 +70,8 @@ class @Mercury.PageEditor
 
   initializeRegions: ->
     @regions = []
-    @buildRegion(jQuery(region)) for region in jQuery(".#{Mercury.config.regions.className}", @document)
-    return unless @options.visible
+    @buildRegion(jQuery(region)) for region in jQuery("[#{Mercury.config.regions.attribute}]", @document)
+    return unless @visible
     for region in @regions
       if region.focus
         region.focus()
@@ -75,7 +82,7 @@ class @Mercury.PageEditor
     if region.data('region')
       region = region.data('region')
     else
-      type = (region.data('type') || 'unknown').titleize()
+      type = (region.attr(Mercury.config.regions.attribute) || Mercury.config.regions.determineType?(region) || 'unknown').titleize()
       throw Mercury.I18n('Region type is malformed, no data-type provided, or "%s" is unknown for the "%s" region.', type, region.attr('id') || 'unknown') if type == 'Unknown' || !Mercury.Regions[type]
       if !Mercury.Regions[type].supported
         Mercury.notify('Mercury.Regions.%s is unsupported in this client. Supported browsers are %s.', type, Mercury.Regions[type].supportedText)
@@ -89,16 +96,30 @@ class @Mercury.PageEditor
     @santizerElement = jQuery('<div>', {id: 'mercury_sanitizer', contenteditable: 'true', style: 'position:fixed;width:100px;height:100px;top:0;left:-100px;opacity:0;overflow:hidden'})
     @santizerElement.appendTo(@options.appendTo ? @document.find('body'))
 
+    @snippetToolbar.release() if @snippetToolbar
     @snippetToolbar = new Mercury.SnippetToolbar(@document)
 
     @hijackLinksAndForms()
-    Mercury.trigger('mode', {mode: 'preview'}) unless @options.visible
+    Mercury.trigger('mode', {mode: 'preview'}) unless @visible
+
+
+  bindDocumentEvents: ->
+    @document.on 'mousedown', (event) ->
+      Mercury.trigger('hide:dialogs')
+      if Mercury.region
+        Mercury.trigger('unfocus:regions') unless jQuery(event.target).closest("[#{Mercury.config.regions.attribute}]").get(0) == Mercury.region.element.get(0)
+
+    jQuery(@document).bind 'keydown', (event) =>
+      return unless event.ctrlKey || event.metaKey
+      if (event.keyCode == 83) # meta+S
+        Mercury.trigger('action', {action: 'save'})
+        event.preventDefault()
 
 
   bindEvents: ->
-    Mercury.on 'initialize:frame', => setTimeout(100, @initializeFrame)
+    Mercury.on 'initialize:frame', => setTimeout(@initializeFrame, 100)
     Mercury.on 'focus:frame', => @iframe.focus()
-    Mercury.on 'focus:window', => setTimeout(10, => @focusableElement.focus())
+    Mercury.on 'focus:window', => setTimeout((=> @focusableElement.focus()), 10)
     Mercury.on 'toggle:interface', => @toggleInterface()
     Mercury.on 'reinitialize', => @initializeRegions()
     Mercury.on 'mode', (event, options) => @previewing = !@previewing if options.mode == 'preview'
@@ -108,19 +129,8 @@ class @Mercury.PageEditor
       options.already_handled = true
       action.call(@, options)
 
-    @document.on 'mousedown', (event) ->
-      Mercury.trigger('hide:dialogs')
-      if Mercury.region
-        Mercury.trigger('unfocus:regions') unless jQuery(event.target).closest(".#{Mercury.config.regions.className}").get(0) == Mercury.region.element.get(0)
-
     jQuery(window).on 'resize', =>
       @resize()
-
-    jQuery(@document).bind 'keydown', (event) =>
-      return unless event.ctrlKey || event.metaKey
-      if (event.keyCode == 83) # meta+S
-        Mercury.trigger('action', {action: 'save'})
-        event.preventDefault()
 
     jQuery(window).bind 'keydown', (event) =>
       return unless event.ctrlKey || event.metaKey
@@ -133,15 +143,17 @@ class @Mercury.PageEditor
 
   toggleInterface: ->
     if @visible
-      Mercury.trigger('mode', {mode: 'preview'}) if @previewing
       @visible = false
       @toolbar.hide()
       @statusbar.hide()
+      Mercury.trigger('mode', {mode: 'preview'}) unless @previewing
+      @previewing = true
     else
       @visible = true
       @toolbar.show()
       @statusbar.show()
-    Mercury.trigger('mode', {mode: 'preview'})
+      Mercury.trigger('mode', {mode: 'preview'})
+      @previewing = false
     @resize()
 
 
@@ -162,12 +174,24 @@ class @Mercury.PageEditor
 
 
   iframeSrc: (url = null, params = false) ->
+    # remove the /editor segment of the url if it gets passed through
     url = (url ? window.location.href).replace(Mercury.config.editorUrlRegEx ?= /([http|https]:\/\/.[^\/]*)\/editor\/?(.*)/i,  "$1/$2")
     url = url.replace(/[\?|\&]mercury_frame=true/gi, '')
+    url = url.replace(/\&_=i\d+/gi, '')
     if params
-      return "#{url}#{if url.indexOf('?') > -1 then '&' else '?'}mercury_frame=true"
+      # add a param allowing the server to know that the request is coming from mercury
+      # and add a cache busting param so we don't get stale content
+      return "#{url}#{if url.indexOf('?') > -1 then '&' else '?'}mercury_frame=true&_=#{new Date().getTime()}"
     else
       return url
+
+
+  loadIframeSrc: (url)->
+    # clear any existing events if we are loading a new iframe to replace the existing one
+    @document.off() if @document
+
+    @iframe.data('loaded', false)
+    @iframe.get(0).contentWindow.document.location.href = @iframeSrc(url, true)
 
 
   hijackLinksAndForms: ->
@@ -177,7 +201,7 @@ class @Mercury.PageEditor
         if jQuery(element).hasClass(classname)
           ignored = true
           continue
-      if !ignored && (element.target == '' || element.target == '_self') && !jQuery(element).closest(".#{Mercury.config.regions.className}").length
+      if !ignored && (element.target == '' || element.target == '_self') && !jQuery(element).closest("[#{Mercury.config.regions.attribute}]").length
         jQuery(element).attr('target', '_parent')
 
 
@@ -194,7 +218,7 @@ class @Mercury.PageEditor
 
 
   save: (callback) ->
-    url = @saveUrl ? Mercury.saveURL ? @iframeSrc()
+    url = @saveUrl ? Mercury.saveUrl ? @iframeSrc()
     data = @serialize()
     Mercury.log('saving', data)
     data = jQuery.toJSON(data) unless @options.saveStyle == 'form'
@@ -202,13 +226,14 @@ class @Mercury.PageEditor
     jQuery.ajax url, {
       headers: Mercury.ajaxHeaders()
       type: method || 'POST'
-      dataType: @options.saveDataType || 'json'
+      dataType: @options.saveDataType,
       data: {content: data, _method: method}
       success: =>
         Mercury.changes = false
         Mercury.trigger('saved')
         callback() if typeof(callback) == 'function'
-      error: =>
+      error: (response) =>
+        Mercury.trigger('save_failed', response)
         Mercury.notify('Mercury was unable to save to the url: %s', url)
     }
 
@@ -217,3 +242,4 @@ class @Mercury.PageEditor
     serialized = {}
     serialized[region.name] = region.serialize() for region in @regions
     return serialized
+

@@ -1,0 +1,11 @@
+<script id="template-upload" type="text/html">
+  {% for (var i=0, files=o.files, l=files.length, file=files[0]; i<l; file=files[++i]) { %}
+  <figure class="template-upload fade">
+    {% if (file.error) { %}
+      <div class="error"><span class="label important">Error</span> {%=fileUploadErrors[file.error] || file.error%}</div>
+    {% } else { %}
+      <div class="preview"><span class="fade"></span></div>
+    {% } %}
+  </figure>
+  {% } %}
+</script>

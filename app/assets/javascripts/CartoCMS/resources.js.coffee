@@ -1,7 +1,8 @@
 jQuery ->
 
   # Ajax Delete
-  $('div#content').on 'ajax:success', 'a[data-method="delete"]', ->
+  $('div.index#content').on 'ajax:success', 'a[data-method="delete"]', ->
+    $(@).closest('li').fadeOut()
     $(@).closest('tr').fadeOut()
 
   # Assets: Add Files

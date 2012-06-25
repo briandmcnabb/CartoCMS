@@ -1,16 +1,23 @@
 class Asset < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :asset_name, use: [:slugged, :history]
+
   include Rails.application.routes.url_helpers
 
   mount_uploader :asset_path, AssetUploader
 
   # Accessors
-  attr_accessible :asset_path, :title, :description
+  attr_accessible :asset_path
 
   # Associations
   belongs_to :attachable, polymorphic: true
 
   # Callbcks
   before_save :update_asset_attributes
+
+  # Scopes
+  scope :unassociated, where(attachable_id: nil)
+
 
   # Allow subclasses to use parent’s routes
   def self.inherited(subclass)
@@ -25,17 +32,19 @@ class Asset < ActiveRecord::Base
   # Format data for use by jQuery File Uploader
   def to_jq_upload
    {
-    "name" => read_attribute(:asset_path),
-    "size" => asset_path.size,
-    "url"  => asset_path.url,
-    "thumbnail_url" => asset_path.respond_to?(:thumb) ? asset_path.url(:thumb) : nil,
-    "delete_path" => cms_asset_path(id),
-    "delete_type" => "DELETE"
+    name: read_attribute(:asset_path),
+    size: asset_path.size,
+    url: asset_path.url,
+    delete_path: cms_asset_path(id)
    }
   end
 
 
   private
+
+  def asset_name
+    asset_path.to_s.split('/').last.split('.').reverse.drop(1).reverse.join('.')
+  end
 
   # Save asset attributes
   def update_asset_attributes

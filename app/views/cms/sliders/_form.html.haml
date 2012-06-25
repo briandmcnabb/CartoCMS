@@ -1,0 +1,17 @@
+= simple_form_for [:cms, resource], html: {class: 'form-horizontal'} do |f|
+  = f.input :name, input_html: {class: 'span8'}
+  = f.input :description, input_html: {class: 'span8'}
+  = f.input :aspect_ratio, disabled: true, wrapper_html: {style: "display: #{'none' unless resource.aspect_ratio}"} do
+    = f.input_field :aspect_ratio, class: 'span8', disabled: true
+    = link_to '#' do
+      %i.icon-pencil
+  #form-vertical-inputs.disabled_field_editor{style: "display: #{'none' if resource.aspect_ratio}" }
+    .row
+      .span4= f.input :width,  input_html: {class: 'span4'}
+      .span4= f.input :height, input_html: {class: 'span4'}
+  .form-actions.row
+    .span8= f.button :submit, "submit", class: 'btn-primary pull-right'
+
+- if resource.slides.length > 0
+  %hr
+  = render partial: 'cms/resource/index-list', locals: { collection: resource.slides }

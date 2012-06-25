@@ -9,28 +9,27 @@ Rails.application.routes.draw do
   # Devise
   devise_for :users, controllers: { registrations: "cms/registrations" }
 
-  # Admin Interface
-  #constraints subdomain: "cms" do
-  #  scope module: "cms", as: "cms"  do
-  #    resources :users
-  #    resources :pages
-  #    resources :assets, only: [:index, :new, :create, :destroy]
-  #  end
-  #end
+  # Omniauth
+  match '/auth/:provider/callback' => 'cms/omniauth#callback'
+  match '/auth/failure' => 'cms/omniauth#failure'
 
   namespace :cms do
-    resources :assets, only: [:index, :new, :create, :destroy]
-    resources :users, except: [:edit, :update]
+    resources :assets, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :pages, except: [:show]
-    resources :page_templates, except: [:show] do
-      collection { post :position }
+    resource  :setting, path: "/settings", only: [] do
+      resources :connections, only: [:index, :destroy]
     end
     resources :sliders, except: [:show] do
       collection { post :position }
     end
-    resources :slides, except: [:index, :show] do
+    resources :slides, except: [:index, :show, :new] do
+      collection { post :position }
+      resources :assets, only: [:new, :create]
+    end
+    resources :templates, except: [:show] do
       collection { post :position }
     end
+    resources :users, except: [:new, :edit]
   end
 
   # Pages

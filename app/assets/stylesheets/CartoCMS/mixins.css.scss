@@ -3,14 +3,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // @font-face
-@mixin font-face($font, $file: $font, $weight: normal, $style: normal) {
+@mixin font-face($font, $weight: normal, $style: normal) {
   @font-face {
     font-family: $font;
-    src: font-url('#{$file}-webfont.eot');
-    src: font-url('#{$file}-webfont.eot?#iefix') format('embedded-opentype'),
-         font-url('#{$file}-webfont.woff') format('woff'),
-         font-url('#{$file}-webfont.ttf')  format('truetype'),
-         font-url('#{$file}-webfont.svg#svgFontName') format('svg');
+    src: font-url('#{$font}-webfont.eot');
+    src: font-url('#{$font}-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('#{$font}-webfont.woff') format('woff'),
+         font-url('#{$font}-webfont.ttf')  format('truetype'),
+         font-url('#{$font}-webfont.svg#svgFontName') format('svg');
     font-weight: $weight;
     font-style: $style;
   }

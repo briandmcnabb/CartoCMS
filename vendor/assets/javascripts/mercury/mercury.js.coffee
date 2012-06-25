@@ -34,7 +34,7 @@
 #
 @Mercury ||= {}
 jQuery.extend @Mercury,
-  version: '0.3.0'
+  version: '0.6.0'
 
   # Mercury object namespaces
   Regions: Mercury.Regions || {}
@@ -53,6 +53,14 @@ jQuery.extend @Mercury,
   # Custom event methods
   on: (eventName, callback) ->
     jQuery(window).on("mercury:#{eventName}", callback)
+
+
+  off: (eventName, callback) ->
+    jQuery(window).off("mercury:#{eventName}", callback)
+
+
+  one: (eventName, callback) ->
+    jQuery(window).one("mercury:#{eventName}", callback)
 
 
   trigger: (eventName, options) ->

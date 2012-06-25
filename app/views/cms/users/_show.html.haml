@@ -19,3 +19,11 @@
         %strong.label UNLOCK TOKEN
         %p= resource.unlock_token || "Not Specified"
     = link_to 'RESEND TOKEN', '#', class: 'btn pull-right'
+
+- unless current_user == resource
+  %hr
+  #admin
+    = simple_form_for [:cms, resource], remote: true, html: {class: 'update-admin'} do |f|
+      .control-group
+        = f.check_box :admin, class: 'pull-left'
+        = f.label :admin

@@ -1,0 +1,56 @@
+#connections {
+  //width: 360px;
+  //margin: 0 auto 45px;
+
+  ul#positionable { list-style: none;
+    li { @extend .clearfix; margin-bottom: 10px;
+      &:last-of-type { margin-bottom: 0; }
+    }
+  }
+
+  a.unconnected {
+    color: #222;
+    opacity: .75;
+    -webkit-transition: all 0.15s ease-out;
+       -moz-transition: all 0.15s ease-out;
+        -ms-transition: all 0.15s ease-out;
+         -o-transition: all 0.15s ease-out;
+            transition: all 0.15s ease-out;
+  }
+  a:hover {
+    opacity: 1;
+  }
+  .connection {
+    position: relative;
+    display: block;
+    padding: 7px;
+    border: 1px solid hsla(0, 0%, 0%, 0.05);
+    @include border-radius(4px);
+    img {
+      float: left;
+    }
+    p {
+      float: left;
+      margin: 12px 0 0 20px;
+      font-size: 120%;
+      font-weight: bold;
+    }
+    .remove {
+      position: absolute;
+      top: 30%;
+      right: 20px;
+      background: transparent image-url('remove_icon.png') no-repeat center center;
+      width:27px; height:27px;
+      opacity: 0.95;
+    }
+    .remove:hover {
+      opacity: 1;
+    }
+  }
+  .unconnected {
+    background: hsla(0, 0%, 0%, 0.05);
+  }
+  .connected {
+    background: hsla(0, 0%, 100%, 0.25);
+  }
+}
