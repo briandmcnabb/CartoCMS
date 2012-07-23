@@ -53,6 +53,16 @@ module CartoCms
         copy_file 'variables.css.scss',   'app/assets/stylesheets/variables.css.scss'
       end
 
+      def configure_haml
+        append_to_file 'config/environment.rb' do
+          <<-EOS
+
+            # Turn off haml indentation so code blocks in pre's are formatted correctly
+            Haml::Template.options[:ugly] = true
+          EOS
+        end
+      end
+
       def copy_migrations
         migration_template 'migrations/assets_migration.rb',      'db/migrate/create_assets.rb'
         migration_template 'migrations/connections_migration.rb', 'db/migrate/create_connections.rb'

@@ -20,16 +20,23 @@ module SliderHelper
       content_for(:extra_scripts) do
         javascript_tag do
             "$(window).load(function() {
-              $('##{dom_id(slider)}').nivoSlider();
+              $('##{dom_id(slider)}').nivoSlider({
+                /* effect: 'fade', */
+                animSpeed: 1000,
+                pauseTime: 4000
+              });
             });"
         end
       end
     end
 
+    slider_markup  = div_for(slider, class: 'nivoSlider', style: "position: #{options[:position]};"){ slider_hash[:slides].join.html_safe }
+    caption_markup = slider_hash[:captions].join.html_safe
+
     # Output
     out = ''
-    out << div_for(slider, class: 'nivo_slider', style: "position: #{options[:position]};"){ slider_hash[:slides].join.html_safe }
-    out << slider_hash[:captions].join.html_safe
+    out << content_tag(:div, slider_markup, class: 'slider_wrapper theme-default').html_safe
+    out << caption_markup.html_safe
     out.html_safe
   end
 

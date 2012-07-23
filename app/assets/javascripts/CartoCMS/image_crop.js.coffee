@@ -20,8 +20,6 @@ class ImageCropper
       # Events
       onSelect: @update
       onChange: @update
-    , ->
-      window.jcrop_api = @
 
   update: (coords) =>
     $('#asset_crop_x').val(coords.x)

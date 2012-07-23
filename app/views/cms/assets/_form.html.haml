@@ -1,6 +1,6 @@
 - panel_back_path session[:return_to]
 
-%center= jcrop resource.asset_path, box_width: 825, aspect_ratio: (resource.attachable.slider.aspect_ratio if resource.attachable)
+%center= jcrop resource.asset_path, box_width: 825, aspect_ratio: aspect_ratio
 
 = simple_form_for [:cms, resource] do |f|
   - %w[crop_x crop_y crop_w crop_h].each do |attr|

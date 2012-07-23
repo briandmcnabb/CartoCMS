@@ -6,7 +6,7 @@
       {% } else { %}
         <div class="preview">
           {% if (file.dropzone_url) { %}
-            <a href="{%=file.edit_path%}" title="{%=file.name%}" rel="gallery"><img src="{%=file.preview_url%}"></a>
+            <a href="{%=file.edit_path%}" title="{%=file.name%}" rel="gallery"><img src="{%=file.dropzone_url%}"></a>
           {% } %}
         </div>
       {% } %}

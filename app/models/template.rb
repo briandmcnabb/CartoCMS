@@ -4,6 +4,9 @@ class Template < ActiveRecord::Base
 
   acts_as_list
 
+  # Attributes
+  attr_accessible :body, :description, :name
+
   # Validations
-  validates :name,    presence: true
+  validates :name, presence: true
 end

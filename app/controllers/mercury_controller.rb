@@ -9,16 +9,16 @@ class MercuryController < ActionController::Base
   #end
 
   def resource
-    render :action => "/#{params[:type]}/#{params[:resource]}"
+    render action: "/#{params[:type]}/#{params[:resource]}"
   end
 
   def snippet_options
     @options = params[:options] || {}
-    render :action => "/snippets/#{params[:name]}/options"
+    render action: "/snippets/#{params[:name]}/options"
   end
 
   def snippet_preview
-    render :action => "/snippets/#{params[:name]}/preview"
+    render action: "/snippets/#{params[:name]}/preview"
   end
 
   #def test_page
