@@ -11,32 +11,32 @@ module Mercury
       nmp = normalized_mercury_params
 
       params[resource_key] = nmp.inject(nmp) do |hash, (key, value)|
-        hash[key] = map_virtual_fields(resource.send(key), value) if value.is_a?(Hash)
+        hash[key] = map_fields(resource.send(key), value)
         hash
       end
     end
 
-    def map_virtual_fields(parent_field, virtual_fields)
-      parent_field = parent_field.gsub(/<%(.+?)%>/m, '&lt;%\1%&gt;')
-      parent_field = Nokogiri::HTML::DocumentFragment.parse parent_field
+    def map_fields(db_field, content_fields)
+      db_field = db_field.gsub(/<%(.+?)%>/m, '&lt;%\1%&gt;')
+      db_field = Nokogiri::HTML::DocumentFragment.parse db_field
 
-      virtual_fields.each do |key, value|
-        node = parent_field.at_css("div##{key}")
+      content_fields.each do |key, value|
+        node = db_field.at_css("div##{key}")
         node.content = value
       end
 
-      CGI.unescapeHTML parent_field.to_s
+      CGI.unescapeHTML db_field.to_s
     end
 
     def normalized_mercury_params
       params[:content].inject({}) do |hash, (key, value)|
-        virtual_key = key.match(/^(\w+)_\d+$/)
-        if virtual_key
-          parent_key = virtual_key[1]
-          hash[parent_key] ||= {}
-          hash[parent_key].merge!({ key => value[:value] })
+        content_field_key = key.match(/^(\w+)_\d+$/)
+        if content_field_key
+          db_field_key = content_field_key[1]
+          hash[db_field_key] ||= {}
+          hash[db_field_key].merge!({ key => value[:value] })
         else
-          hash[key] = value[:value]
+          hash[key] = { key => value[:value]}
         end
         hash
       end
