@@ -2,10 +2,8 @@
  * Mercury Editor is a CoffeeScript and jQuery based WYSIWYG editor.  Documentation and other useful information can be
  * found at https://github.com/jejacks0n/mercury
  *
- *= require_self
- *
  * Minimum jQuery requirements are 1.7
- *= require mercury/dependencies/jquery-1.7
+ *= require_self
  *
  * You can include the Rails jQuery ujs script here to get some nicer behaviors in modals, panels and lightviews when
  * using :remote => true within the contents rendered in them.
@@ -19,6 +17,7 @@
  *
  * Require any localizations you wish to support
  * Example: es.locale, or fr.locale -- regional dialects are in each language file so never en_US for instance.
+ * Make sure you enable the localization feature in the configuration.
  * require mercury/locales/swedish_chef.locale
  *
  * Add all requires for plugins that extend or change the behavior of Mercury Editor.
@@ -115,8 +114,8 @@ window.Mercury = {
       editable: {
         _regions:              ['full', 'markdown'],
         predefined:            {
-          style:               ['Style', null, { select: '/mercury/selects/style.html', preload: true }],
-          sep1:                ' ',
+          //style:               ['Style', null, { select: '/mercury/selects/style.html', preload: true }],
+          //sep1:                ' ',
           formatblock:         ['Block Format', null, { select: '/mercury/selects/formatblock.html', preload: true }],
           sep2:                '-'
           },
@@ -273,8 +272,8 @@ window.Mercury = {
       enabled: true,
       allowedMimeTypes: ['image/jpeg', 'image/gif', 'image/png'],
       maxFileSize: 1235242880,
-      inputName: 'image[image]',
-      url: '/mercury/images',
+      inputName: 'asset[asset_path][]',
+      url: '/cms/assets',
       handler: false
       },
 

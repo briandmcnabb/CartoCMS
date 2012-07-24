@@ -216,7 +216,9 @@ class @Mercury.Regions.Full extends Mercury.Region
         element.contentEditable = false
         element = jQuery(element)
         if snippet = Mercury.Snippet.find(element.data('snippet'))
-          unless element.data('version')
+          if element.data('version')
+            snippet.setVersion(element.data('version'))
+          else
             try
               version = parseInt(element.html().match(/\/(\d+)\]/)[1])
               if version
@@ -365,6 +367,7 @@ class @Mercury.Regions.Full extends Mercury.Region
   sanitize: (sanitizer) ->
     # always remove nested regions
     sanitizer.find("[#{Mercury.config.regions.attribute}]").remove()
+    sanitizer.find('[src*="webkit-fake-url://"]').remove()
 
     if Mercury.config.pasting.sanitize
       switch Mercury.config.pasting.sanitize
@@ -490,7 +493,13 @@ class Mercury.Regions.Full.Selection
 
 
   textContent: ->
-    return @range.cloneContents().textContent
+    return @content().textContent
+
+
+  htmlContent: ->
+    content = @content()
+    return jQuery('<div>').html(content).html()
+    return null
 
 
   content: ->

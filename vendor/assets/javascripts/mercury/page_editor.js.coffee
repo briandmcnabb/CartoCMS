@@ -3,7 +3,7 @@ class @Mercury.PageEditor
   # options
   # saveStyle: 'form', or 'json' (defaults to json)
   # saveDataType: 'xml', 'json', 'jsonp', 'script', 'text', 'html' (defaults to json)
-  # saveMethod: 'POST', or 'PUT', create or update actions on save (defaults to POST)
+  # saveMethod: 'POST', or 'PUT', create or update actions on save (defaults to PUT)
   # visible: boolean, if the interface should start visible or not (defaults to true)
   constructor: (@saveUrl = null, @options = {}) ->
     throw Mercury.I18n('Mercury.PageEditor can only be instantiated once.') if window.mercuryInstance
@@ -21,7 +21,7 @@ class @Mercury.PageEditor
   initializeInterface: ->
     @focusableElement = jQuery('<input>', {class: 'mercury-focusable', type: 'text'}).appendTo(@options.appendTo ? 'body')
 
-    @iframe = jQuery('<iframe>', {id: 'mercury_iframe', class: 'mercury-iframe', seamless: 'true', frameborder: '0', src: 'about:blank'})
+    @iframe = jQuery('<iframe>', {id: 'mercury_iframe', class: 'mercury-iframe', frameborder: '0', src: 'about:blank'})
     @iframe.appendTo(jQuery(@options.appendTo).get(0) ? 'body')
 
     @toolbar = new Mercury.Toolbar(@options)
@@ -148,13 +148,14 @@ class @Mercury.PageEditor
       @statusbar.hide()
       Mercury.trigger('mode', {mode: 'preview'}) unless @previewing
       @previewing = true
+      @resize()
     else
       @visible = true
+      @iframe.animate({top: @toolbar.height(true)}, 200, 'easeInOutSine', => @resize())
       @toolbar.show()
       @statusbar.show()
       Mercury.trigger('mode', {mode: 'preview'})
       @previewing = false
-    @resize()
 
 
   resize: ->
@@ -220,14 +221,21 @@ class @Mercury.PageEditor
   save: (callback) ->
     url = @saveUrl ? Mercury.saveUrl ? @iframeSrc()
     data = @serialize()
+    data = {content: data}
+
+    if @options.saveMethod == 'POST'
+      method = 'POST'
+    else
+      method = 'PUT'
+      data['_method'] = method
+
     Mercury.log('saving', data)
-    data = jQuery.toJSON(data) unless @options.saveStyle == 'form'
-    method = 'PUT' if @options.saveMethod == 'PUT'
-    jQuery.ajax url, {
+
+    options = {
       headers: Mercury.ajaxHeaders()
-      type: method || 'POST'
-      dataType: @options.saveDataType,
-      data: {content: data, _method: method}
+      type: method
+      dataType: @options.saveDataType
+      data: data
       success: =>
         Mercury.changes = false
         Mercury.trigger('saved')
@@ -236,6 +244,10 @@ class @Mercury.PageEditor
         Mercury.trigger('save_failed', response)
         Mercury.notify('Mercury was unable to save to the url: %s', url)
     }
+    if @options.saveStyle != 'form'
+      options['data'] = jQuery.toJSON(data)
+      options['contentType'] = 'application/json'
+    jQuery.ajax url, options
 
 
   serialize: ->

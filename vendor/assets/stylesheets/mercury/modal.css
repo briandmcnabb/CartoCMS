@@ -10,7 +10,7 @@
   height: 100%;
   opacity: 0;
   display: none;
-  background: rgba(0,0,0, .65);
+  background: rgba(255, 255, 255, .8);
 }
 .mercury-modal {
   position: fixed;
@@ -98,39 +98,29 @@
 .mercury-modal .mercury-display-pane-container {
   overflow: auto;
   margin: -20px -20px 0;
-  padding: 20px 20px 10px;
+  padding: 20px 20px 0;
 }
 .mercury-modal .mercury-display-pane-container .mercury-display-pane {
   float: left;
 }
 .mercury-modal .mercury-display-controls {
-  padding: 15px 0 0;
+  padding-right: 0;
   border-top: 1px solid #CCC;
   text-align: right;
-}
-/*
- * Forms
- *----------------------------------------------------------------------------*/
-.mercury-modal textarea {
-  resize: none;
-  padding: 0;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
 }
 /*
  * Specific Modals (eg. htmlEditor)
  *----------------------------------------------------------------------------*/
 /* html editor */
 #mercury_html_editor textarea {
-  margin: 0 0 -2px 0;
+  resize: none;
   padding: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0 0 -2px 0;
   border: 2px solid #CCC;
   width: 100%;
-}
-#mercury_html_editor .mercury-modal-controls {
-  border: 0;
-  margin-top: -2px;
 }
 /* character */
 #mercury_character .character {
@@ -156,28 +146,21 @@
 }
 /* table */
 #mercury_table #table_display {
-  width: 285px;
-  height: 285px;
   float: left;
+  margin-right: 13px;
+  overflow: auto;
+  padding: 0;
+}
+#mercury_table #table_display .controls {
+  margin: 0;
+  width: 225px;
+  height: 259px;
   padding: 10px;
-  background: #F6F6F6;
-  border: 1px solid #CCC;
-  border-radius: 7px;
-  -moz-border-radius: 7px;
-  overflow:  auto;
 }
 #mercury_table #table_display table {
   width: 100%;
   height: 100%;
 }
-#mercury_table #table_display td.selected {
+#mercury_table #table_display .selected {
   background: #09F;
-}
-#mercury_table #table_options {
-  width: 383px;
-  float: left;
-  margin-left: 10px;
-}
-#mercury_table #table_options .inputs:first-child label {
-  width: 36%
 }
