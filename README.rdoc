@@ -1,3 +1,5 @@
 = CartoCMS
 
+=== This project is under active development and thus should not be relied on until further notice.
+
 This project rocks and uses MIT-LICENSE.

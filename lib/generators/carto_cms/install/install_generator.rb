@@ -29,7 +29,7 @@ module CartoCms
       end
 
       def add_initializer
-        copy_file 'initializer', 'config/initializers/CartoCMS.rb'
+        copy_file 'initializer.rb', 'config/initializers/CartoCMS.rb'
       end
 
       def add_layout
