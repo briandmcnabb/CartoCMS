@@ -25,8 +25,8 @@ module CartoCMS
 
 
     # Precompile Assets
-    initializer :assets do |config|
-      Rails.application.config.assets.precompile += %w(carto_simple_ace_input.js mercury.js mercury.css CartoCMS.js CartoCMS.css)
+    initializer :assets, group: :all do |app|
+      app.config.assets.precompile += %w(carto_simple_ace_input.js mercury.js mercury.css CartoCMS.js CartoCMS.css)
     end
 
 
