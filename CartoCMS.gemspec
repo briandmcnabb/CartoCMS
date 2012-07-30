@@ -41,6 +41,7 @@ Gem::Specification.new do |s|
   s.add_dependency "omniauth", "~> 1.0"
   s.add_dependency "rack-rewrite"
   s.add_dependency "responders"
+  s.add_dependency "rmagick"
   s.add_dependency "show_for"
   s.add_dependency "simple_form",             "~> 2.0"
   s.add_dependency "simple_ace_input",        "~> 0.0.1.rc"
