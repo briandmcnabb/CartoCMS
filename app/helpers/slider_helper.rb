@@ -5,12 +5,13 @@ module SliderHelper
     options[:caption]  = sanitized_caption(options[:caption])
     options[:position] ||= 'relative'
     options[:size]     ||= :xx_large
+    options[:theme]    ||= 'theme-default'
 
     # Generate slider hash
     slider_hash = slider.slides.inject({slides: [], captions: []}) do |memo, slide|
       if slide.image
         memo[:slides]   << image_tag(slide.image.asset_path.url(options[:size]), alt: slide.name, title: send(options[:caption], slide))
-        memo[:captions] << div_for(slide, class: 'nivo-html-caption'){ slide.description } if html_caption?
+        memo[:captions] << div_for(slide, class: 'nivo-html-caption'){ content_tag(:div, slide.description.html_safe, class: 'wrapper') } if html_caption?
       end
       memo
     end
@@ -35,7 +36,7 @@ module SliderHelper
 
     # Output
     out = ''
-    out << content_tag(:div, slider_markup, class: 'slider_wrapper theme-default').html_safe
+    out << content_tag(:div, slider_markup, class: "slider_wrapper #{options[:theme]}").html_safe
     out << caption_markup.html_safe
     out.html_safe
   end

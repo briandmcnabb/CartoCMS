@@ -43,7 +43,7 @@ module ConnectionsHelper
   def widget_twitter_feed(options={})
     limit = (options[:limit] || 0) - 1
     twitter_client.user_timeline[0..limit].map do |tweet|
-      tweet.oembed({hide_thread: true, hide_media: true}).html
+      twitter_client.oembed(tweet.id, {hide_thread: true, hide_media: true}).html
     end.join.html_safe
   end
 
