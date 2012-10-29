@@ -1,6 +1,5 @@
 @import "bootstrap/mixins";
 @import "CartoCMS/mixins";
-@include font-face('arvil_sans');
 
 ////////////////////////////////////////////////////////////////////////////////
 // Sticky Footer
@@ -28,57 +27,4 @@ body:before { // Opera Fix
 
 .ie8 #sticky-wrap, .lt-ie7 #sticky-wrap { // ie7 Exception
   display:table; height:100%
-}
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-// Mercury Toggler
-////////////////////////////////////////////////////////////////////////////////
-
-a#mercury-toggler {
-  width: 75px;
-  z-index: 10000;
-  display: block;
-  position: fixed;
-  right: 0px;
-  top: 140px;
-  height: 70px;
-  color: #fff;
-
-  font: 30px 'arvil_sans';
-  text-decoration: none;
-  text-transform: uppercase;
-  line-height: 70px;
-  text-indent: -180px;
-
-  background: #48595f image-url('CartoCMS/icon-three-arrows.png') no-repeat 235px center;
-  overflow: hidden;
-
-
-  -webkit-border-radius: 50px 0 0 50px;
-     -moz-border-radius: 50px 0 0 50px;
-       -o-border-radius: 50px 0 0 50px;
-          border-radius: 50px 0 0 50px;
-
-  @include transition(all 0.3s ease);
-
-  &:hover, &:active {
-    right: 0px;
-    width: 180px;
-    padding-left: 80px;
-    padding-right: 10px;
-    text-indent: 0px;
-  }
-
-
-  img {
-    position: absolute;
-    top: 15px;
-    left: 20px;
-    z-index: 1;
-    max-width: 100%;
-  }
-
-  #bottom-panel { background: #707b80; }
 }
