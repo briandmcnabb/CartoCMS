@@ -121,7 +121,7 @@ form {
   &.form-horizontal { margin-top: 40px; }
   fieldset {
     &.publish, &.path {
-      .control-group { padding-right: 10px;
+      .control-group { padding-right: 15px;
         > label {
           &.boolean, &.select { padding-left: 0; text-align: center; }
         }
@@ -169,6 +169,17 @@ form {
 }
 
 .btn input[type='checkbox'] { margin: 0; }
+
+.inline.clearfix div:nth-of-type(2) {
+  label {
+    width: 55px;
+  }
+
+  .controls {
+    margin-left: 75px;
+  }
+}
+
 
 
 

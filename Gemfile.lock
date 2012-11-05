@@ -28,7 +28,7 @@ PATH
       rack-rewrite
       rails (>= 3.1.0)
       responders
-      rmagick
+      rmagick (~> 2.13.1)
       show_for
       simple_ace_input (~> 0.0.1.rc)
       simple_form (~> 2.0)
