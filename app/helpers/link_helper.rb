@@ -8,13 +8,18 @@ module LinkHelper
   end
 
   def new_resource_link
-    if content_for?(:new_resource_link)
-      content_for(:new_resource_link)
+    if @new_resource_link_config[:modal]
+      link_to_modal '#', class: 'btn btn-small-dark' do
+        out = ""
+        out << content_tag(:i, '', class: "icon-plus icon-white")
+        out << (@new_resource_link_config[:text] || "new")
+        out.html_safe
+      end
     else
       link_to new_resource_path, class: 'btn btn-small-dark' do
         out = ""
         out << content_tag(:i, '', class: "icon-plus icon-white")
-        out << "new"
+        out << (@new_resource_link_config.try(:fetch, :text) || "new")
         out.html_safe
       end
     end

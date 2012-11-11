@@ -6,7 +6,12 @@ class Cms::AssetsController < Cms::ResourceController
   # Configuration
   defaults resource_class: @resource_class || Asset
   actions :index, :create, :edit, :update, :destroy
-  belongs_to :slide, polymorphic: true, optional: true
+
+  belongs_to :slide,  polymorphic: true, optional: true
+  belongs_to :story,  polymorphic: true, optional: true
+  belongs_to :person, polymorphic: true, optional: true
+  belongs_to :work,   polymorphic: true, optional: true
+
   respond_to :json
   respond_to :js, only: :destroy
 

@@ -8,3 +8,6 @@
       .action_links.pull-right
         = link_to 'edit',    [:edit, :cms, resource], class: 'icon-pencil ir'
         = link_to 'destroy', [:cms, resource],        class: 'icon-trash  ir', remote: true, method: :delete, confirm: "Are you sure?"
+
+- if @new_resource_link_config.try(:fetch, :modal)
+  = render(partial: 'form-modal', layout: 'layouts/modal') rescue render(partial: 'cms/shared/missing_modal_template', layout: 'layouts/modal')

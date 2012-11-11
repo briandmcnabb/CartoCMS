@@ -1,4 +1,5 @@
 class Cms::PagesController < Cms::ResourceController
+  before_filter ->{ config_new_resource_link(modal: true) }, only: [:index]
   require "mercury/params_mapper"
   include Mercury::ParamsMapper
   respond_to :json

@@ -145,6 +145,10 @@ form {
             appearance: button;
   }
 
+  textarea[id$="_description"] {
+    height: 315px;
+  }
+
   .boolean_toggler {
     input { @extend .hidden; }
     label {

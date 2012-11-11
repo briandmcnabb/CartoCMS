@@ -13,4 +13,12 @@ class Cms::ResourceController < Cms::ApplicationController
       format.js { render nothing: true }
     end
   end
+
+
+
+private
+
+  def config_new_resource_link(options={})
+    @new_resource_link_config ||= options
+  end
 end
