@@ -1,10 +1,10 @@
 .modal-header
   .close{ data: { dismiss: 'modal' } } &times;
-  = content_tag :h3, 'New ' + resource_class.to_s.titleize
+  = content_tag :h1, 'New ' + resource_class.to_s.titleize
 
 = simple_form_for [:cms, Page.new], html: { class: 'form-horizontal' } do |f|
   .modal-body
     = f.input :name, autofocus: true
     = f.input :body, label: 'Template', collection: ::Template.order('position').map { |template| [template.name, template.body] }
   .modal-footer
-    = f.button :submit, 'Create New Page', class: 'btn-primary'
+    = f.button :submit, 'Create New Page', class: 'btn btn-primary'

@@ -15,4 +15,8 @@ class Slide < ActiveRecord::Base
   # Validation
   validates :name,      presence: true
   validates :slider_id, presence: true
+
+  def aspect_ratio
+    slider.aspect_ratio
+  end
 end

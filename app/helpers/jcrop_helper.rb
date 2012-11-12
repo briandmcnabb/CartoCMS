@@ -5,6 +5,6 @@ module JcropHelper
   end
 
   def aspect_ratio
-    resource.attachable.slider.aspect_ratio if resource.attachable
+    resource.attachable.aspect_ratio if resource.attachable
   end
 end
