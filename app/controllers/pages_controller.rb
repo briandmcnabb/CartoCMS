@@ -1,7 +1,7 @@
 class PagesController < ActionController::Base
   before_filter :update_page_resolver
 
-  append_view_path Page::Resolver.instance
+  prepend_view_path Page::Resolver.instance
 
   helper_method :is_editing?
 
