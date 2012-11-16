@@ -22,9 +22,9 @@ module SliderHelper
         javascript_tag do
             "$(window).load(function() {
               $('##{dom_id(slider)}').nivoSlider({
-                /* effect: 'fade', */
+                effect: 'fade',
                 animSpeed: 1000,
-                pauseTime: 4000
+                pauseTime: 6000
               });
             });"
         end
