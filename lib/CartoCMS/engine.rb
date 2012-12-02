@@ -5,7 +5,7 @@ module CartoCMS
 
     # Rack Rewrite - No WWW
     config.app_middleware.insert_before(Rack::Lock, Rack::Rewrite) do
-      r301 /.*/,  Proc.new { |path, rack_env| "http://#{rack_env['HTTP_HOST'].gsub(/www\./i, '') }$&" },
+      r301 /.*/,  Proc.new { |path, rack_env| "http://#{rack_env['HTTP_HOST'].gsub(/www\./i, '') }" },
           :if => Proc.new { |rack_env| rack_env['SERVER_NAME'] =~ /www\./i }
     end
 
