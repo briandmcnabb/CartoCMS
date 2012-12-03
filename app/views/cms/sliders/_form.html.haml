@@ -14,4 +14,4 @@
 
 - if resource.slides.length > 0
   %hr
-  = render partial: 'cms/resource/index-list', locals: { collection: resource.slides }
+  = render partial: 'cms/resource/index-list', locals: { collection: resource.slides.order(:position), position_url: position_cms_slides_path }

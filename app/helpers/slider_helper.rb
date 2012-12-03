@@ -8,7 +8,7 @@ module SliderHelper
     options[:theme]    ||= 'theme-default'
 
     # Generate slider hash
-    slider_hash = slider.slides.inject({slides: [], captions: []}) do |memo, slide|
+    slider_hash = slider.slides.order(:position).inject({slides: [], captions: []}) do |memo, slide|
       if slide.image
         memo[:slides]   << image_tag(slide.image.asset_path.url(options[:size]), alt: slide.name, title: send(options[:caption], slide))
         memo[:captions] << div_for(slide, class: 'nivo-html-caption'){ content_tag(:div, slide.description.html_safe, class: 'wrapper') } if html_caption?
@@ -24,7 +24,7 @@ module SliderHelper
               $('##{dom_id(slider)}').nivoSlider({
                 effect: 'fade',
                 animSpeed: 1000,
-                pauseTime: 6000
+                pauseTime: 8000
               });
             });"
         end
