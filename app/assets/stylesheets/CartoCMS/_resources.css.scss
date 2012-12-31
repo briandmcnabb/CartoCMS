@@ -100,9 +100,20 @@ ul#positionable { list-style: none;
     &:last-of-type { margin-bottom: 0; }
     &.placeholder { height: 37px; background-color: hsla(0, 0%, 0%, 0.025); border-top: 1px solid hsla(0, 0%, 0%, 0.05); border-bottom: 1px solid hsla(0, 0%, 0%, 0.05); }
     .handle {  border-right: 1px solid #e5e5e5; padding: 12px 10px 13px 0; }
-    .resource { padding-left: 10px;
-      h3 { line-height: 1; }
-      p { margin: 0; }
+    .resource {
+      width: 600px;
+      padding: 0 10px;
+
+      h3 {
+        line-height: 1;
+      }
+
+      p {
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
     .action_links { border-left: 1px solid #e5e5e5; padding: 12px 0 13px;
       a { float: left; margin-left: 15px;
