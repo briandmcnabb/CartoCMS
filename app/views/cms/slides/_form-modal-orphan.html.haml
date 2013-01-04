@@ -1,0 +1,10 @@
+.modal-header
+  .close{ data: { dismiss: 'modal' } } &times;
+  = content_tag :h1, 'Create ' + resource_class.to_s.titleize
+
+= simple_form_for [:cms, Slide.new], html: { class: 'form-horizontal' } do |f|
+  = f.input :slider_id, as: :hidden, input_html: { value: resource.id }
+  .modal-body
+    = f.input :name, autofocus: true
+  .modal-footer
+    = f.button :submit, 'Create Slide', class: 'btn btn-primary'

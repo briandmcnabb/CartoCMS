@@ -12,6 +12,9 @@
   .form-actions.row
     .span8= f.button :submit, "submit", class: 'btn-primary pull-right'
 
+%hr
+.offset1= link_to_modal 'Add Slide', '#', class: 'btn btn-small-dark'
+%br
+= render partial: 'cms/slides/form-modal-orphan', layout: 'layouts/modal'
 - if resource.slides.length > 0
-  %hr
   = render partial: 'cms/resource/index-list', locals: { collection: resource.slides.order(:position), position_url: position_cms_slides_path }
