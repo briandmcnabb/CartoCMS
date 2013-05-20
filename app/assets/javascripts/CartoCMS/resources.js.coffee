@@ -35,8 +35,9 @@ jQuery ->
 
   # Positionable
   $('ul#positionable').sortable
-   axis: 'y'
-   handle: '.handle'
-   placeholder: 'placeholder'
-   update: ->
-     $.post($(this).data('position_url'), $(this).sortable('serialize'))
+    axis: 'y'
+    handle: '.handle'
+    placeholder: 'placeholder'
+    update: ->
+      $.post($(this).data('position-url'), $(this).sortable('serialize'))
+
