@@ -1,6 +1,7 @@
 module SliderHelper
 
   def slider(slider, options={})
+    return if slider.nil?
     # Defaults
     options[:caption]  = sanitized_caption(options[:caption])
     options[:position] ||= 'relative'
