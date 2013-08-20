@@ -21,8 +21,13 @@
   end
 
   def virtual_filepath
-    underscore = partial ? '_' : ''
-    [path, format, locale, handler].join('.').insert(0, underscore)
+    if partial?
+      path_parts = path.split('/')
+      path_parts << ['_', path_parts.pop].join
+      path = path_parts.join
+    end
+
+    [path, format, locale, handler].join('.')
   end
 
 

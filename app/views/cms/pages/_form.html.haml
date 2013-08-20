@@ -1,11 +1,11 @@
 // Custom Content For
 - content_for(:extra_scripts) { javascript_include_tag("carto_simple_ace_input") }
-- content_for(:custom_panel_buttons) do
-  = content_tag :li do
-    = link_to mercury_edit_url do
-      = content_tag :i, '', class: 'button-edit-in-page'
-  = content_tag :li do
-    = link_to_modal content_tag(:i, '', class: 'button-assets'), '#', id: 'action_link'
+/- content_for(:custom_panel_buttons) do
+/  = content_tag :li do
+/    = link_to mercury_edit_url do
+/      = content_tag :i, '', class: 'button-edit-in-page'
+/  = content_tag :li do
+/    = link_to_modal content_tag(:i, '', class: 'button-assets'), '#', id: 'action_link'
 
 // Template
 .form.row
