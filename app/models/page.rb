@@ -24,7 +24,7 @@
     if partial?
       path_parts = path.split('/')
       path_parts << ['_', path_parts.pop].join
-      path = path_parts.join
+      path = path_parts.join('/')
     end
 
     [path, format, locale, handler].join('.')
