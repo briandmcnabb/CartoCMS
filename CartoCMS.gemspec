@@ -36,7 +36,7 @@ Gem::Specification.new do |s|
   s.add_dependency "has_scope"
   s.add_dependency "heroku"
   s.add_dependency "inherited_resources"
-  s.add_dependency "jquery-rails",            "~> 2.3"
+  s.add_dependency "jquery-rails",            "~> 2.2.1"
   s.add_dependency "nokogiri"
   s.add_dependency "omniauth",                "~> 1.0"
   s.add_dependency "rack-rewrite"
