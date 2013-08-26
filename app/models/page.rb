@@ -25,6 +25,8 @@
       path_parts = path.split('/')
       path_parts << ['_', path_parts.pop].join
       path = path_parts.join('/')
+    else
+      path = self.path
     end
 
     [path, format, locale, handler].join('.')
