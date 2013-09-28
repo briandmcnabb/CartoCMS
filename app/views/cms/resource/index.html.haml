@@ -1,6 +1,3 @@
 #index.row
   = render partial: index_partial, layout: 'panel', locals: { attributes: index_attributes(collection) }
-
-  - begin
-    .span14.offset1= will_paginate(collection, remote: true)
-  -rescue
+  #pagination-partial= render 'pagination'
